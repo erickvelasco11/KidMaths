@@ -6,7 +6,7 @@
 //Variables de manejo de estados de carga
 var loadBar;
 var loadText;
-var loadType = LOAD_ANYTHING;
+var loadType = LOAD_FIRST_ASSET;
 
 //Esta función carga todos los archivos que necesita la aplicación como sonidos e imágenes
 function loadAssets() {

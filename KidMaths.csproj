@@ -50,10 +50,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\buttons\button_sprite_sheet.png" />
+    <Content Include="assets\images\pic1.png" />
+    <Content Include="assets\images\pic2.png" />
+    <Content Include="assets\images\pic3.png" />
+    <Content Include="assets\images\pic4.png" />
+    <Content Include="assets\images\pic5.png" />
+    <Content Include="assets\images\pic6.png" />
+    <Content Include="assets\images\pic7.png" />
     <Content Include="images\background_page.jpg" />
     <Content Include="images\charmander.png" />
     <Content Include="images\logo.png" />
-    <Content Include="images\pikachu.png" />
+    <Content Include="assets\images\pikachu.png" />
     <Content Include="index.html" />
     <Content Include="js\constants.js" />
     <Content Include="js\index.js" />
