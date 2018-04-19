@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KidMaths", "KidMaths.csproj", "{B977F832-A9D1-4A58-9BBD-DE938F8CEA4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit1", "Unit1\Unit1.csproj", "{26318F35-7F22-48BE-BA77-7544C36C7FB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B977F832-A9D1-4A58-9BBD-DE938F8CEA4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B977F832-A9D1-4A58-9BBD-DE938F8CEA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B977F832-A9D1-4A58-9BBD-DE938F8CEA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B977F832-A9D1-4A58-9BBD-DE938F8CEA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26318F35-7F22-48BE-BA77-7544C36C7FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26318F35-7F22-48BE-BA77-7544C36C7FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26318F35-7F22-48BE-BA77-7544C36C7FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26318F35-7F22-48BE-BA77-7544C36C7FB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B1019BD4-B1A5-41AF-BDCE-48544A3C3474}
+		SolutionGuid = {B9C4EF8E-F084-4358-B39A-3BFDB6EA95BA}
 	EndGlobalSection
 EndGlobal
