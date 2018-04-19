@@ -18,9 +18,9 @@ var loadType = LOAD_FIRST_ASSET;
 function preload() {
     game.stage.backgroundColor = '#182d3b';
     game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
-    game.load.image('logo', 'images/logo.png');
-    game.load.audio('battle', 'sounds/battle.mp3');
-    game.load.spritesheet('charmander', 'images/charmander.png', 48, 48);
+    game.load.image('logo', 'assets/images/logo.png');
+    game.load.audio('battle', 'assets/sounds/battle.mp3');
+    game.load.spritesheet('charmander', 'assets/images/charmander.png', 48, 48);
 
     game.load.enableParallel = false;
     game.load.onLoadStart.add(loadStart, this);
@@ -30,37 +30,6 @@ function preload() {
 }
 
 function create() {
-}
-
-function loadStart() {
-    loadText = game.add.text(game.world.centerX, game.world.centerY + 40, "Cargando...", { font: "30px Arial", align: "center", fill: '#ffffff' });
-    loadText.anchor.set(0.5);
-}
-
-//	This callback is sent the following parameters:
-function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-    if (loadType == LOAD_COMPONENTS) {
-        loadBar.scale.x = progress * 0.01;
-        player1.x = ((600 * progress) / 100) + 52;
-    } else {
-        loadType = LOAD_COMPONENTS;
-
-        loadBar = game.add.graphics(100, game.world.centerY - 12);
-
-        loadBar.lineStyle(35, 0xffffff, 1);
-        loadBar.tint = YELLOW;
-        loadBar.moveTo(0, 0);
-        loadBar.lineTo(game.world.width - 200, 0);
-        loadBar.scale.x = 0;
-        loadBar.endFill();
-
-        player1 = game.add.sprite(52, 260, 'pikachu');
-        player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
-        player1.animations.play('right');
-    }
-}
-
-function loadComplete() {
 }
 
 //Esta función actualiza la pantalla del juego en los diferentes estados
