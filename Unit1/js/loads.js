@@ -6,7 +6,7 @@
 //Variables de manejo de estados de carga
 var loadBar;
 var loadText;
-var loadType = LOAD_FIRST_ASSET;
+var animateBar = false;
 var background;
 var title;
 
@@ -48,15 +48,16 @@ function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
         title = game.add.image(game.world.centerX, 100, 'tit_name_unit');
         title.anchor.x = 0.5;
     }
-    if (loadType == LOAD_COMPONENTS) {
-        loadBar.scale.x = progress * 0.01;
-        player1.x = ((600 * progress) / 100) + 52;
-    } else {
-        loadType = LOAD_COMPONENTS;
-
+    if (cacheKey == "pikachu") {
         player1 = game.add.sprite(52, game.world.centerY + 72, 'pikachu');
         player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
         player1.animations.play('right');
+        animateBar = true;
+    }
+
+    loadBar.scale.x = progress * 0.01;
+    if (animateBar) {
+        player1.x = ((600 * progress) / 100) + 52;
     }
 }
 

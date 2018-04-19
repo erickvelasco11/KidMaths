@@ -17,8 +17,7 @@ var loadType = LOAD_FIRST_ASSET;
 
 function preload() {
     filesToLoad();
-
-    game.load.enableParallel = false;
+    
     game.load.onLoadStart.add(loadStart, this);
     game.load.onFileComplete.add(fileComplete, this);
     game.load.onLoadComplete.add(loadComplete, this);
