@@ -76,16 +76,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\buttons\button_sprite_sheet.png" />
-    <Content Include="assets\images\background_page.jpg" />
-    <Content Include="assets\images\charmander.png" />
-    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\backgrounds\loading.jpg" />
+    <Content Include="assets\images\backgrounds\options.jpg" />
+    <Content Include="assets\images\backgrounds\page.jpg" />
     <Content Include="assets\images\pikachu.png" />
+    <Content Include="assets\images\titles\name_unit.png" />
+    <Content Include="assets\images\titles\gender.png" />
     <Content Include="assets\sounds\battle.mp3" />
     <Content Include="index.html" />
     <Content Include="js\constants.js" />
     <Content Include="js\index.js" />
     <Content Include="js\loads.js" />
-    <Content Include="js\phaser_2.4.4.min.js" />
     <Content Include="js\phaser_2.6.2.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>

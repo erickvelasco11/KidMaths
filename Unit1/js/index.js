@@ -16,11 +16,7 @@ var loadText;
 var loadType = LOAD_FIRST_ASSET;
 
 function preload() {
-    game.stage.backgroundColor = '#182d3b';
-    game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
-    game.load.image('logo', 'assets/images/logo.png');
-    game.load.audio('battle', 'assets/sounds/battle.mp3');
-    game.load.spritesheet('charmander', 'assets/images/charmander.png', 48, 48);
+    filesToLoad();
 
     game.load.enableParallel = false;
     game.load.onLoadStart.add(loadStart, this);
