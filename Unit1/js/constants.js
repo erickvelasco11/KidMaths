@@ -13,6 +13,7 @@ var READY = 4;
 var FINISH_ROUND = 5;
 var LOADING = 6;
 var CREDITS = 7;
+var SELECT_GENDER = 8;
 
 var LIMIT_LAUNCH = 100;
 var WITHOUT_DIRECTION = 0;
