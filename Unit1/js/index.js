@@ -33,6 +33,10 @@ function update() {
 
     switch (state) {
         case LOADING:
+        case SELECT_GENDER:
+            break;
+        case PLAYING:
+
             break;
     }
 }

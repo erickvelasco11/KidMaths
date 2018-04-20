@@ -16,6 +16,8 @@ function filesToLoad() {
     game.load.image('bgr_loading', 'assets/images/backgrounds/loading.jpg');
     game.load.image('tit_name_unit', 'assets/images/titles/name_unit.png');
     game.load.image('bgr_options', 'assets/images/backgrounds/options.jpg');
+    game.load.image('bgr_playing_boy', 'assets/images/backgrounds/playing_boy.jpg');
+    game.load.image('bgr_playing_girl', 'assets/images/backgrounds/playing_girl.jpg');
     game.load.image('tit_gender', 'assets/images/titles/gender.png');
     game.load.image('img_boy', 'assets/images/boy.png');
     game.load.image('img_girl', 'assets/images/girl.png');
@@ -74,16 +76,31 @@ function loadComplete() {
     boy.anchor.x = 0.5;
     boy.width = 200;
     boy.height = 200;
+    boy.inputEnabled = true;
+    boy.events.onInputDown.add(clickGender, this);
 
     var girl = game.add.image(game.world.centerX + (game.world.centerX / 2), game.world.centerY, "img_girl");
     girl.anchor.x = 0.5;
     girl.width = 200;
     girl.height = 200;
+    girl.inputEnabled = true;
+    girl.events.onInputDown.add(clickGender, this);
 }
 
 //Esta función actualiza la barra de carga de los créditos
 function creditsLoadingBar() {
     if (fps % 5 == 0) {
         loadBar.scale.x += 0.0004025;
+    }
+}
+
+function clickGender(sprite, pointer) {
+    state = PLAYING;
+    if (sprite.key == "img_boy") {
+        background.loadTexture("bgr_playing_boy", 0);
+        title.loadTexture("tit_gender", 0);
+    } else {
+        background.loadTexture("bgr_playing_girl", 0);
+        title.loadTexture("tit_gender", 0);
     }
 }
