@@ -22,6 +22,13 @@ function filesToLoad() {
     game.load.image('imgBoy', 'assets/images/boy.png');
     game.load.image('imgGirl', 'assets/images/girl.png');
     game.load.spritesheet('btnStart', 'assets/images/buttons/btnStart.png', 200, 80);
+    game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
+    game.load.image('imgOpenBox', 'assets/images/openBox.png');
+    game.load.image('itmApple', 'assets/images/items/apple.png');
+    game.load.image('itmBananas', 'assets/images/items/bananas.png');
+    game.load.image('itmStrawberry', 'assets/images/items/strawberry.png');
+    game.load.image('itmPear', 'assets/images/items/pear.png');
+    game.load.image('itmTomato', 'assets/images/items/tomato.png');
     game.load.audio('battle', 'assets/sounds/battle.mp3');
 }
 

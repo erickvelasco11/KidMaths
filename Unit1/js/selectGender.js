@@ -38,7 +38,7 @@ function clickGender(sprite, pointer) {
     girl.destroy();
     boy.destroy();
     title.loadTexture("titNameUnit");
-    state = INIT;
+    state = PRINCIPAL_MENU;
 
     initPrincipalMenu();
 }

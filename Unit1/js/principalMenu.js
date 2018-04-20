@@ -7,5 +7,9 @@ function initPrincipalMenu() {
 }
 
 function startGame() {
-    alert("Iniciar el juego")
+    background.loadTexture("bgrTopics");
+    btnStart.visible = false;
+    title.visible = false;
+    initTopic1();
+    state = TOPIC1;
 }

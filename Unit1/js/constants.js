@@ -3,8 +3,8 @@
 */
 
 //Constantes
-const INIT = 0;
-const PLAYING = 1;
+const PRINCIPAL_MENU = 0;
+const TOPIC1 = 1;
 const PAUSED = 2;
 const FINISHED = 3;
 const READY = 4;
