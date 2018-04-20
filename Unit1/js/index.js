@@ -6,14 +6,13 @@ var fps = 0;
 //Variable principal para el juego que tendrá un tamaño de 800x600, será cargado en el div "game" y tendrá 3 funciones de estado
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update });
 
+//Variables de juego
 var button;
 var x = 32;
 var y = 80;
 
-//Variables de manejo de estados de carga
-var loadBar;
-var loadText;
-var loadType = LOAD_FIRST_ASSET;
+//Variables de usuario
+var gender;
 
 function preload() {
     filesToLoad();
@@ -34,6 +33,8 @@ function update() {
     switch (state) {
         case LOADING:
         case SELECT_GENDER:
+            break;
+        case INIT:
             break;
         case PLAYING:
 

@@ -13,14 +13,15 @@ var title;
 //Función para listar los componentes que se van a cargar para el juego
 function filesToLoad() {
     game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
-    game.load.image('bgr_loading', 'assets/images/backgrounds/loading.jpg');
-    game.load.image('tit_name_unit', 'assets/images/titles/name_unit.png');
-    game.load.image('bgr_options', 'assets/images/backgrounds/options.jpg');
-    game.load.image('bgr_playing_boy', 'assets/images/backgrounds/playing_boy.jpg');
-    game.load.image('bgr_playing_girl', 'assets/images/backgrounds/playing_girl.jpg');
-    game.load.image('tit_gender', 'assets/images/titles/gender.png');
-    game.load.image('img_boy', 'assets/images/boy.png');
-    game.load.image('img_girl', 'assets/images/girl.png');
+    game.load.image('bgrLoading', 'assets/images/backgrounds/loading.jpg');
+    game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
+    game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
+    game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
+    game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
+    game.load.image('titGender', 'assets/images/titles/gender.png');
+    game.load.image('imgBoy', 'assets/images/boy.png');
+    game.load.image('imgGirl', 'assets/images/girl.png');
+    game.load.spritesheet('btnStart', 'assets/images/buttons/btnStart.png', 200, 80);
     game.load.audio('battle', 'assets/sounds/battle.mp3');
 }
 
@@ -42,12 +43,12 @@ function loadStart() {
 //Esta función es de Phaser y se llama cuando un archivo se a descargado completamente y está listo para usarse
 //Yo la uso para mover la barra de carga del inicio de la aplicación
 function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
-    if (cacheKey == "bgr_loading") {
-        background = game.add.tileSprite(0, 0, 800, 600, 'bgr_loading');
+    if (cacheKey == "bgrLoading") {
+        background = game.add.tileSprite(0, 0, 800, 600, 'bgrLoading');
         background.sendToBack();
     }
-    if (cacheKey == "tit_name_unit") {
-        title = game.add.image(game.world.centerX, 100, 'tit_name_unit');
+    if (cacheKey == "titNameUnit") {
+        title = game.add.image(game.world.centerX, 100, 'titNameUnit');
         title.anchor.x = 0.5;
     }
     if (cacheKey == "pikachu") {
@@ -65,42 +66,16 @@ function fileComplete(progress, cacheKey, success, totalLoaded, totalFiles) {
 
 //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
 function loadComplete() {
-    state = SELECT_GENDER;
-    background.loadTexture("bgr_options", 0);
-    title.loadTexture("tit_gender", 0);
     player1.visible = false;
     loadBar.destroy();
     loadText.destroy();
 
-    var boy = game.add.image(game.world.centerX / 2, game.world.centerY, "img_boy");
-    boy.anchor.x = 0.5;
-    boy.width = 200;
-    boy.height = 200;
-    boy.inputEnabled = true;
-    boy.events.onInputDown.add(clickGender, this);
-
-    var girl = game.add.image(game.world.centerX + (game.world.centerX / 2), game.world.centerY, "img_girl");
-    girl.anchor.x = 0.5;
-    girl.width = 200;
-    girl.height = 200;
-    girl.inputEnabled = true;
-    girl.events.onInputDown.add(clickGender, this);
+    initSelectGender();
 }
 
 //Esta función actualiza la barra de carga de los créditos
 function creditsLoadingBar() {
     if (fps % 5 == 0) {
         loadBar.scale.x += 0.0004025;
-    }
-}
-
-function clickGender(sprite, pointer) {
-    state = PLAYING;
-    if (sprite.key == "img_boy") {
-        background.loadTexture("bgr_playing_boy", 0);
-        title.loadTexture("tit_gender", 0);
-    } else {
-        background.loadTexture("bgr_playing_girl", 0);
-        title.loadTexture("tit_gender", 0);
     }
 }

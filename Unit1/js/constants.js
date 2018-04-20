@@ -3,17 +3,18 @@
 */
 
 //Constantes
-const GRAVITY = 1000;
-var ROUND_TIME = 60;
-var INIT = 0;
-var PLAYING = 1;
-var PAUSED = 2;
-var FINISHED = 3;
-var READY = 4;
-var FINISH_ROUND = 5;
-var LOADING = 6;
-var CREDITS = 7;
-var SELECT_GENDER = 8;
+const INIT = 0;
+const PLAYING = 1;
+const PAUSED = 2;
+const FINISHED = 3;
+const READY = 4;
+const FINISH_ROUND = 5;
+const LOADING = 6;
+const CREDITS = 7;
+const SELECT_GENDER = 8;
+
+const MALE = 0;
+const FEMALE = 1;
 
 var LIMIT_LAUNCH = 100;
 var WITHOUT_DIRECTION = 0;
@@ -22,11 +23,10 @@ var RIGHT_DIRECTION = 2;
 var SHOOT_VELOCITY = 800;
 var CREDITS_VELOCITY = -20;
 
-var LOAD_LOADING = 1;
-var LOAD_COMPONENTS = 2;
-var LOAD_FIRST_ASSET = 3;
+const GREEN = 0x00FF00;
+const YELLOW = 0xFCD516;
+const RED = 0xFF0000;
+const WHITE = 0xFFFFFF;
 
-var GREEN = 0x00FF00;
-var YELLOW = 0xFCD516;
-var RED = 0xFF0000;
-var WHITE = 0xFFFFFF;
+var GRAVITY = 1000;
+var ROUND_TIME = 60;
