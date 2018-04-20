@@ -25,9 +25,12 @@ function launchItemTopic1() {
     item.body.immovable = true;
     item.width = 50;
     item.height = 50;
-    item.body.velocity.x = game.rnd.integerInRange(20, 40);
+    item.body.velocity.x = game.rnd.integerInRange(15, 30);
     item.body.checkCollision.up = true;
-    item.body.checkCollision.down = false;
-    item.body.checkCollision.left = false;
-    item.body.checkCollision.right = false;
+    item.body.checkCollision.down = true;
+    item.body.checkCollision.left = true;
+    item.body.checkCollision.right = true;
+
+    item.inputEnabled = true;
+    item.input.enableDrag(false, true);
 }
