@@ -29,7 +29,7 @@ function filesToLoad() {
     game.load.image('itmStrawberry', 'assets/images/items/strawberry.png');
     game.load.image('itmPear', 'assets/images/items/pear.png');
     game.load.image('itmTomato', 'assets/images/items/tomato.png');
-    game.load.audio('battle', 'assets/sounds/battle.mp3');
+    //game.load.audio('battle', 'assets/sounds/battle.mp3');
 }
 
 //Esta función es de Phaser y se llama cuando la carga de archivos va a empezar
