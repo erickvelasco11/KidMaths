@@ -10,7 +10,6 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game', { preload: preload, cr
 var button;
 var x = 32;
 var y = 80;
-var items;
 
 //Variables de usuario
 var gender;
@@ -38,9 +37,10 @@ function update() {
         case PRINCIPAL_MENU:
             break;
         case TOPIC1:
-            if (fps % 200 == 0) {
+            if (fps % 150 == 0) {
                 launchItemTopic1();
             }
+            game.physics.arcade.collide(items, boxes, putInChest);
             break;
     }
 }
