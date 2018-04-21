@@ -24,7 +24,7 @@ function filesToLoad() {
     game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
     game.load.image('imgOpenBox', 'assets/images/openBox.png');
     game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
-    game.load.image('itmClothesbasket', 'assets/images/items/clothesbasket.png');
+    game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
     game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');
     game.load.image('itmApple', 'assets/images/items/apple.png');
     game.load.image('itmBananas', 'assets/images/items/bananas.png');
