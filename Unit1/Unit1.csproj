@@ -116,6 +116,8 @@
     <Content Include="assets\images\titles\nameUnit.png" />
     <Content Include="assets\images\titles\gender.png" />
     <Content Include="assets\images\titles\now.png" />
+    <Content Include="assets\sounds\error.wav" />
+    <Content Include="assets\sounds\point.wav" />
     <Content Include="index.html" />
     <Content Include="js\constants.js" />
     <Content Include="js\index.js" />
@@ -130,7 +132,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\sounds\" />
     <Folder Include="css\" />
   </ItemGroup>
   <PropertyGroup>

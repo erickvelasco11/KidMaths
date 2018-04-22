@@ -55,7 +55,9 @@ function filesToLoad() {
     game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
     game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
     game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
-    //game.load.audio('battle', 'assets/sounds/battle.mp3');
+
+    game.load.audio('sndError', 'assets/sounds/error.wav');
+    game.load.audio('sndPoint', 'assets/sounds/point.wav');
 }
 
 //Esta función es de Phaser y se llama cuando la carga de archivos va a empezar

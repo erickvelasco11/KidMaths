@@ -106,8 +106,9 @@ function putInChest(item, chest) {
         || school.includes(item.key) && chest.key == "itmSchoolBag") {
         points++;
         txtPoints.setText("Puntos: " + points);
+        game.add.audio("sndPoint").play('', 0);
     } else {
-        //TODO
+        game.add.audio("sndError").play('', 0);
     }
     item.kill();
 }
