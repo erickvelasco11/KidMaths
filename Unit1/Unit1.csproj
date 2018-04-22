@@ -107,8 +107,12 @@
     <Content Include="assets\images\openBox.png" />
     <Content Include="assets\images\pikachu.png" />
     <Content Include="assets\images\sprites\bird.png" />
+    <Content Include="assets\images\titles\1.png" />
+    <Content Include="assets\images\titles\2.png" />
+    <Content Include="assets\images\titles\3.png" />
     <Content Include="assets\images\titles\nameUnit.png" />
     <Content Include="assets\images\titles\gender.png" />
+    <Content Include="assets\images\titles\now.png" />
     <Content Include="index.html" />
     <Content Include="js\constants.js" />
     <Content Include="js\index.js" />

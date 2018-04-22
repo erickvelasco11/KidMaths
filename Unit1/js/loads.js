@@ -15,14 +15,22 @@ function filesToLoad() {
     game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
     game.load.image('bgrLoading', 'assets/images/backgrounds/loading.jpg');
     game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
+
     game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
     game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
     game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
+    game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
+
     game.load.image('titGender', 'assets/images/titles/gender.png');
+    game.load.image('tit1', 'assets/images/titles/1.png');
+    game.load.image('tit2', 'assets/images/titles/2.png');
+    game.load.image('tit3', 'assets/images/titles/3.png');
+    game.load.image('titNow', 'assets/images/titles/now.png');
+
     game.load.image('imgBoy', 'assets/images/boy.png');
     game.load.image('imgGirl', 'assets/images/girl.png');
-    game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
     game.load.image('imgOpenBox', 'assets/images/openBox.png');
+
     game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
     game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
     game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');

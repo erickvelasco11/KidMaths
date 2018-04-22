@@ -11,5 +11,5 @@ function startGame() {
     btnStart.visible = false;
     title.visible = false;
     initTopic1();
-    state = TOPIC1;
+    state = READY;
 }

@@ -36,8 +36,13 @@ function update() {
             break;
         case PRINCIPAL_MENU:
             break;
+        case READY:
+            if (fps % 200 == 0) {
+                launchItemTopic1();
+            }
+            break;
         case TOPIC1:
-            if (fps % 150 == 0) {
+            if (fps % 200 == 0) {
                 launchItemTopic1();
             }
             game.physics.arcade.collide(items, boxes, putInChest);
