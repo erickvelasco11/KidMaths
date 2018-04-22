@@ -20,12 +20,14 @@ function filesToLoad() {
     game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
     game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
     game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
+    game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
 
     game.load.image('titGender', 'assets/images/titles/gender.png');
     game.load.image('tit1', 'assets/images/titles/1.png');
     game.load.image('tit2', 'assets/images/titles/2.png');
     game.load.image('tit3', 'assets/images/titles/3.png');
     game.load.image('titNow', 'assets/images/titles/now.png');
+    game.load.image('titCongrats', 'assets/images/titles/congrats.png');
 
     game.load.image('imgBoy', 'assets/images/boy.png');
     game.load.image('imgGirl', 'assets/images/girl.png');
@@ -49,7 +51,9 @@ function filesToLoad() {
     game.load.image('itmJacket', 'assets/images/items/jacket.png');
     game.load.image('itmShirt', 'assets/images/items/shirt.png');
     game.load.image('itmSocks', 'assets/images/items/socks.png');
-    game.load.spritesheet('btnStart', 'assets/images/buttons/btnStart.png', 200, 80);
+
+    game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
+    game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
     game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
     //game.load.audio('battle', 'assets/sounds/battle.mp3');
 }

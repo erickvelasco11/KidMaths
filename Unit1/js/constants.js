@@ -12,6 +12,7 @@ const FINISH_ROUND = 5;
 const LOADING = 6;
 const CREDITS = 7;
 const SELECT_GENDER = 8;
+const RESULTS = 9;
 
 const MALE = 0;
 const FEMALE = 1;

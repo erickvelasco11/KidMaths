@@ -45,12 +45,12 @@ function initTopic1() {
     box3.enableBody = true;
     box3.body.immovable = true;
 
-    titReady = game.add.image(game.world.centerX, game.world.centerY, "tit3");
+    titReady = game.add.image(game.world.centerX, game.world.centerY-100, "tit3");
     titReady.anchor.setTo(0.5, 0.5);
 
     txtTime = game.add.text(game.world.centerX, 40, countdown, { font: "48px Arial", align: "center", fill: '#ffffff' });
     txtTime.anchor.setTo(0.5, 0.5);
-    txtPoints = game.add.text(30, 30, "Puntos: "+points, { font: "24px Arial", align: "center", fill: '#ffffff' });
+    txtPoints = game.add.text(20, 20, "Puntos: "+points, { font: "24px Arial", align: "center", fill: '#ffffff' });
 
     timer.add(1500, ready, this);
     timer.start();
@@ -134,6 +134,21 @@ function ready() {
 function manageTime() {
     countdown--;
     txtTime.setText(countdown);
-    timer.add(1000, manageTime, this);
-    timer.start();
+    if (countdown > 0) {
+        timer.add(1000, manageTime, this);
+        timer.start();
+    } else {
+        if (countdown == 0) {
+            items.removeAll();
+            game.add.image(0, 0, "bgrPause");
+            var txt = game.add.text(game.world.centerX, game.world.centerY, "Puntos: " + points, { fill: '#ffffff' });
+            txt.anchor.setTo(0.5, 0.5);
+            btnNext = game.add.button(game.world.centerX, 400, 'btnNext', null, this, 0, 1, 2);
+            btnNext.anchor.x = 0.5;
+            title.loadTexture("titCongrats", 0);
+            title.bringToTop();
+            title.visible = true;
+            state = RESULTS;
+        }
+    }
 }

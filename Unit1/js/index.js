@@ -37,6 +37,7 @@ function update() {
         case PRINCIPAL_MENU:
             break;
         case READY:
+        case RESULTS:
             if (fps % 200 == 0) {
                 launchItemTopic1();
             }

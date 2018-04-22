@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\buttons\button_sprite_sheet.png" />
+    <Content Include="assets\images\backgrounds\pause.png" />
     <Content Include="assets\images\backgrounds\loading.jpg" />
     <Content Include="assets\images\backgrounds\options.jpg" />
     <Content Include="assets\images\backgrounds\page.jpg" />
@@ -84,7 +85,8 @@
     <Content Include="assets\images\backgrounds\playingGirl.jpg" />
     <Content Include="assets\images\backgrounds\topics.png" />
     <Content Include="assets\images\boy.png" />
-    <Content Include="assets\images\buttons\btnStart.png" />
+    <Content Include="assets\images\buttons\next.png" />
+    <Content Include="assets\images\buttons\start.png" />
     <Content Include="assets\images\girl.png" />
     <Content Include="assets\images\items\apple.png" />
     <Content Include="assets\images\items\bananas.png" />
@@ -110,6 +112,7 @@
     <Content Include="assets\images\titles\1.png" />
     <Content Include="assets\images\titles\2.png" />
     <Content Include="assets\images\titles\3.png" />
+    <Content Include="assets\images\titles\congrats.png" />
     <Content Include="assets\images\titles\nameUnit.png" />
     <Content Include="assets\images\titles\gender.png" />
     <Content Include="assets\images\titles\now.png" />
