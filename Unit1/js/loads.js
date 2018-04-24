@@ -19,7 +19,8 @@ function filesToLoad() {
     game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
     game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
     game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
-    game.load.image('bgrTopics', 'assets/images/backgrounds/topics.png');
+    game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
+    game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
     game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
 
     game.load.image('titGender', 'assets/images/titles/gender.png');
@@ -32,6 +33,9 @@ function filesToLoad() {
     game.load.image('imgBoy', 'assets/images/boy.png');
     game.load.image('imgGirl', 'assets/images/girl.png');
     game.load.image('imgOpenBox', 'assets/images/openBox.png');
+    game.load.image('imgTriangle', 'assets/images/triangle.png');
+    game.load.image('imgCircle', 'assets/images/circle.png');
+    game.load.image('imgSquare', 'assets/images/square.png');
 
     game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
     game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');

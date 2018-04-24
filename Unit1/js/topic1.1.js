@@ -7,8 +7,8 @@ var birds;
 var boxes;
 
 var timer;
-var stateReady = 3;
-var countdown = 60;
+var stateReady = 1//3;
+var countdown = 1//60;
 
 var titReady;
 var txtTime;
@@ -16,7 +16,8 @@ var txtPoints;
 var points = 0;
 
 //Función para iniciar todos los componentes del tópico 1
-function initTopic1() {
+function initTopic1_1() {
+    background.loadTexture("bgrArcade");
     timer = game.time.create(false);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     items = game.add.group();
@@ -59,7 +60,7 @@ function initTopic1() {
 function launchItemTopic1() {
     var y = game.rnd.integerInRange(50, 300);
     var velocity = game.rnd.integerInRange(30, 60);
-    if (state == TOPIC1) {
+    if (state == TOPIC1_1) {
         var category = game.rnd.integerInRange(0, 2);
         var idItem;
         switch (category) {
@@ -116,7 +117,7 @@ function putInChest(item, chest) {
 function ready() {
     stateReady--;
     if (stateReady == 0) {
-        state = TOPIC1;
+        state = TOPIC1_1;
         titReady.loadTexture("titNow", 0);
         timer.add(1500, ready, this);
         timer.add(1000, manageTime, this);
@@ -141,15 +142,7 @@ function manageTime() {
     } else {
         if (countdown == 0) {
             items.removeAll();
-            game.add.image(0, 0, "bgrPause");
-            var txt = game.add.text(game.world.centerX, game.world.centerY, "Puntos: " + points, { fill: '#ffffff' });
-            txt.anchor.setTo(0.5, 0.5);
-            btnNext = game.add.button(game.world.centerX, 400, 'btnNext', null, this, 0, 1, 2);
-            btnNext.anchor.x = 0.5;
-            title.loadTexture("titCongrats", 0);
-            title.bringToTop();
-            title.visible = true;
-            state = RESULTS;
+            initResultsTopic1_1();
         }
     }
 }

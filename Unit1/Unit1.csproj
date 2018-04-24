@@ -66,6 +66,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\backgrounds\puzzle.jpg" />
+    <Content Include="assets\images\blue.jpg" />
+    <Content Include="assets\images\green.jpg" />
+    <Content Include="assets\images\red.jpg" />
+    <Content Include="js\results.js" />
+    <Content Include="js\topic1.2.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,7 +81,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\buttons\button_sprite_sheet.png" />
     <Content Include="assets\images\backgrounds\pause.png" />
     <Content Include="assets\images\backgrounds\loading.jpg" />
     <Content Include="assets\images\backgrounds\options.jpg" />
@@ -83,7 +88,7 @@
     <Content Include="assets\images\backgrounds\playing.jpg" />
     <Content Include="assets\images\backgrounds\playingBoy.jpg" />
     <Content Include="assets\images\backgrounds\playingGirl.jpg" />
-    <Content Include="assets\images\backgrounds\topics.png" />
+    <Content Include="assets\images\backgrounds\arcade.png" />
     <Content Include="assets\images\boy.png" />
     <Content Include="assets\images\buttons\next.png" />
     <Content Include="assets\images\buttons\start.png" />
@@ -125,7 +130,7 @@
     <Content Include="js\loads.js" />
     <Content Include="js\phaser_2.6.2.min.js" />
     <Content Include="js\selectGender.js" />
-    <Content Include="js\topic1.js" />
+    <Content Include="js\topic1.1.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
