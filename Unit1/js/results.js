@@ -51,7 +51,7 @@ function initResultsTopic1_2() {
     title.visible = true;
 }
 
-function closeResultsTopic1_1() {
+function closeResultsTopic1_2() {
     bgrPause.kill();
     btnNext.kill();
     txtResult.kill();
