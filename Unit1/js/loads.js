@@ -56,6 +56,17 @@ function filesToLoad() {
     game.load.image('itmShirt', 'assets/images/items/shirt.png');
     game.load.image('itmSocks', 'assets/images/items/socks.png');
 
+    game.load.image('itmSetAnimals', 'assets/images/items/setAnimals.jpg');
+    game.load.image('itmSetBooks', 'assets/images/items/setBooks.jpg');
+    game.load.image('itmSetFigures', 'assets/images/items/setFigures.png');
+    game.load.image('itmSetFlags', 'assets/images/items/setFlags.jpg');
+    game.load.image('itmSetFlowers', 'assets/images/items/setFlowers.png');
+    game.load.image('itmSetFruits', 'assets/images/items/setFruits.png');
+    game.load.image('itmSetNumbers', 'assets/images/items/setNumbers.png');
+    game.load.image('itmSetShoes', 'assets/images/items/setShoes.jpg');
+    game.load.image('itmSetToys', 'assets/images/items/setToys.jpg');
+    game.load.image('itmSetUtensils', 'assets/images/items/setUtensils.jpg');
+
     game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
     game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
     game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);

@@ -1,6 +1,7 @@
 ﻿
 //Variables para los estados
 var state = LOADING;
+var subState;
 var fps = 0;
 
 //Variable principal para el juego que tendrá un tamaño de 800x600, será cargado en el div "game" y tendrá 3 funciones de estado
@@ -36,19 +37,36 @@ function update() {
             break;
         case PRINCIPAL_MENU:
             break;
-        case READY:
-        case RESULTS_TOPIC1_1:
-            if (fps % 200 == 0) {
-                launchItemTopic1();
-            }
-            break;
         case TOPIC1_1:
-            if (fps % 200 == 0) {
-                launchItemTopic1();
+            switch (subState) {
+                case READY:
+                case RESULTS:
+                    if (fps % 200 == 0) {
+                        launchItemTopic1();
+                    }
+                    break;
+                case PLAYING:
+                    if (fps % 200 == 0) {
+                        launchItemTopic1();
+                    }
+                    game.physics.arcade.collide(items, boxes, putInChest);
+                    break;
+                case PAUSED:
+                    break;
             }
-            game.physics.arcade.collide(items, boxes, putInChest);
             break;
         case TOPIC1_2:
+            switch (subState) {
+                case READY:
+                    break;
+                case PLAYING:
+                    generateRandomFigure();
+                    break;
+                case PAUSED:
+                    break;
+                case RESULTS:
+                    break;
+            }
             break;
     }
 }

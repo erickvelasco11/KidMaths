@@ -6,19 +6,12 @@ var items;
 var birds;
 var boxes;
 
-var timer;
-var stateReady = 1//3;
-var countdown = 1//60;
-
-var titReady;
-var txtTime;
-var txtPoints;
-var points = 0;
-
 //Función para iniciar todos los componentes del tópico 1
 function initTopic1_1() {
+    state = TOPIC1_1;
+    subState = READY;
+
     background.loadTexture("bgrArcade");
-    timer = game.time.create(false);
     game.physics.startSystem(Phaser.Physics.ARCADE);
     items = game.add.group();
     birds = game.add.group();
@@ -46,21 +39,21 @@ function initTopic1_1() {
     box3.enableBody = true;
     box3.body.immovable = true;
 
-    titReady = game.add.image(game.world.centerX, game.world.centerY-100, "tit3");
-    titReady.anchor.setTo(0.5, 0.5);
+    initReadyTitle();
+    initTimeText();
+    initPointsText();
 
-    txtTime = game.add.text(game.world.centerX, 40, countdown, { font: "48px Arial", align: "center", fill: '#ffffff' });
-    txtTime.anchor.setTo(0.5, 0.5);
-    txtPoints = game.add.text(20, 20, "Puntos: "+points, { font: "24px Arial", align: "center", fill: '#ffffff' });
+    initReadyTime();
+}
 
-    timer.add(1500, ready, this);
-    timer.start();
+function finishTopic1_1() {
+    items.removeAll();
 }
 
 function launchItemTopic1() {
     var y = game.rnd.integerInRange(50, 300);
     var velocity = game.rnd.integerInRange(30, 60);
-    if (state == TOPIC1_1) {
+    if (subState == PLAYING) {
         var category = game.rnd.integerInRange(0, 2);
         var idItem;
         switch (category) {
@@ -112,37 +105,4 @@ function putInChest(item, chest) {
         game.add.audio("sndError").play('', 0);
     }
     item.kill();
-}
-
-function ready() {
-    stateReady--;
-    if (stateReady == 0) {
-        state = TOPIC1_1;
-        titReady.loadTexture("titNow", 0);
-        timer.add(1500, ready, this);
-        timer.add(1000, manageTime, this);
-        timer.start();
-    } else {
-        if (stateReady < 0) {
-            titReady.kill();
-        } else {
-            titReady.loadTexture("tit" + stateReady, 0);
-            timer.add(1500, ready, this);
-            timer.start();
-        }
-    }
-}
-
-function manageTime() {
-    countdown--;
-    txtTime.setText(countdown);
-    if (countdown > 0) {
-        timer.add(1000, manageTime, this);
-        timer.start();
-    } else {
-        if (countdown == 0) {
-            items.removeAll();
-            initResultsTopic1_1();
-        }
-    }
 }

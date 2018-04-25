@@ -5,16 +5,17 @@
 //Constantes
 const PRINCIPAL_MENU = 0;
 const TOPIC1_1 = 1;
-const PAUSED = 2;
 const FINISHED = 3;
-const READY = 4;
 const FINISH_ROUND = 5;
 const LOADING = 6;
 const CREDITS = 7;
 const SELECT_GENDER = 8;
-const RESULTS_TOPIC1_1 = 9;
 const TOPIC1_2 = 10;
-const RESULTS_TOPIC1_2 = 11;
+
+const READY = 0;
+const PLAYING = 1;
+const PAUSED = 2;
+const RESULTS = 3;
 
 const MALE = 0;
 const FEMALE = 1;

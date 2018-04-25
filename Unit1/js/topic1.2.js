@@ -1,6 +1,13 @@
-﻿var graphics
+﻿
+var graphics;
+var isFigureInGame;
 
 function initTopic1_2() {
+    state = TOPIC1_2;
+    subState = READY;
+    points = 0;
+    countdown = 60;
+
 	background.loadTexture("bgrPuzzle");
 	graphics = game.add.graphics(0, 0);
 
@@ -13,22 +20,29 @@ function initTopic1_2() {
 	graphics.lineStyle(2, BLUE, 1);
 	graphics.drawRect((game.world.width / 3) * 2, 400, game.world.width / 3, 200);
 
-	generateRandomFigure();
+    initReadyTitle();
+    initTimeText();
+    initPointsText();
+
+    initReadyTime();
 }
 
 function generateRandomFigure() {
-	var figure = game.rnd.integerInRange(0, 2);
-	switch (figure) {
-		case 0:
-			generateCircle();
-			break;
-		case 1:
-			generateSquare();
-			break;
-		case 2:
-			generateTriangle();
-			break;
-	}
+    if (!isFigureInGame) {
+        isFigureInGame = true;
+        var figure = game.rnd.integerInRange(0, 2);
+        switch (figure) {
+            case 0:
+                generateCircle();
+                break;
+            case 1:
+                generateSquare();
+                break;
+            case 2:
+                generateTriangle();
+                break;
+        }
+    }
 }
 
 function generateCircle() {
@@ -65,8 +79,37 @@ function generateSquare() {
 }
 
 function stopDragGraphic(item, pointer) {
-	if (item.centerY > 400) {
-		item.kill();
-		generateRandomFigure();
+    if (item.centerY > 400) {
+        switch (item.key) {
+            case "imgCircle":
+                if (item.centerX < game.world.width / 3) {
+                    points++;
+                    txtPoints.setText("Puntos: " + points);
+                    game.add.audio("sndPoint").play('', 0);
+                } else {
+                    game.add.audio("sndError").play('', 0);
+                }
+                break;
+            case "imgSquare":
+                if (item.centerX < ((game.world.width / 3) *2) && item.centerX > game.world.width / 3) {
+                    points++;
+                    txtPoints.setText("Puntos: " + points);
+                    game.add.audio("sndPoint").play('', 0);
+                } else {
+                    game.add.audio("sndError").play('', 0);
+                }
+                break;
+            case "imgTriangle":
+                if (item.centerX > (game.world.width / 3) * 2) {
+                    points++;
+                    txtPoints.setText("Puntos: " + points);
+                    game.add.audio("sndPoint").play('', 0);
+                } else {
+                    game.add.audio("sndError").play('', 0);
+                }
+                break;
+        }
+        item.kill();
+        isFigureInGame = false;
 	}
 }
