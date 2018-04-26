@@ -19,13 +19,13 @@ var SelectGender = /** @class */ (function (_super) {
         this.title.anchor.set(0.5, 0.5);
         this.boy = this.game.add.image(this.game.world.centerX / 2, this.game.world.centerY, "imgBoy");
         this.boy.anchor.x = 0.5;
-        this.boy.width = 200;
+        this.boy.width = 150;
         this.boy.height = 200;
         this.boy.inputEnabled = true;
         this.boy.events.onInputDown.add(this.clickGender, this);
         this.girl = this.game.add.image(this.game.world.centerX + (this.game.world.centerX / 2), this.game.world.centerY, "imgGirl");
         this.girl.anchor.x = 0.5;
-        this.girl.width = 200;
+        this.girl.width = 150;
         this.girl.height = 200;
         this.girl.inputEnabled = true;
         this.girl.events.onInputDown.add(this.clickGender, this);

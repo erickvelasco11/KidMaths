@@ -22,9 +22,19 @@ var Topic1_3 = /** @class */ (function (_super) {
         this.platform.anchor.set(0.5, 0.5);
         this.platform.width = 300;
         this.platform.height = 200;
+        this.clouds = this.game.add.group();
+        this.createCloud(this.game.world.width / 5);
+        this.createCloud(this.game.world.centerX);
+        this.createCloud((this.game.world.width / 5) * 4);
         this.initPointsText();
         this.initTimeText();
         this.startReadyCountdown();
+    };
+    Topic1_3.prototype.createCloud = function (x) {
+        this.cloud = this.clouds.create(x, 150, "imgCloud");
+        this.cloud.anchor.set(0.5, 0.5);
+        this.cloud.height = 150;
+        this.cloud.width = 220;
     };
     Topic1_3.prototype.next = function () {
         this.removeResults();
