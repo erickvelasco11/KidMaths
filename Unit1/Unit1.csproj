@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,10 +85,7 @@
     <Content Include="assets\images\red.jpg" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
-    <Content Include="js\results.js" />
-    <Content Include="js\textsManager.js" />
-    <Content Include="js\timeManager.js" />
-    <Content Include="js\topic1.2.js" />
+    <TypeScriptCompile Include="ts\topic1_2.ts" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -141,15 +138,16 @@
     <Content Include="assets\sounds\error.wav" />
     <Content Include="assets\sounds\point.wav" />
     <Content Include="index.html" />
-    <Content Include="js\constants.js" />
-    <Content Include="js\index.js" />
-    <Content Include="js\principalMenu.js" />
-    <Content Include="js\loads.js" />
+    <TypeScriptCompile Include="ts\avatar.ts" />
+    <TypeScriptCompile Include="ts\principalMenu.ts" />
     <Content Include="js\phaser_2.6.2.min.js" />
-    <Content Include="js\selectGender.js" />
-    <Content Include="js\topic1.1.js" />
-    <Content Include="js\topic1.3.js" />
+    <TypeScriptCompile Include="ts\selectGender.ts" />
+    <TypeScriptCompile Include="ts\topic1_3.ts" />
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="ts\timer.ts" />
+    <TypeScriptCompile Include="ts\topic.ts" />
+    <TypeScriptCompile Include="ts\topic1_1.ts" />
+    <TypeScriptCompile Include="ts\variables.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,9 +156,12 @@
     <Folder Include="css\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="ts\constants.ts" />
+    <TypeScriptCompile Include="ts\kidMaths.ts" />
     <TypeScriptCompile Include="ts\libraries\p2.d.ts" />
     <TypeScriptCompile Include="ts\libraries\phaser.d.ts" />
     <TypeScriptCompile Include="ts\libraries\pixi.d.ts" />
+    <TypeScriptCompile Include="ts\loads.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

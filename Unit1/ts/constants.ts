@@ -3,22 +3,13 @@
 */
 
 //Constantes
-const PRINCIPAL_MENU = 0;
-const TOPIC1_1 = 1;
-const FINISHED = 3;
-const FINISH_ROUND = 5;
-const LOADING = 6;
-const CREDITS = 7;
-const SELECT_GENDER = 8;
-const TOPIC1_2 = 10;
+const MALE = "Male";
+const FEMALE = "Female";
 
 const READY = 0;
 const PLAYING = 1;
-const PAUSED = 2;
+const PAUSE = 2;
 const RESULTS = 3;
-
-const MALE = 0;
-const FEMALE = 1;
 
 var LIMIT_LAUNCH = 100;
 var WITHOUT_DIRECTION = 0;
@@ -34,4 +25,4 @@ const WHITE = 0xFFFFFF;
 const BLUE = 0x0000FF;
 
 var GRAVITY = 1000;
-var ROUND_TIME = 60;
+var ROUND_TIME = 10;
