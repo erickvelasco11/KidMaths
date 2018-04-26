@@ -17,17 +17,17 @@ var Topic1_2 = /** @class */ (function (_super) {
         this.timer = new Timer(this.game);
         this.actionNext = this.next;
         this.finishTopic = this.finishTopic1_2;
-        this.figures = this.game.add.group();
         this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPuzzle");
         this.graphics = this.game.add.graphics(0, 0);
-        this.graphics.lineStyle(2, RED, 1);
-        this.graphics.drawRect(0, this.game.world.height - (this.game.world.width / 3), (this.game.world.width / 3) - 2, this.game.world.width / 3);
         this.graphics.lineStyle(2, GREEN, 1);
         this.graphics.drawTriangle([
-            new Phaser.Point(this.game.world.width / 3, this.game.world.height - 1),
-            new Phaser.Point(this.game.world.width / 2, this.game.world.height - (this.game.world.width / 3)),
-            new Phaser.Point((this.game.world.width / 3) * 2, this.game.world.height - 1)
+            new Phaser.Point(0, this.game.world.height - 2),
+            new Phaser.Point(this.game.world.width / 6, this.game.world.height - (this.game.world.width / 3)),
+            new Phaser.Point(this.game.world.width / 3, this.game.world.height - 2),
+            new Phaser.Point(0, this.game.world.height - 2)
         ]);
+        this.graphics.lineStyle(2, RED, 1);
+        this.graphics.drawRect(this.game.world.width / 3, this.game.world.height - (this.game.world.width / 3), (this.game.world.width / 3) - 2, this.game.world.width / 3);
         this.graphics.lineStyle(2, BLUE, 1);
         this.graphics.drawCircle(((this.game.world.width / 3) * 2) + (this.game.world.width / 6), this.game.world.height - (this.game.world.width / 6), this.game.world.width / 3);
         this.initPointsText();
@@ -58,33 +58,21 @@ var Topic1_2 = /** @class */ (function (_super) {
     };
     Topic1_2.prototype.generateCircle = function () {
         this.figure = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'imgCircle');
-        //let this.circle = this.figures.create(this.game.world.centerX, this.game.world.centerY - 100, 'imgCircle');
-        this.figure.height = this.game.rnd.integerInRange(50, 120);
-        this.figure.width = this.game.rnd.integerInRange(50, 120);
-        this.figure.anchor.setTo(0.5, 0.5);
-        this.figure.tint = RED;
-        this.figure.inputEnabled = true;
-        this.figure.input.enableDrag();
-        this.figure.events.onDragStop.add(this.stopDragGraphic, this);
+        this.figureProperties();
     };
     Topic1_2.prototype.generateTriangle = function () {
         this.figure = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'imgTriangle');
-        //let this.triangle = this.figures.create(this.game.world.centerX, this.game.world.centerY - 100, 'imgTriangle');
-        this.figure.height = this.game.rnd.integerInRange(50, 120);
-        this.figure.width = this.game.rnd.integerInRange(50, 120);
-        this.figure.anchor.setTo(0.5, 0.5);
-        this.figure.tint = RED;
-        this.figure.inputEnabled = true;
-        this.figure.input.enableDrag();
-        this.figure.events.onDragStop.add(this.stopDragGraphic, this);
+        this.figureProperties();
     };
     Topic1_2.prototype.generateSquare = function () {
         this.figure = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY - 100, 'imgSquare');
-        //let square = this.figures.create(this.game.world.centerX, this.game.world.centerY - 100, 'imgSquare');
+        this.figureProperties();
+    };
+    Topic1_2.prototype.figureProperties = function () {
         this.figure.height = this.game.rnd.integerInRange(50, 120);
         this.figure.width = this.game.rnd.integerInRange(50, 120);
         this.figure.anchor.setTo(0.5, 0.5);
-        this.figure.tint = RED;
+        this.figure.tint = Phaser.Color.getRandomColor(); //'rgba(' + this.rnd.between(0, 255) + ', ' + this.rnd.between(0, 255) + ', ' + this.rnd.between(0, 255) + ')';
         this.figure.inputEnabled = true;
         this.figure.input.enableDrag();
         this.figure.events.onDragStop.add(this.stopDragGraphic, this);
@@ -92,7 +80,7 @@ var Topic1_2 = /** @class */ (function (_super) {
     Topic1_2.prototype.stopDragGraphic = function (item, pointer) {
         if (item.centerY > this.game.world.height - (this.game.world.width / 3)) {
             switch (item.key) {
-                case "imgSquare":
+                case "imgTriangle":
                     if (item.centerX < this.game.world.width / 3) {
                         this.points++;
                         this.txtPoints.setText("Puntos: " + this.points);
@@ -102,7 +90,7 @@ var Topic1_2 = /** @class */ (function (_super) {
                         this.game.add.audio("sndError").play('', 0);
                     }
                     break;
-                case "imgTriangle":
+                case "imgSquare":
                     if (item.centerX < ((this.game.world.width / 3) * 2) && item.centerX > this.game.world.width / 3) {
                         this.points++;
                         this.txtPoints.setText("Puntos: " + this.points);
@@ -133,7 +121,6 @@ var Topic1_2 = /** @class */ (function (_super) {
     };
     Topic1_2.prototype.finishTopic1_2 = function () {
         this.figure.kill();
-        this.figures.removeAll();
     };
     return Topic1_2;
 }(Topic));

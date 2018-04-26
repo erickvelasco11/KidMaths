@@ -47,6 +47,7 @@ abstract class Topic extends Phaser.State {
         this.titReady = this.game.add.image(this.game.world.centerX, this.game.world.centerY - 100, "tit3");
         this.titReady.anchor.setTo(0.5, 0.5);
 
+        this.game.add.audio("snd" + this.stateReady).play('', 0);
         this.timer.startTimer(1200, this.ready);
     }
 
@@ -55,11 +56,11 @@ abstract class Topic extends Phaser.State {
         if (this.countdownTime > 0) {
             this.subState = PLAYING;
             this.timer.startTimer(1000, this.startTimeCountdown);
-            this.txtTime.setText(this.countdownTime);
         } else {
             this.finishTopic();
             this.initResults();
         }
+        this.txtTime.setText(this.countdownTime);
     }
     
     initResults() {
@@ -88,6 +89,7 @@ abstract class Topic extends Phaser.State {
     ready = () => {
         this.stateReady--;
         if (this.stateReady == 0) {
+            this.game.add.audio("sndNow").play('', 0);
             this.titReady.loadTexture("titNow", 0);
             this.timer.startTimer(1200, this.ready);
         } else {
@@ -95,6 +97,7 @@ abstract class Topic extends Phaser.State {
                 this.titReady.kill();
                 this.startTimeCountdown();
             } else {
+                this.game.add.audio("snd" + this.stateReady).play('', 0);
                 this.titReady.loadTexture("tit" + this.stateReady, 0);
                 this.timer.startTimer(1200, this.ready);
             }

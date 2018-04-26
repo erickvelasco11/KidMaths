@@ -17,16 +17,17 @@ var Topic = /** @class */ (function (_super) {
             if (_this.countdownTime > 0) {
                 _this.subState = PLAYING;
                 _this.timer.startTimer(1000, _this.startTimeCountdown);
-                _this.txtTime.setText(_this.countdownTime);
             }
             else {
                 _this.finishTopic();
                 _this.initResults();
             }
+            _this.txtTime.setText(_this.countdownTime);
         };
         _this.ready = function () {
             _this.stateReady--;
             if (_this.stateReady == 0) {
+                _this.game.add.audio("sndNow").play('', 0);
                 _this.titReady.loadTexture("titNow", 0);
                 _this.timer.startTimer(1200, _this.ready);
             }
@@ -36,6 +37,7 @@ var Topic = /** @class */ (function (_super) {
                     _this.startTimeCountdown();
                 }
                 else {
+                    _this.game.add.audio("snd" + _this.stateReady).play('', 0);
                     _this.titReady.loadTexture("tit" + _this.stateReady, 0);
                     _this.timer.startTimer(1200, _this.ready);
                 }
@@ -58,6 +60,7 @@ var Topic = /** @class */ (function (_super) {
         this.stateReady = 3;
         this.titReady = this.game.add.image(this.game.world.centerX, this.game.world.centerY - 100, "tit3");
         this.titReady.anchor.setTo(0.5, 0.5);
+        this.game.add.audio("snd" + this.stateReady).play('', 0);
         this.timer.startTimer(1200, this.ready);
     };
     Topic.prototype.initResults = function () {

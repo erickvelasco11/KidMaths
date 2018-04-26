@@ -25,6 +25,6 @@ class PrincipalMenu extends Phaser.State {
     startGame = () => {
         this.btnStart.visible = false;
         this.title.visible = false;
-        this.game.state.start("Topic1_1State", true);
+        this.game.state.start("Topic1_3State", true);
     }
 }

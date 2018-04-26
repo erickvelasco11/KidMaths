@@ -23,6 +23,7 @@
         this.game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
         this.game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
         this.game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
+        this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
         this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
 
         this.game.load.image('titGender', 'assets/images/titles/gender.png');
@@ -38,6 +39,7 @@
         this.game.load.image('imgTriangle', 'assets/images/triangle.png');
         this.game.load.image('imgCircle', 'assets/images/circle.png');
         this.game.load.image('imgSquare', 'assets/images/square.png');
+        this.game.load.image('imgPlatform', 'assets/images/platform.png');
 
         this.game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
         this.game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
@@ -75,6 +77,10 @@
 
         this.game.load.audio('sndError', 'assets/sounds/error.wav');
         this.game.load.audio('sndPoint', 'assets/sounds/point.wav');
+        this.game.load.audio('snd3', 'assets/sounds/three.mp3');
+        this.game.load.audio('snd2', 'assets/sounds/two.mp3');
+        this.game.load.audio('snd1', 'assets/sounds/one.mp3');
+        this.game.load.audio('sndNow', 'assets/sounds/now.mp3');
 
 
         this.game.load.onLoadStart.add(this.loadStart, this);

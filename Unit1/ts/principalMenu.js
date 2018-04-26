@@ -15,7 +15,7 @@ var PrincipalMenu = /** @class */ (function (_super) {
         _this.startGame = function () {
             _this.btnStart.visible = false;
             _this.title.visible = false;
-            _this.game.state.start("Topic1_1State", true);
+            _this.game.state.start("Topic1_3State", true);
         };
         return _this;
     }

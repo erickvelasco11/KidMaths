@@ -82,10 +82,12 @@
     <Content Include="assets\images\items\setShoes.jpg" />
     <Content Include="assets\images\items\setToys.jpg" />
     <Content Include="assets\images\items\setUtensils.jpg" />
+    <Content Include="assets\images\platform.png" />
     <Content Include="assets\images\red.jpg" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="ts\topic1_2.ts" />
+    <Content Include="assets\images\backgrounds\select.png" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -136,7 +138,11 @@
     <Content Include="assets\images\titles\gender.png" />
     <Content Include="assets\images\titles\now.png" />
     <Content Include="assets\sounds\error.wav" />
+    <Content Include="assets\sounds\now.mp3" />
+    <Content Include="assets\sounds\one.mp3" />
     <Content Include="assets\sounds\point.wav" />
+    <Content Include="assets\sounds\three.mp3" />
+    <Content Include="assets\sounds\two.mp3" />
     <Content Include="index.html" />
     <TypeScriptCompile Include="ts\avatar.ts" />
     <TypeScriptCompile Include="ts\principalMenu.ts" />
