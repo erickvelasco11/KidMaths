@@ -28,26 +28,36 @@ var Loads = /** @class */ (function (_super) {
         //Esta función es de Phaser y se llama cuando un archivo se a descargado completamente y está listo para usarse
         //Yo la uso para mover la barra de carga del inicio de la aplicación
         _this.fileComplete = function (progress, cacheKey, success, totalLoaded, totalFiles) {
-            if (cacheKey == "bgrLoading") {
-                _this.background = _this.game.add.sprite(0, 0, 'bgrLoading');
-                _this.background.height = _this.game.world.height;
-                _this.background.width = _this.game.world.width;
-                _this.background.sendToBack();
-            }
-            if (cacheKey == "titNameUnit") {
-                _this.title = _this.game.add.image(_this.game.world.centerX, 100, 'titNameUnit');
-                _this.title.anchor.x = 0.5;
-            }
-            if (cacheKey == "pikachu") {
-                _this.player1 = _this.game.add.sprite(52, _this.game.world.centerY + 72, 'pikachu');
-                _this.player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
-                _this.player1.animations.play('right');
-                _this.animateBar = true;
+            switch (cacheKey) {
+                case "bgrLoading":
+                    _this.background = _this.game.add.sprite(0, 0, 'bgrLoading');
+                    _this.background.height = _this.game.world.height;
+                    _this.background.width = _this.game.world.width;
+                    _this.background.sendToBack();
+                    break;
+                case "titNameUnit":
+                    _this.title = _this.game.add.image(_this.game.world.centerX, 100, 'titNameUnit');
+                    _this.title.anchor.x = 0.5;
+                    break;
+                case "pikachu":
+                    _this.player1 = _this.game.add.sprite(52, _this.game.world.centerY + 72, 'pikachu');
+                    _this.player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
+                    _this.player1.animations.play('right');
+                    _this.animateBar = true;
+                    _this.player1.bringToTop();
+                    break;
+                case "bgrPause":
+                    var image = _this.game.add.image(0, _this.game.world.centerY, "bgrPause");
+                    while (image.z != 1) {
+                        image.moveDown();
+                    }
+                    break;
             }
             _this.loadBar.scale.x = progress * 0.01;
             if (_this.animateBar) {
                 _this.player1.x = ((600 * progress) / 100) + 52;
             }
+            _this.game.time.events.add(500, function () { });
         };
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         _this.loadComplete = function () {
@@ -64,13 +74,13 @@ var Loads = /** @class */ (function (_super) {
         this.game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
         this.game.load.image('bgrLoading', 'assets/images/backgrounds/loading.jpg');
         this.game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
+        this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
         this.game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
         this.game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
         this.game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
         this.game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
         this.game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
         this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
-        this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
         this.game.load.image('titGender', 'assets/images/titles/gender.png');
         this.game.load.image('tit1', 'assets/images/titles/1.png');
         this.game.load.image('tit2', 'assets/images/titles/2.png');

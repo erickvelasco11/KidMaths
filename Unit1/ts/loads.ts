@@ -18,13 +18,13 @@
         this.game.load.image('bgrLoading', 'assets/images/backgrounds/loading.jpg');
         this.game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
 
+        this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
         this.game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
         this.game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
         this.game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
         this.game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
         this.game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
         this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
-        this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
 
         this.game.load.image('titGender', 'assets/images/titles/gender.png');
         this.game.load.image('tit1', 'assets/images/titles/1.png');
@@ -82,8 +82,7 @@
         this.game.load.audio('snd2', 'assets/sounds/two.mp3');
         this.game.load.audio('snd1', 'assets/sounds/one.mp3');
         this.game.load.audio('sndNow', 'assets/sounds/now.mp3');
-
-
+        
         this.game.load.onLoadStart.add(this.loadStart, this);
         this.game.load.onFileComplete.add(this.fileComplete, this);
         this.game.load.onLoadComplete.add(this.loadComplete, this);
@@ -109,27 +108,38 @@
     //Esta función es de Phaser y se llama cuando un archivo se a descargado completamente y está listo para usarse
     //Yo la uso para mover la barra de carga del inicio de la aplicación
     fileComplete = (progress, cacheKey, success, totalLoaded, totalFiles) => {
-        if (cacheKey == "bgrLoading") {
-            this.background = this.game.add.sprite(0, 0, 'bgrLoading');
-            this.background.height = this.game.world.height;
-            this.background.width = this.game.world.width;
-            this.background.sendToBack();
-        }
-        if (cacheKey == "titNameUnit") {
-            this.title = this.game.add.image(this.game.world.centerX, 100, 'titNameUnit');
-            this.title.anchor.x = 0.5;
-        }
-        if (cacheKey == "pikachu") {
-            this.player1 = this.game.add.sprite(52, this.game.world.centerY + 72, 'pikachu');
-            this.player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
-            this.player1.animations.play('right');
-            this.animateBar = true;
+        switch (cacheKey) {
+            case "bgrLoading":
+                this.background = this.game.add.sprite(0, 0, 'bgrLoading');
+                this.background.height = this.game.world.height;
+                this.background.width = this.game.world.width;
+                this.background.sendToBack();
+                break;
+            case "titNameUnit":
+                this.title = this.game.add.image(this.game.world.centerX, 100, 'titNameUnit');
+                this.title.anchor.x = 0.5;
+                break;
+            case "pikachu":
+                this.player1 = this.game.add.sprite(52, this.game.world.centerY + 72, 'pikachu');
+                this.player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
+                this.player1.animations.play('right');
+                this.animateBar = true;
+                this.player1.bringToTop();
+                break;
+            case "bgrPause":
+                var image = this.game.add.image(0, this.game.world.centerY, "bgrPause");
+                while (image.z != 1) {
+                    image.moveDown();
+                }
+                break;
         }
 
         this.loadBar.scale.x = progress * 0.01;
         if (this.animateBar) {
             this.player1.x = ((600 * progress) / 100) + 52;
         }
+
+        this.game.time.events.add(500, function () {/* … */ });
     }
 
     //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
