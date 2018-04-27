@@ -138,8 +138,6 @@
         if (this.animateBar) {
             this.player1.x = ((600 * progress) / 100) + 52;
         }
-
-        this.game.time.events.add(500, function () {/* … */ });
     }
 
     //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios

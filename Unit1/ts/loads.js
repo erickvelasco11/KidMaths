@@ -57,7 +57,6 @@ var Loads = /** @class */ (function (_super) {
             if (_this.animateBar) {
                 _this.player1.x = ((600 * progress) / 100) + 52;
             }
-            _this.game.time.events.add(500, function () { });
         };
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         _this.loadComplete = function () {
