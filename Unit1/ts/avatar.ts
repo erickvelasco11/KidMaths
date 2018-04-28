@@ -1,9 +1,18 @@
-﻿
-class Avatar {
+﻿module MrBook {
+    export class Avatar {
 
-    private gender: string;
+        public id: number;
+        public name: string;
+        public age: number;
+        public gender: number;
+        public skinColorId: number;
+        public capId: number;
+        public shirtId: number;
+        public pantsId: number;
+        public shoesId: number;
 
-    constructor() {
+        constructor() {
+        }
+
     }
-
 }

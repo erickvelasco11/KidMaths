@@ -2,23 +2,20 @@
     Este archivo contiene las constantes del juego
 */
 //Constantes
-var MALE = 0;
-var FEMALE = 1;
-var READY = 0;
-var PLAYING = 1;
-var PAUSE = 2;
-var RESULTS = 3;
-var LIMIT_LAUNCH = 100;
-var WITHOUT_DIRECTION = 0;
-var LEFT_DIRECTION = 1;
-var RIGHT_DIRECTION = 2;
-var SHOOT_VELOCITY = 800;
-var CREDITS_VELOCITY = -20;
-var GREEN = 0x00FF00;
-var YELLOW = 0xFCD516;
-var RED = 0xFF0000;
-var WHITE = 0xFFFFFF;
-var BLUE = 0x0000FF;
-var GRAVITY = 1000;
-var ROUND_TIME = 30;
+var MrBook;
+(function (MrBook) {
+    MrBook.MALE = 0;
+    MrBook.FEMALE = 1;
+    MrBook.READY = 0;
+    MrBook.PLAYING = 1;
+    MrBook.PAUSE = 2;
+    MrBook.RESULTS = 3;
+    MrBook.GREEN = 0x00FF00;
+    MrBook.YELLOW = 0xFCD516;
+    MrBook.RED = 0xFF0000;
+    MrBook.WHITE = 0xFFFFFF;
+    MrBook.BLUE = 0x0000FF;
+    MrBook.GRAVITY = 1000;
+    MrBook.ROUND_TIME = 30;
+})(MrBook || (MrBook = {}));
 //# sourceMappingURL=constants.js.map

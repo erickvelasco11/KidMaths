@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
+    <Content Include="assets\images\backgrounds\store.png" />
     <Content Include="assets\images\blue.jpg" />
+    <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\store.png" />
     <Content Include="assets\images\circle.png" />
     <Content Include="assets\images\cloud.png" />
@@ -151,7 +153,7 @@
     <TypeScriptCompile Include="ts\principalMenu.ts" />
     <Content Include="js\jQuery.js" />
     <Content Include="js\phaser_2.6.2.min.js" />
-    <TypeScriptCompile Include="ts\selectGender.ts" />
+    <TypeScriptCompile Include="ts\store.ts" />
     <TypeScriptCompile Include="ts\topic1_3.ts" />
     <Content Include="Web.config" />
     <TypeScriptCompile Include="ts\timer.ts" />

@@ -3,26 +3,22 @@
 */
 
 //Constantes
-const MALE = 0;
-const FEMALE = 1;
 
-const READY = 0;
-const PLAYING = 1;
-const PAUSE = 2;
-const RESULTS = 3;
+module MrBook {
+    export const MALE = 0;
+    export const FEMALE = 1;
 
-var LIMIT_LAUNCH = 100;
-var WITHOUT_DIRECTION = 0;
-var LEFT_DIRECTION = 1;
-var RIGHT_DIRECTION = 2;
-var SHOOT_VELOCITY = 800;
-var CREDITS_VELOCITY = -20;
+    export const READY = 0;
+    export const PLAYING = 1;
+    export const PAUSE = 2;
+    export const RESULTS = 3;
 
-const GREEN = 0x00FF00;
-const YELLOW = 0xFCD516;
-const RED = 0xFF0000;
-const WHITE = 0xFFFFFF;
-const BLUE = 0x0000FF;
+    export const GREEN = 0x00FF00;
+    export const YELLOW = 0xFCD516;
+    export const RED = 0xFF0000;
+    export const WHITE = 0xFFFFFF;
+    export const BLUE = 0x0000FF;
 
-var GRAVITY = 1000;
-var ROUND_TIME = 30;
+    export const GRAVITY = 1000;
+    export const ROUND_TIME = 30;
+}
