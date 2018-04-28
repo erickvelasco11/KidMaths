@@ -19,6 +19,7 @@ class Topic1_3 extends Topic {
     private shoes: Array<string> = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
     private toys: Array<string> = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
     private utensils: Array<string> = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
+    private sets: Array<Array<string>> = [this.animals, this.books, this.figures, this.flags, this.flowers, this.fruits, this.numbers, this.shoes, this.toys, this.utensils];
 
     private isChestInPlatform: boolean = false;
 
@@ -49,13 +50,6 @@ class Topic1_3 extends Topic {
         this.startReadyCountdown();
     }
 
-    createCloud(x: number) {
-        this.cloud = this.clouds.create(x, 150, "imgCloud");
-        this.cloud.anchor.set(0.5, 0.5);
-        this.cloud.height = 150;
-        this.cloud.width = 220;
-    }
-
     update() {
         if (this.subState == PLAYING) {
             if (!this.isChestInPlatform) {
@@ -69,48 +63,39 @@ class Topic1_3 extends Topic {
                 this.chest.width = 170;
 
                 var posCorrectOption = this.game.rnd.integerInRange(0, 2);
-                var posX = this.getXPosition(posCorrectOption);
-                var correct;
+                var correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
+                var wrong1 = this.sets[iWrongSet1][this.game.rnd.integerInRange(0, 4)];
+                var wrong2 = this.sets[iWrongSet2][this.game.rnd.integerInRange(0, 4)];
 
-                switch (iCorrectSet) {
-                    case 0:
-                        correct = this.animals[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 1:
-                        correct = this.books[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 2:
-                        correct = this.figures[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 3:
-                        correct = this.flags[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 4:
-                        correct = this.flowers[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 5:
-                        correct = this.fruits[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 6:
-                        correct = this.numbers[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 7:
-                        correct = this.shoes[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 8:
-                        correct = this.toys[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 9:
-                        correct = this.utensils[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                }
-                
-                var option = this.options.create(posX, 150, correct);
-                option.anchor.set(0.5, 0.5);
-                option.height = 100;
-                option.width = 120;
+                this.createOption(posCorrectOption, correct, true);
+                this.createOption((posCorrectOption + 1) % 3, wrong1, false);
+                this.createOption((posCorrectOption + 2) % 3, wrong2, false);
             }
         }
+    }
+
+    createCloud(x: number) {
+        this.cloud = this.clouds.create(x, 150, "imgCloud");
+        this.cloud.anchor.set(0.5, 0.5);
+        this.cloud.height = 150;
+        this.cloud.width = 220;
+    }
+
+    createOption(posX: number, image: string, isCorrect: boolean) {
+        var option = this.options.create(this.getXPosition(posX), 150, image);
+        option.anchor.set(0.5, 0.5);
+        option.height = 100;
+        option.width = 120;
+        if (isCorrect) {
+            option.inputEnabled = true;
+            option.events.onInputUp.add(this.click);
+        }
+    }
+
+    click = () => {
+        this.options.removeAll();
+        this.chest.kill();
+        this.isChestInPlatform = false;
     }
 
     getXPosition(i: number):number {

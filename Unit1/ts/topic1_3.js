@@ -24,7 +24,13 @@ var Topic1_3 = /** @class */ (function (_super) {
         _this.shoes = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
         _this.toys = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
         _this.utensils = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
+        _this.sets = [_this.animals, _this.books, _this.figures, _this.flags, _this.flowers, _this.fruits, _this.numbers, _this.shoes, _this.toys, _this.utensils];
         _this.isChestInPlatform = false;
+        _this.click = function () {
+            _this.options.removeAll();
+            _this.chest.kill();
+            _this.isChestInPlatform = false;
+        };
         return _this;
     }
     Topic1_3.prototype.create = function () {
@@ -45,12 +51,6 @@ var Topic1_3 = /** @class */ (function (_super) {
         this.initTimeText();
         this.startReadyCountdown();
     };
-    Topic1_3.prototype.createCloud = function (x) {
-        this.cloud = this.clouds.create(x, 150, "imgCloud");
-        this.cloud.anchor.set(0.5, 0.5);
-        this.cloud.height = 150;
-        this.cloud.width = 220;
-    };
     Topic1_3.prototype.update = function () {
         if (this.subState == PLAYING) {
             if (!this.isChestInPlatform) {
@@ -63,45 +63,29 @@ var Topic1_3 = /** @class */ (function (_super) {
                 this.chest.height = 130;
                 this.chest.width = 170;
                 var posCorrectOption = this.game.rnd.integerInRange(0, 2);
-                var posX = this.getXPosition(posCorrectOption);
-                var correct;
-                switch (iCorrectSet) {
-                    case 0:
-                        correct = this.animals[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 1:
-                        correct = this.books[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 2:
-                        correct = this.figures[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 3:
-                        correct = this.flags[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 4:
-                        correct = this.flowers[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 5:
-                        correct = this.fruits[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 6:
-                        correct = this.numbers[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 7:
-                        correct = this.shoes[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 8:
-                        correct = this.toys[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                    case 9:
-                        correct = this.utensils[this.game.rnd.integerInRange(0, 4)];
-                        break;
-                }
-                var option = this.options.create(posX, 150, correct);
-                option.anchor.set(0.5, 0.5);
-                option.height = 100;
-                option.width = 120;
+                var correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
+                var wrong1 = this.sets[iWrongSet1][this.game.rnd.integerInRange(0, 4)];
+                var wrong2 = this.sets[iWrongSet2][this.game.rnd.integerInRange(0, 4)];
+                this.createOption(posCorrectOption, correct, true);
+                this.createOption((posCorrectOption + 1) % 3, wrong1, false);
+                this.createOption((posCorrectOption + 2) % 3, wrong2, false);
             }
+        }
+    };
+    Topic1_3.prototype.createCloud = function (x) {
+        this.cloud = this.clouds.create(x, 150, "imgCloud");
+        this.cloud.anchor.set(0.5, 0.5);
+        this.cloud.height = 150;
+        this.cloud.width = 220;
+    };
+    Topic1_3.prototype.createOption = function (posX, image, isCorrect) {
+        var option = this.options.create(this.getXPosition(posX), 150, image);
+        option.anchor.set(0.5, 0.5);
+        option.height = 100;
+        option.width = 120;
+        if (isCorrect) {
+            option.inputEnabled = true;
+            option.events.onInputUp.add(this.click);
         }
     };
     Topic1_3.prototype.getXPosition = function (i) {

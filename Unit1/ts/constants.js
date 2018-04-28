@@ -20,5 +20,5 @@ var RED = 0xFF0000;
 var WHITE = 0xFFFFFF;
 var BLUE = 0x0000FF;
 var GRAVITY = 1000;
-var ROUND_TIME = 10;
+var ROUND_TIME = 30;
 //# sourceMappingURL=constants.js.map
