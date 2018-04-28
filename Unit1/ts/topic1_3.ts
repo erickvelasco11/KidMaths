@@ -16,12 +16,13 @@ class Topic1_3 extends Topic {
     private flowers: Array<string> = ["itmRosa", "itmMargarita", "itmNarciso", "itmSakura", "itmLoto"];
     private fruits: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
     private numbers: Array<string> = ["itmOne", "itmTwo", "itmThree", "itmFour", "itmFive"];
-    private shoes: Array<string> = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
+    private shoes: Array<string> = ["itmBoot", "itmBlackShoe", "itmSandal", "itmHeel", "itmTennis"];
     private toys: Array<string> = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
     private utensils: Array<string> = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
     private sets: Array<Array<string>> = [this.animals, this.books, this.figures, this.flags, this.flowers, this.fruits, this.numbers, this.shoes, this.toys, this.utensils];
 
     private isChestInPlatform: boolean = false;
+    private correct: string = "";
 
     private constructor() {
         super();
@@ -63,13 +64,13 @@ class Topic1_3 extends Topic {
                 this.chest.width = 170;
 
                 var posCorrectOption = this.game.rnd.integerInRange(0, 2);
-                var correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
+                this.correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
                 var wrong1 = this.sets[iWrongSet1][this.game.rnd.integerInRange(0, 4)];
                 var wrong2 = this.sets[iWrongSet2][this.game.rnd.integerInRange(0, 4)];
 
-                this.createOption(posCorrectOption, correct, true);
-                this.createOption((posCorrectOption + 1) % 3, wrong1, false);
-                this.createOption((posCorrectOption + 2) % 3, wrong2, false);
+                this.createOption(posCorrectOption, this.correct);
+                this.createOption((posCorrectOption + 1) % 3, wrong1);
+                this.createOption((posCorrectOption + 2) % 3, wrong2);
             }
         }
     }
@@ -81,21 +82,25 @@ class Topic1_3 extends Topic {
         this.cloud.width = 220;
     }
 
-    createOption(posX: number, image: string, isCorrect: boolean) {
+    createOption(posX: number, image: string) {
         var option = this.options.create(this.getXPosition(posX), 150, image);
         option.anchor.set(0.5, 0.5);
         option.height = 100;
         option.width = 120;
-        if (isCorrect) {
-            option.inputEnabled = true;
-            option.events.onInputUp.add(this.click);
-        }
+        option.inputEnabled = true;
+        option.events.onInputUp.add(this.click);
     }
 
-    click = () => {
-        this.options.removeAll();
-        this.chest.kill();
-        this.isChestInPlatform = false;
+    click = (item) => {
+        if (item.key == this.correct) {
+            this.game.add.audio("sndPoint").play('', 0);
+            this.txtPoints.setText("Puntos: " + ++this.points);
+            this.options.removeAll();
+            this.chest.kill();
+            this.isChestInPlatform = false;
+        } else {
+            this.game.add.audio("sndError").play('', 0);
+        }
     }
 
     getXPosition(i: number):number {

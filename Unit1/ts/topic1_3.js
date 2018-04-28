@@ -21,15 +21,23 @@ var Topic1_3 = /** @class */ (function (_super) {
         _this.flowers = ["itmRosa", "itmMargarita", "itmNarciso", "itmSakura", "itmLoto"];
         _this.fruits = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
         _this.numbers = ["itmOne", "itmTwo", "itmThree", "itmFour", "itmFive"];
-        _this.shoes = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
+        _this.shoes = ["itmBoot", "itmBlackShoe", "itmSandal", "itmHeel", "itmTennis"];
         _this.toys = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
         _this.utensils = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
         _this.sets = [_this.animals, _this.books, _this.figures, _this.flags, _this.flowers, _this.fruits, _this.numbers, _this.shoes, _this.toys, _this.utensils];
         _this.isChestInPlatform = false;
-        _this.click = function () {
-            _this.options.removeAll();
-            _this.chest.kill();
-            _this.isChestInPlatform = false;
+        _this.correct = "";
+        _this.click = function (item) {
+            if (item.key == _this.correct) {
+                _this.game.add.audio("sndPoint").play('', 0);
+                _this.txtPoints.setText("Puntos: " + ++_this.points);
+                _this.options.removeAll();
+                _this.chest.kill();
+                _this.isChestInPlatform = false;
+            }
+            else {
+                _this.game.add.audio("sndError").play('', 0);
+            }
         };
         return _this;
     }
@@ -63,12 +71,12 @@ var Topic1_3 = /** @class */ (function (_super) {
                 this.chest.height = 130;
                 this.chest.width = 170;
                 var posCorrectOption = this.game.rnd.integerInRange(0, 2);
-                var correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
+                this.correct = this.sets[iCorrectSet][this.game.rnd.integerInRange(0, 4)];
                 var wrong1 = this.sets[iWrongSet1][this.game.rnd.integerInRange(0, 4)];
                 var wrong2 = this.sets[iWrongSet2][this.game.rnd.integerInRange(0, 4)];
-                this.createOption(posCorrectOption, correct, true);
-                this.createOption((posCorrectOption + 1) % 3, wrong1, false);
-                this.createOption((posCorrectOption + 2) % 3, wrong2, false);
+                this.createOption(posCorrectOption, this.correct);
+                this.createOption((posCorrectOption + 1) % 3, wrong1);
+                this.createOption((posCorrectOption + 2) % 3, wrong2);
             }
         }
     };
@@ -78,15 +86,13 @@ var Topic1_3 = /** @class */ (function (_super) {
         this.cloud.height = 150;
         this.cloud.width = 220;
     };
-    Topic1_3.prototype.createOption = function (posX, image, isCorrect) {
+    Topic1_3.prototype.createOption = function (posX, image) {
         var option = this.options.create(this.getXPosition(posX), 150, image);
         option.anchor.set(0.5, 0.5);
         option.height = 100;
         option.width = 120;
-        if (isCorrect) {
-            option.inputEnabled = true;
-            option.events.onInputUp.add(this.click);
-        }
+        option.inputEnabled = true;
+        option.events.onInputUp.add(this.click);
     };
     Topic1_3.prototype.getXPosition = function (i) {
         switch (i) {

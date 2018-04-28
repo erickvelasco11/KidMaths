@@ -84,7 +84,7 @@
         this.game.load.image('itmBook4', 'assets/images/items/books/book4.png');
         this.game.load.image('itmBook5', 'assets/images/items/books/book5.png');
 
-        this.game.load.image('itmCirlce', 'assets/images/items/figures/circle.png');
+        this.game.load.image('itmCircle', 'assets/images/items/figures/circle.png');
         this.game.load.image('itmTriangle', 'assets/images/items/figures/triangle.png');
         this.game.load.image('itmSquare', 'assets/images/items/figures/square.png');
         this.game.load.image('itmPentagon', 'assets/images/items/figures/pentagon.png');
