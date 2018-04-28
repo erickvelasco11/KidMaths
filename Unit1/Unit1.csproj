@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -146,6 +146,7 @@
     <Content Include="index.html" />
     <TypeScriptCompile Include="ts\avatar.ts" />
     <TypeScriptCompile Include="ts\principalMenu.ts" />
+    <Content Include="js\jQuery.js" />
     <Content Include="js\phaser_2.6.2.min.js" />
     <TypeScriptCompile Include="ts\selectGender.ts" />
     <TypeScriptCompile Include="ts\topic1_3.ts" />
