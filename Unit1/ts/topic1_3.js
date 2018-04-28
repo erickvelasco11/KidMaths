@@ -14,16 +14,16 @@ var Topic1_3 = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.chests = ["itmSetAnimals", "itmSetBooks", "itmSetFigures", "itmSetFlags", "itmSetFlowers",
             "itmSetFruits", "itmSetNumbers", "itmSetShoes", "itmSetToys", "itmSetUtensils"];
-        _this.animals = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-        _this.books = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
-        _this.figures = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-        _this.flags = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-        _this.flowers = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
+        _this.animals = ["itmBear", "itmRabbit", "itmHorse", "itmTiger", "itmCat"];
+        _this.books = ["itmBook1", "itmBook2", "itmBook3", "itmBook4", "itmBook5"];
+        _this.figures = ["itmCircle", "itmTriangle", "itmSquare", "itmPentagon", "itmHexagon"];
+        _this.flags = ["itmColombia", "itmBrasil", "itmUsa", "itmArgentina", "itmAustralia"];
+        _this.flowers = ["itmRosa", "itmMargarita", "itmNarciso", "itmSakura", "itmLoto"];
         _this.fruits = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-        _this.numbers = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-        _this.shoes = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
-        _this.toys = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-        _this.utensils = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
+        _this.numbers = ["itmOne", "itmTwo", "itmThree", "itmFour", "itmFive"];
+        _this.shoes = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
+        _this.toys = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
+        _this.utensils = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
         _this.isChestInPlatform = false;
         return _this;
     }

@@ -9,16 +9,16 @@ class Topic1_3 extends Topic {
 
     private chests: Array<string> = ["itmSetAnimals", "itmSetBooks", "itmSetFigures", "itmSetFlags", "itmSetFlowers",
         "itmSetFruits", "itmSetNumbers", "itmSetShoes", "itmSetToys", "itmSetUtensils"];
-    private animals: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-    private books: Array<string> = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
-    private figures: Array<string> = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-    private flags: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-    private flowers: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
+    private animals: Array<string> = ["itmBear", "itmRabbit", "itmHorse", "itmTiger", "itmCat"];
+    private books: Array<string> = ["itmBook1", "itmBook2", "itmBook3", "itmBook4", "itmBook5"];
+    private figures: Array<string> = ["itmCircle", "itmTriangle", "itmSquare", "itmPentagon", "itmHexagon"];
+    private flags: Array<string> = ["itmColombia", "itmBrasil", "itmUsa", "itmArgentina", "itmAustralia"];
+    private flowers: Array<string> = ["itmRosa", "itmMargarita", "itmNarciso", "itmSakura", "itmLoto"];
     private fruits: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-    private numbers: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
-    private shoes: Array<string> = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
-    private toys: Array<string> = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-    private utensils: Array<string> = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
+    private numbers: Array<string> = ["itmOne", "itmTwo", "itmThree", "itmFour", "itmFive"];
+    private shoes: Array<string> = ["itmBoot", "itmBlackShow", "itmSandal", "itmHeel", "itmTennis"];
+    private toys: Array<string> = ["itmToy1", "itmToy2", "itmToy3", "itmToy4", "itmToy5"];
+    private utensils: Array<string> = ["itmSpoon", "itmKnife", "itmFork", "itmFork2", "itmAxe"];
 
     private isChestInPlatform: boolean = false;
 
