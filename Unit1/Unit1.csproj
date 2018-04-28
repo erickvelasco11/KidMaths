@@ -70,7 +70,9 @@
   <ItemGroup>
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
     <Content Include="assets\images\blue.jpg" />
+    <Content Include="assets\images\buttons\store.png" />
     <Content Include="assets\images\circle.png" />
+    <Content Include="assets\images\cloud.png" />
     <Content Include="assets\images\green.jpg" />
     <Content Include="assets\images\items\setAnimals.jpg" />
     <Content Include="assets\images\items\setBooks.jpg" />
@@ -86,6 +88,7 @@
     <Content Include="assets\images\red.jpg" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="ts\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
     <None Include="packages.config" />

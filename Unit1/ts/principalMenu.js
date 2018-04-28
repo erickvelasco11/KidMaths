@@ -13,9 +13,14 @@ var PrincipalMenu = /** @class */ (function (_super) {
     function PrincipalMenu() {
         var _this = _super.call(this) || this;
         _this.startGame = function () {
-            _this.btnStart.visible = false;
-            _this.title.visible = false;
+            _this.btnStart.kill();
+            _this.title.kill();
             _this.game.state.start("Topic1_3State", true);
+        };
+        _this.startStore = function () {
+            _this.btnStart.kill();
+            _this.title.kill();
+            _this.game.state.start("StoreState", true);
         };
         return _this;
     }
@@ -28,8 +33,12 @@ var PrincipalMenu = /** @class */ (function (_super) {
         }
         this.btnStart = this.game.add.button(this.game.world.centerX, 400, 'btnStart', this.startGame, this, 0, 1, 2);
         this.btnStart.anchor.x = 0.5;
+        this.btnStore = this.game.add.button(100, this.game.world.height - 80, 'btnStore', this.startStore, this, 0, 1, 2);
+        this.btnStore.anchor.x = 0.5;
+        this.btnStore.scale.set(0.6, 0.6);
         this.title = this.game.add.image(this.game.world.centerX, 100, 'titNameUnit');
         this.title.anchor.set(0.5, 0.5);
+        this;
     };
     return PrincipalMenu;
 }(Phaser.State));

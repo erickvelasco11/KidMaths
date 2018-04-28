@@ -3,8 +3,8 @@
 */
 
 //Constantes
-const MALE = "Male";
-const FEMALE = "Female";
+const MALE = 0;
+const FEMALE = 1;
 
 const READY = 0;
 const PLAYING = 1;

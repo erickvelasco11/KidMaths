@@ -2,8 +2,8 @@
     Este archivo contiene las constantes del juego
 */
 //Constantes
-var MALE = "Male";
-var FEMALE = "Female";
+var MALE = 0;
+var FEMALE = 1;
 var READY = 0;
 var PLAYING = 1;
 var PAUSE = 2;

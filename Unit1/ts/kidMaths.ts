@@ -10,7 +10,7 @@ class KidMaths {
         this.pGame = new Phaser.Game(800, 600, Phaser.AUTO, 'game');//, { preload: this.preload, create: this.create });
 
         this.pGame.state.add("LoadsState", Loads, false);
-        this.pGame.state.add("SelectGenderState", SelectGender, false);
+        this.pGame.state.add("StoreState", SelectGender, false);
         this.pGame.state.add("PrincipalMenuState", PrincipalMenu, false);
         this.pGame.state.add("Topic1_1State", Topic1_1, false);
         this.pGame.state.add("Topic1_2State", Topic1_2, false);

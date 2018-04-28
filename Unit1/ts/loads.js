@@ -60,11 +60,17 @@ var Loads = /** @class */ (function (_super) {
         };
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         _this.loadComplete = function () {
-            _this.player1.visible = false;
-            _this.loadBar.destroy();
-            _this.loadText.destroy();
-            _this.title.kill();
-            _this.game.state.start("SelectGenderState", true);
+            $.getJSON("https://www.mrbook.com.co/api/crud.php", { 'option': 'listar', 'id': 1, 'tabla': 'mb_avatar' }, null)
+                .done(function (data, textStatus, jqXHR) {
+                _this.player1.visible = false;
+                _this.loadBar.destroy();
+                _this.loadText.destroy();
+                _this.title.kill();
+                _this.game.state.start("PrincipalMenuState", true);
+            })
+                .fail(function () {
+                alert("Lo sentimos. No nos hemos podido conectar con el servidor. evisa tu conexión de internet o pregunta a tu tutor.");
+            });
         };
         return _this;
     }
@@ -169,6 +175,7 @@ var Loads = /** @class */ (function (_super) {
         this.game.load.image('itmAxe', 'assets/images/items/utensils/axe.png');
         this.game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
         this.game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
+        this.game.load.spritesheet('btnStore', 'assets/images/buttons/store.png', 300, 100);
         this.game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
         this.game.load.audio('sndError', 'assets/sounds/error.wav');
         this.game.load.audio('sndPoint', 'assets/sounds/point.wav');
