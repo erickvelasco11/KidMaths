@@ -64,9 +64,9 @@
             this.game.load.image('itmSocks', 'assets/images/items/socks.png');
 
             this.game.load.image('itmSetAnimals', 'assets/images/items/setAnimals.jpg');
-            this.game.load.image('itmSetBooks', 'assets/images/items/setBooks.jpg');
+            this.game.load.image('itmSetBooks', 'assets/images/items/setBooks.png');
             this.game.load.image('itmSetFigures', 'assets/images/items/setFigures.png');
-            this.game.load.image('itmSetFlags', 'assets/images/items/setFlags.jpg');
+            this.game.load.image('itmSetFlags', 'assets/images/items/setFlags.png');
             this.game.load.image('itmSetFlowers', 'assets/images/items/setFlowers.png');
             this.game.load.image('itmSetFruits', 'assets/images/items/setFruits.png');
             this.game.load.image('itmSetNumbers', 'assets/images/items/setNumbers.png');
