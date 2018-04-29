@@ -17,7 +17,6 @@ var MrBook;
             _this.startTimeCountdown = function () {
                 _this.countdownTime--;
                 if (_this.countdownTime > 0) {
-                    _this.subState = MrBook.PLAYING;
                     _this.timer.startTimer(1000, _this.startTimeCountdown);
                 }
                 else {
@@ -36,7 +35,8 @@ var MrBook;
                 else {
                     if (_this.stateReady < 0) {
                         _this.titReady.kill();
-                        _this.startTimeCountdown();
+                        _this.subState = MrBook.PLAYING;
+                        _this.timer.startTimer(1000, _this.startTimeCountdown);
                     }
                     else {
                         _this.game.add.audio("snd" + _this.stateReady).play('', 0);

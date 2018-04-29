@@ -6,6 +6,7 @@
         private clouds: Phaser.Group;
         private options: Phaser.Group;
         private chest: Phaser.Image;
+        private loadBar: Phaser.Graphics;
 
         private chests: Array<string> = ["itmSetAnimals", "itmSetBooks", "itmSetFigures", "itmSetFlags", "itmSetFlowers",
             "itmSetFruits", "itmSetNumbers", "itmSetShoes", "itmSetToys", "itmSetUtensils"];
@@ -29,6 +30,8 @@
         }
 
         create() {
+            this.game.time.advancedTiming = true;
+            this.isChestInPlatform = false;
             this.timer = new Timer(this.game);
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_3;
@@ -71,6 +74,28 @@
                     this.createOption(posCorrectOption, this.correct);
                     this.createOption((posCorrectOption + 1) % 3, wrong1);
                     this.createOption((posCorrectOption + 2) % 3, wrong2);
+                    
+                    this.loadBar = this.game.add.graphics(0, this.game.world.height-4);
+                    this.loadBar.lineStyle(5, 0xffffff, 1);
+                    this.loadBar.tint = GREEN;
+                    this.loadBar.moveTo(0, 0);
+                    this.loadBar.lineTo(this.game.world.width, 0);
+                    this.loadBar.scale.x = 1;
+                    this.loadBar.endFill();
+                }
+                this.loadBar.scale.x -= 1 / (this.game.time.fps * 5);
+
+                if (this.loadBar.scale.x <= 0) {
+                    this.clear();
+                    this.game.add.audio("sndError").play('', 0);
+                } else {
+                    if (this.loadBar.scale.x < 0.2) {
+                        this.loadBar.tint = RED;
+                    } else {
+                        if (this.loadBar.scale.x < 0.5) {
+                            this.loadBar.tint = YELLOW;
+                        }
+                    }
                 }
             }
         }
@@ -95,12 +120,17 @@
             if (item.key == this.correct) {
                 this.game.add.audio("sndPoint").play('', 0);
                 this.txtPoints.setText("Puntos: " + ++this.points);
-                this.options.removeAll();
-                this.chest.kill();
-                this.isChestInPlatform = false;
+                this.clear();
             } else {
                 this.game.add.audio("sndError").play('', 0);
             }
+        }
+
+        clear=() => {
+            this.options.removeAll();
+            this.chest.kill();
+            this.loadBar.kill();
+            this.isChestInPlatform = false;
         }
 
         getXPosition(i: number): number {

@@ -54,7 +54,6 @@
         startTimeCountdown = () => {
             this.countdownTime--;
             if (this.countdownTime > 0) {
-                this.subState = PLAYING;
                 this.timer.startTimer(1000, this.startTimeCountdown);
             } else {
                 this.finishTopic();
@@ -95,7 +94,8 @@
             } else {
                 if (this.stateReady < 0) {
                     this.titReady.kill();
-                    this.startTimeCountdown();
+                    this.subState = PLAYING;
+                    this.timer.startTimer(1000, this.startTimeCountdown);
                 } else {
                     this.game.add.audio("snd" + this.stateReady).play('', 0);
                     this.titReady.loadTexture("tit" + this.stateReady, 0);

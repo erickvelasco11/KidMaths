@@ -202,7 +202,7 @@
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
             this.loadText.setText("Conectando a la base de datos");
-            $.getJSON("https://www.mrbook.com.co/api/crud.php", { 'option': 'listar', 'id': 1, 'tabla': 'mb_avatar' })
+            $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'id': 2, 'tabla': 'mb_avatar', 'bool':false, 'pk':'id' })
                 .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
                     avatar = new Avatar();
                     Object.keys(data).forEach(function (key) {

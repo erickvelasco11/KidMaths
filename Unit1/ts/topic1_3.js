@@ -33,17 +33,23 @@ var MrBook;
                 if (item.key == _this.correct) {
                     _this.game.add.audio("sndPoint").play('', 0);
                     _this.txtPoints.setText("Puntos: " + ++_this.points);
-                    _this.options.removeAll();
-                    _this.chest.kill();
-                    _this.isChestInPlatform = false;
+                    _this.clear();
                 }
                 else {
                     _this.game.add.audio("sndError").play('', 0);
                 }
             };
+            _this.clear = function () {
+                _this.options.removeAll();
+                _this.chest.kill();
+                _this.loadBar.kill();
+                _this.isChestInPlatform = false;
+            };
             return _this;
         }
         Topic1_3.prototype.create = function () {
+            this.game.time.advancedTiming = true;
+            this.isChestInPlatform = false;
             this.timer = new MrBook.Timer(this.game);
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_3;
@@ -79,6 +85,28 @@ var MrBook;
                     this.createOption(posCorrectOption, this.correct);
                     this.createOption((posCorrectOption + 1) % 3, wrong1);
                     this.createOption((posCorrectOption + 2) % 3, wrong2);
+                    this.loadBar = this.game.add.graphics(0, this.game.world.height - 4);
+                    this.loadBar.lineStyle(5, 0xffffff, 1);
+                    this.loadBar.tint = MrBook.GREEN;
+                    this.loadBar.moveTo(0, 0);
+                    this.loadBar.lineTo(this.game.world.width, 0);
+                    this.loadBar.scale.x = 1;
+                    this.loadBar.endFill();
+                }
+                this.loadBar.scale.x -= 1 / (this.game.time.fps * 5);
+                if (this.loadBar.scale.x <= 0) {
+                    this.clear();
+                    this.game.add.audio("sndError").play('', 0);
+                }
+                else {
+                    if (this.loadBar.scale.x < 0.2) {
+                        this.loadBar.tint = MrBook.RED;
+                    }
+                    else {
+                        if (this.loadBar.scale.x < 0.5) {
+                            this.loadBar.tint = MrBook.YELLOW;
+                        }
+                    }
                 }
             }
         };
