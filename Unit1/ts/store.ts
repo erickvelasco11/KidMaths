@@ -48,12 +48,12 @@
             if (avatar.gender == MALE) {
                 this.boy = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgBoy");
                 this.boy.anchor.set(0.5, 0.5);
-                this.boy.width = 280;
+                this.boy.width = 200;
                 this.boy.height = 400;
             } else {
                 this.girl = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgGirl");
                 this.girl.anchor.set(0.5, 0.5);
-                this.girl.width = 280;
+                this.girl.width = 200;
                 this.girl.height = 400;
             }
 
@@ -109,7 +109,7 @@
         addSeeBuyButtons = (idType: string) => {
             var column = 0;
             var x = 150;
-            var y = 125;
+            var y = 127;
             for (var i = 0; i < products.length; i++) {
                 if (products[i].idType == idType) {
                     var btnSee = this.game.add.button(x, y, "btnSee", this.clickSee, this, 0, 1, 2);
@@ -129,8 +129,8 @@
                         x += 65;
                     } else {
                         column = 0;
-                        x = 140;
-                        y += 95;
+                        x = 150;
+                        y += 97;
                     }
                 }
             }

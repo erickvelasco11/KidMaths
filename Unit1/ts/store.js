@@ -42,7 +42,7 @@ var MrBook;
             _this.addSeeBuyButtons = function (idType) {
                 var column = 0;
                 var x = 150;
-                var y = 125;
+                var y = 127;
                 for (var i = 0; i < MrBook.products.length; i++) {
                     if (MrBook.products[i].idType == idType) {
                         var btnSee = _this.game.add.button(x, y, "btnSee", _this.clickSee, _this, 0, 1, 2);
@@ -60,8 +60,8 @@ var MrBook;
                         }
                         else {
                             column = 0;
-                            x = 140;
-                            y += 95;
+                            x = 150;
+                            y += 97;
                         }
                     }
                 }
@@ -93,13 +93,13 @@ var MrBook;
             if (MrBook.avatar.gender == MrBook.MALE) {
                 this.boy = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgBoy");
                 this.boy.anchor.set(0.5, 0.5);
-                this.boy.width = 280;
+                this.boy.width = 200;
                 this.boy.height = 400;
             }
             else {
                 this.girl = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgGirl");
                 this.girl.anchor.set(0.5, 0.5);
-                this.girl.width = 280;
+                this.girl.width = 200;
                 this.girl.height = 400;
             }
             this.grpBuyButtons = this.game.add.group();
