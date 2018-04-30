@@ -16,6 +16,6 @@ var MrBook;
     MrBook.WHITE = 0xFFFFFF;
     MrBook.BLUE = 0x0000FF;
     MrBook.GRAVITY = 1000;
-    MrBook.ROUND_TIME = 30;
+    MrBook.ROUND_TIME = 60;
 })(MrBook || (MrBook = {}));
 //# sourceMappingURL=constants.js.map

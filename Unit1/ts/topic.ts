@@ -15,7 +15,6 @@
 
         private stateReady;
         protected points;
-        protected totalPoints;
         protected countdownTime;
 
         protected subState;
@@ -29,7 +28,6 @@
 
         initPointsText() {
             this.points = 0;
-            this.totalPoints = 0;
             this.txtPoints = this.game.add.text(20, 20, "Puntos: " + this.points, { font: "24px Arial", align: "center", fill: '#ffffff' });
         }
 
@@ -65,10 +63,10 @@
         initResults() {
             this.subState = RESULTS;
             this.bgrPause = this.game.add.image(0, 0, "bgrPause");
-            this.totalPoints += this.points;
+            totalPoints += this.points;
             this.txtResult = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Puntos: " + this.points, { fill: '#ffffff' });
             this.txtResult.anchor.setTo(0.5, 0.5);
-            this.txtResult2 = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Total: " + this.totalPoints, { fill: '#ffffff' });
+            this.txtResult2 = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Total: " + totalPoints, { fill: '#ffffff' });
             this.txtResult2.anchor.setTo(0.5, 0.5);
             this.btnNext = this.game.add.button(this.game.world.centerX, 400, 'btnNext', this.actionNext, this, 0, 1, 2);
             this.btnNext.anchor.x = 0.5;

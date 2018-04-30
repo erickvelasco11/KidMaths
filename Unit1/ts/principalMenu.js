@@ -17,16 +17,15 @@ var MrBook;
             _this.startGame = function () {
                 _this.btnStart.kill();
                 _this.title.kill();
-                _this.game.state.start("Topic1_3State", true);
+                _this.game.state.start("Topic1_1State", true);
             };
             _this.startStore = function () {
                 if (MrBook.products.length == 0) {
-                    $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'tabla': 'mb_product', 'bool': true })
+                    $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
                         .done(function (data, textStatus, jqXHR) {
-                        debugger;
                         for (var i = 0; i < Object.keys(data).length; i++) {
                             Object.keys(data).forEach(function (key) {
-                                MrBook.avatar[key] = data[key];
+                                MrBook.products[key] = data[key];
                             });
                         }
                         _this.btnStart.kill();

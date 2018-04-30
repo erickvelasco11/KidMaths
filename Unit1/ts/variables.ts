@@ -9,5 +9,5 @@
 
     export var avatar: Avatar;
     export var products: Array<Product> = new Array<Product>();
-
+    export var totalPoints: number;
 }

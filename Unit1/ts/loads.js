@@ -63,7 +63,7 @@ var MrBook;
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
                 _this.loadText.setText("Conectando a la base de datos");
-                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'id': 1, 'tabla': 'mb_avatar', 'bool': false, 'pk': 'id' })
+                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk': 'id' })
                     .done(function (data, textStatus, jqXHR) {
                     MrBook.avatar = new MrBook.Avatar();
                     Object.keys(data).forEach(function (key) {
@@ -108,6 +108,7 @@ var MrBook;
             this.game.load.image('imgSquare', 'assets/images/square.png');
             this.game.load.image('imgPlatform', 'assets/images/platform.png');
             this.game.load.image('imgCloud', 'assets/images/cloud.png');
+            this.game.load.image('imgRack', 'assets/images/rack.png');
             this.game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
             this.game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
             this.game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');
@@ -190,6 +191,8 @@ var MrBook;
             this.game.load.spritesheet('btnMenuTorso', 'assets/images/buttons/menuTorso.png', 200, 200);
             this.game.load.spritesheet('btnMenuLegs', 'assets/images/buttons/menuLegs.png', 200, 200);
             this.game.load.spritesheet('btnMenuFeet', 'assets/images/buttons/menuFeet.png', 200, 200);
+            this.game.load.spritesheet('btnSee', 'assets/images/buttons/see.png', 200, 200);
+            this.game.load.spritesheet('btnBuy', 'assets/images/buttons/buy.png', 200, 200);
             this.game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
             this.game.load.audio('sndError', 'assets/sounds/error.wav');
             this.game.load.audio('sndPoint', 'assets/sounds/point.wav');

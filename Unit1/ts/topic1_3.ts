@@ -150,6 +150,7 @@
         }
 
         finishTopic1_3() {
+            totalPoints = 0;
         }
     }
 }

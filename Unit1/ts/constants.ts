@@ -20,5 +20,5 @@ module MrBook {
     export const BLUE = 0x0000FF;
 
     export const GRAVITY = 1000;
-    export const ROUND_TIME = 30;
+    export const ROUND_TIME = 60;
 }

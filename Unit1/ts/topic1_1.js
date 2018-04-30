@@ -71,6 +71,7 @@ var MrBook;
             this.timer = new MrBook.Timer(this.game);
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_1;
+            MrBook.totalPoints = 0;
             this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.items = this.game.add.group(undefined, undefined, undefined, true, Phaser.Physics.ARCADE);

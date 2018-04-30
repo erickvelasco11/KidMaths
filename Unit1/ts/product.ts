@@ -1,14 +1,13 @@
 ﻿module MrBook {
     export class Product {
 
-        public id: number;
+        public id: string;
         public name: string;
-        public price: number;
-        public type: number;
+        public price: string;
+        public gender: string;
+        public idType: string;
         public description: string;
 
-        constructor() {
-
-        }
+        constructor() {}
     }
 }
