@@ -63,7 +63,7 @@ var MrBook;
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
                 _this.loadText.setText("Conectando a la base de datos");
-                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'id': 2, 'tabla': 'mb_avatar', 'bool': false, 'pk': 'id' })
+                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'id': 1, 'tabla': 'mb_avatar', 'bool': false, 'pk': 'id' })
                     .done(function (data, textStatus, jqXHR) {
                     MrBook.avatar = new MrBook.Avatar();
                     Object.keys(data).forEach(function (key) {
@@ -185,6 +185,11 @@ var MrBook;
             this.game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
             this.game.load.spritesheet('btnStore', 'assets/images/buttons/store.png', 300, 100);
             this.game.load.spritesheet('btnBack', 'assets/images/buttons/back.png', 200, 200);
+            this.game.load.spritesheet('btnMenuSkin', 'assets/images/buttons/menuSkin.png', 200, 200);
+            this.game.load.spritesheet('btnMenuHead', 'assets/images/buttons/menuHead.png', 200, 200);
+            this.game.load.spritesheet('btnMenuTorso', 'assets/images/buttons/menuTorso.png', 200, 200);
+            this.game.load.spritesheet('btnMenuLegs', 'assets/images/buttons/menuLegs.png', 200, 200);
+            this.game.load.spritesheet('btnMenuFeet', 'assets/images/buttons/menuFeet.png', 200, 200);
             this.game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
             this.game.load.audio('sndError', 'assets/sounds/error.wav');
             this.game.load.audio('sndPoint', 'assets/sounds/point.wav');

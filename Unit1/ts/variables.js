@@ -6,5 +6,6 @@ var MrBook;
     MrBook.RIGHT_DIRECTION = 2;
     MrBook.SHOOT_VELOCITY = 800;
     MrBook.CREDITS_VELOCITY = -20;
+    MrBook.products = new Array();
 })(MrBook || (MrBook = {}));
 //# sourceMappingURL=variables.js.map

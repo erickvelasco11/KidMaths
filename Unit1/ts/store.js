@@ -14,6 +14,8 @@ var MrBook;
         __extends(SelectGender, _super);
         function SelectGender() {
             var _this = _super.call(this) || this;
+            _this.clickMenu = function () {
+            };
             _this.back = function () {
                 _this.game.state.start("PrincipalMenuState", true);
             };
@@ -42,6 +44,21 @@ var MrBook;
                 this.girl.width = 280;
                 this.girl.height = 400;
             }
+            this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu);
+            this.btnMenuSkin.height = 50;
+            this.btnMenuSkin.width = 50;
+            this.btnMenuHead = this.game.add.button(0, 210, "btnMenuHead", this.clickMenu);
+            this.btnMenuHead.height = 50;
+            this.btnMenuHead.width = 50;
+            this.btnMenuTorso = this.game.add.button(0, 270, "btnMenuTorso", this.clickMenu);
+            this.btnMenuTorso.height = 50;
+            this.btnMenuTorso.width = 50;
+            this.btnMenuLegs = this.game.add.button(0, 330, "btnMenuLegs", this.clickMenu);
+            this.btnMenuLegs.height = 50;
+            this.btnMenuLegs.width = 50;
+            this.btnMenuFeet = this.game.add.button(0, 390, "btnMenuFeet", this.clickMenu);
+            this.btnMenuFeet.height = 50;
+            this.btnMenuFeet.width = 50;
         };
         return SelectGender;
     }(Phaser.State));

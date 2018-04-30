@@ -20,9 +20,26 @@ var MrBook;
                 _this.game.state.start("Topic1_3State", true);
             };
             _this.startStore = function () {
-                _this.btnStart.kill();
-                _this.title.kill();
-                _this.game.state.start("StoreState", true);
+                if (MrBook.products.length == 0) {
+                    $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'listar', 'tabla': 'mb_product', 'bool': true })
+                        .done(function (data, textStatus, jqXHR) {
+                        debugger;
+                        for (var i = 0; i < Object.keys(data).length; i++) {
+                            Object.keys(data).forEach(function (key) {
+                                MrBook.avatar[key] = data[key];
+                            });
+                        }
+                        _this.btnStart.kill();
+                        _this.title.kill();
+                        _this.game.state.start("StoreState", true);
+                    })
+                        .fail(function (jqxhr, textStatus, error) {
+                        alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                    });
+                }
+                else {
+                    //TODO
+                }
             };
             return _this;
         }
