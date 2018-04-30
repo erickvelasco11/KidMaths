@@ -48,7 +48,7 @@
             this.initPointsText();
 
             this.startReadyCountdown();
-            this.timer.startTimer(100, this.launchItemTopic1);
+            this.timer.startTimer(100, this.launchBird);
         }
 
         update() {
@@ -61,9 +61,22 @@
             this.items.removeAll();
         }
 
-        launchItemTopic1 = () => {
+        launchBird = () => {
+            var isFromLeft = this.game.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
+            var x;
             var y = this.game.rnd.integerInRange(50, 300);
-            var velocity = this.game.rnd.integerInRange(30, 60);
+            var velocity = this.game.rnd.integerInRange(50, 100) * isFromLeft;
+
+            isFromLeft == 1 ? x = -110 : x = this.game.world.width + 110;
+            
+            var bird = this.birds.create(x, y - 45, 'sprBird');
+            bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
+            bird.animations.play('right');
+            bird.width = 100;
+            bird.height = 100;
+            bird.body.velocity.x = velocity;
+            bird.scale.x *= isFromLeft;
+                
             if (this.subState == PLAYING) {
                 var category = this.game.rnd.integerInRange(0, 2);
                 var idItem;
@@ -78,24 +91,19 @@
                         idItem = this.clothes[this.game.rnd.integerInRange(0, 4)];
                         break;
                 }
-                var item = this.items.create(-50, y, idItem);
+                isFromLeft == 1 ? x += 60 : x -= 110;
+                var item = this.items.create(x, y, idItem);
                 item.width = 50;
                 item.height = 50;
                 item.body.velocity.x = velocity
 
                 item.inputEnabled = true;
                 item.input.enableDrag(false, true);
+                item.input.pixelPerfectOver = true;
                 item.events.onDragStart.add(this.onDragStart, this);
                 item.events.onDragStop.add(this.onDragStop, this);
             }
-
-            var bird = this.birds.create(-110, y - 45, 'sprBird');
-            bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
-            bird.animations.play('right');
-            bird.width = 100;
-            bird.height = 100;
-            bird.body.velocity.x = velocity;
-            this.timer.startTimer(2000, this.launchItemTopic1);
+            this.timer.startTimer(2000, this.launchBird);
         }
 
         onDragStart(item, pointer) {

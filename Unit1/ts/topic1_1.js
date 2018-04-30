@@ -18,9 +18,19 @@ var MrBook;
             _this.fruits = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
             _this.school = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
             _this.clothes = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-            _this.launchItemTopic1 = function () {
+            _this.launchBird = function () {
+                var isFromLeft = _this.game.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
+                var x;
                 var y = _this.game.rnd.integerInRange(50, 300);
-                var velocity = _this.game.rnd.integerInRange(30, 60);
+                var velocity = _this.game.rnd.integerInRange(50, 100) * isFromLeft;
+                isFromLeft == 1 ? x = -110 : x = _this.game.world.width + 110;
+                var bird = _this.birds.create(x, y - 45, 'sprBird');
+                bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
+                bird.animations.play('right');
+                bird.width = 100;
+                bird.height = 100;
+                bird.body.velocity.x = velocity;
+                bird.scale.x *= isFromLeft;
                 if (_this.subState == MrBook.PLAYING) {
                     var category = _this.game.rnd.integerInRange(0, 2);
                     var idItem;
@@ -35,22 +45,18 @@ var MrBook;
                             idItem = _this.clothes[_this.game.rnd.integerInRange(0, 4)];
                             break;
                     }
-                    var item = _this.items.create(-50, y, idItem);
+                    isFromLeft == 1 ? x += 60 : x -= 110;
+                    var item = _this.items.create(x, y, idItem);
                     item.width = 50;
                     item.height = 50;
                     item.body.velocity.x = velocity;
                     item.inputEnabled = true;
                     item.input.enableDrag(false, true);
+                    item.input.pixelPerfectOver = true;
                     item.events.onDragStart.add(_this.onDragStart, _this);
                     item.events.onDragStop.add(_this.onDragStop, _this);
                 }
-                var bird = _this.birds.create(-110, y - 45, 'sprBird');
-                bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
-                bird.animations.play('right');
-                bird.width = 100;
-                bird.height = 100;
-                bird.body.velocity.x = velocity;
-                _this.timer.startTimer(2000, _this.launchItemTopic1);
+                _this.timer.startTimer(2000, _this.launchBird);
             };
             _this.putInChest = function (item, chest) {
                 if (_this.fruits.indexOf(item.key) != -1 && chest.key == "itmFruitBasket"
@@ -98,7 +104,7 @@ var MrBook;
             this.initTimeText();
             this.initPointsText();
             this.startReadyCountdown();
-            this.timer.startTimer(100, this.launchItemTopic1);
+            this.timer.startTimer(100, this.launchBird);
         };
         Topic1_1.prototype.update = function () {
             if (this.subState == MrBook.PLAYING) {

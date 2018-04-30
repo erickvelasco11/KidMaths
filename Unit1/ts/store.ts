@@ -25,6 +25,12 @@
             this.background = this.game.add.tileSprite(0, 0, 800, 600, "bgrStore");
             this.game.add.image(0, 0, "bgrPause");
 
+            var ballon = this.game.add.image(650, 120, "imgBallon");
+            ballon.anchor.set(0.5, 0.5);
+            ballon.height = 200;
+            ballon.width = 300;
+            this.game.add.text(530, 50, "Hola " + avatar.name + ", me\nalegra verte otra vez.\nCómo nos vestimos hoy?", { font: "bold 20px Arial", fill: "#222222", boundsAlignH: "center", boundsAlignV: "middle" });
+
             this.btnBack = this.game.add.button(50, 50, "btnBack", this.back, this, 0, 1, 2);
             this.btnBack.anchor.set(0.5, 0.5);
             this.btnBack.width = 50;
@@ -32,10 +38,10 @@
 
             this.platform = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 50, "imgPlatform");
             this.platform.anchor.set(0.5, 0.5);
-            this.platform.width = 200;
+            this.platform.width = 250;
             this.platform.height = 120;
 
-            this.rack = this.game.add.image(100, 80, "imgRack");
+            this.rack = this.game.add.image(100, 70, "imgRack");
             this.rack.width = 380;
             this.rack.height = 480;
 
@@ -102,7 +108,7 @@
 
         addSeeBuyButtons = (idType: string) => {
             var column = 0;
-            var x = 140;
+            var x = 150;
             var y = 125;
             for (var i = 0; i < products.length; i++) {
                 if (products[i].idType == idType) {
@@ -124,7 +130,7 @@
                     } else {
                         column = 0;
                         x = 140;
-                        y += 75;
+                        y += 95;
                     }
                 }
             }

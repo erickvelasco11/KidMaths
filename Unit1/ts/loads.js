@@ -109,6 +109,7 @@ var MrBook;
             this.game.load.image('imgPlatform', 'assets/images/platform.png');
             this.game.load.image('imgCloud', 'assets/images/cloud.png');
             this.game.load.image('imgRack', 'assets/images/rack.png');
+            this.game.load.image('imgBallon', 'assets/images/ballon.png');
             this.game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
             this.game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
             this.game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');
