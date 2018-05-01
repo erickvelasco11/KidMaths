@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
     <Content Include="assets\images\backgrounds\store.png" />
+    <Content Include="assets\images\ballon.png" />
     <Content Include="assets\images\blue.jpg" />
     <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\buy.png" />
@@ -84,8 +85,9 @@
     <Content Include="assets\images\clothes\head\boina.png" />
     <Content Include="assets\images\clothes\head\cachucha.png" />
     <Content Include="assets\images\clothes\head\gorroLana.png" />
+    <Content Include="assets\images\clothes\head\noHat.png" />
     <Content Include="assets\images\clothes\head\policeHat.png" />
-    <Content Include="assets\images\clothes\head\sombreroVaquero.png" />
+    <Content Include="assets\images\clothes\head\cowboyHat.png" />
     <Content Include="assets\images\clothes\skins\skin1.png" />
     <Content Include="assets\images\clothes\skins\skin2.png" />
     <Content Include="assets\images\clothes\skins\skin3.png" />
@@ -93,7 +95,6 @@
     <Content Include="assets\images\clothes\skins\skin5.png" />
     <Content Include="assets\images\clothes\skins\skin6.png" />
     <Content Include="assets\images\clothes\torso\blazer.png" />
-    <Content Include="assets\images\clothes\torso\camisa.jpg" />
     <Content Include="assets\images\clothes\torso\camisa.png" />
     <Content Include="assets\images\clothes\torso\camiseta.png" />
     <Content Include="assets\images\clothes\torso\dress.png" />
@@ -161,6 +162,7 @@
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="ts\loadStore.ts" />
     <TypeScriptCompile Include="ts\product.ts" />
     <TypeScriptCompile Include="ts\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
@@ -246,7 +248,7 @@
     <TypeScriptCompile Include="ts\libraries\p2.d.ts" />
     <TypeScriptCompile Include="ts\libraries\phaser.d.ts" />
     <TypeScriptCompile Include="ts\libraries\pixi.d.ts" />
-    <TypeScriptCompile Include="ts\loads.ts" />
+    <TypeScriptCompile Include="ts\loadGame.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

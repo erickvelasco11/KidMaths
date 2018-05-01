@@ -35,25 +35,7 @@
         }
 
         startStore = () => {
-            if (products.length == 0) {
-                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
-                    .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
-                        for (var i = 0; i < Object.keys(data).length; i++) {
-                            Object.keys(data).forEach(function (key) {
-                                products[key] = data[key];
-                            })
-                        }
-
-                        this.btnStart.kill();
-                        this.title.kill();
-                        this.game.state.start("StoreState", true);
-                    })
-                    .fail((jqxhr, textStatus, error) => {
-                        alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
-                    });
-            } else {
-                //TODO
-            }
+            this.game.state.start("LoadStoreState");
         }
     }
 }

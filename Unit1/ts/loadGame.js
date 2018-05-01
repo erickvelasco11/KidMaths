@@ -10,9 +10,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var MrBook;
 (function (MrBook) {
-    var Loads = /** @class */ (function (_super) {
-        __extends(Loads, _super);
-        function Loads() {
+    var LoadGame = /** @class */ (function (_super) {
+        __extends(LoadGame, _super);
+        function LoadGame() {
             var _this = _super.call(this) || this;
             _this.animateBar = false;
             //Esta función es de Phaser y se llama cuando la carga de archivos va a empezar
@@ -62,7 +62,7 @@ var MrBook;
             };
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
-                _this.loadText.setText("Conectando a la base de datos");
+                _this.loadText.setText("Consiguiendo tu nombre...");
                 $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk': 'id' })
                     .done(function (data, textStatus, jqXHR) {
                     MrBook.avatar = new MrBook.Avatar();
@@ -73,6 +73,9 @@ var MrBook;
                     _this.loadBar.destroy();
                     _this.loadText.destroy();
                     _this.title.kill();
+                    _this.game.load.onLoadStart.removeAll();
+                    _this.game.load.onFileComplete.removeAll();
+                    _this.game.load.onLoadComplete.removeAll();
                     _this.game.state.start("PrincipalMenuState", true);
                 })
                     .fail(function (jqxhr, textStatus, error) {
@@ -82,7 +85,7 @@ var MrBook;
             return _this;
         }
         //Función para listar los componentes que se van a cargar para el juego
-        Loads.prototype.preload = function () {
+        LoadGame.prototype.preload = function () {
             this.game.load.spritesheet('pikachu', 'assets/images/pikachu.png', 48, 48);
             this.game.load.image('bgrLoading', 'assets/images/backgrounds/loading.jpg');
             this.game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
@@ -93,8 +96,6 @@ var MrBook;
             this.game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
             this.game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
             this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
-            this.game.load.image('bgrStore', 'assets/images/backgrounds/store.png');
-            this.game.load.image('titGender', 'assets/images/titles/gender.png');
             this.game.load.image('tit1', 'assets/images/titles/1.png');
             this.game.load.image('tit2', 'assets/images/titles/2.png');
             this.game.load.image('tit3', 'assets/images/titles/3.png');
@@ -108,8 +109,6 @@ var MrBook;
             this.game.load.image('imgSquare', 'assets/images/square.png');
             this.game.load.image('imgPlatform', 'assets/images/platform.png');
             this.game.load.image('imgCloud', 'assets/images/cloud.png');
-            this.game.load.image('imgRack', 'assets/images/rack.png');
-            this.game.load.image('imgBallon', 'assets/images/ballon.png');
             this.game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
             this.game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
             this.game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');
@@ -186,14 +185,6 @@ var MrBook;
             this.game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
             this.game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
             this.game.load.spritesheet('btnStore', 'assets/images/buttons/store.png', 300, 100);
-            this.game.load.spritesheet('btnBack', 'assets/images/buttons/back.png', 200, 200);
-            this.game.load.spritesheet('btnMenuSkin', 'assets/images/buttons/menuSkin.png', 200, 200);
-            this.game.load.spritesheet('btnMenuHead', 'assets/images/buttons/menuHead.png', 200, 200);
-            this.game.load.spritesheet('btnMenuTorso', 'assets/images/buttons/menuTorso.png', 200, 200);
-            this.game.load.spritesheet('btnMenuLegs', 'assets/images/buttons/menuLegs.png', 200, 200);
-            this.game.load.spritesheet('btnMenuFeet', 'assets/images/buttons/menuFeet.png', 200, 200);
-            this.game.load.spritesheet('btnSee', 'assets/images/buttons/see.png', 200, 200);
-            this.game.load.spritesheet('btnBuy', 'assets/images/buttons/buy.png', 200, 200);
             this.game.load.spritesheet('sprBird', 'assets/images/sprites/bird.png', 200, 200);
             this.game.load.audio('sndError', 'assets/sounds/error.wav');
             this.game.load.audio('sndPoint', 'assets/sounds/point.wav');
@@ -206,8 +197,8 @@ var MrBook;
             this.game.load.onLoadComplete.add(this.loadComplete, this);
             this.game.load.start();
         };
-        return Loads;
+        return LoadGame;
     }(Phaser.State));
-    MrBook.Loads = Loads;
+    MrBook.LoadGame = LoadGame;
 })(MrBook || (MrBook = {}));
-//# sourceMappingURL=loads.js.map
+//# sourceMappingURL=loadGame.js.map
