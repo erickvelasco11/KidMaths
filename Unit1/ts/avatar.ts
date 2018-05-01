@@ -1,15 +1,15 @@
 ﻿module MrBook {
     export class Avatar {
 
-        public id: number;
+        public id: string;
         public name: string;
-        public age: number;
-        public gender: number;
-        public skinColorId: number;
-        public capId: number;
-        public shirtId: number;
-        public pantsId: number;
-        public shoesId: number;
+        public age: string;
+        public gender: string;
+        public skinColorId: string;
+        public capId: string;
+        public shirtId: string;
+        public pantsId: string;
+        public shoesId: string;
 
         constructor() {
         }

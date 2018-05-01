@@ -5,8 +5,8 @@
 //Constantes
 
 module MrBook {
-    export const MALE = 0;
-    export const FEMALE = 1;
+    export const MALE = "0";
+    export const FEMALE = "1";
 
     export const READY = 0;
     export const PLAYING = 1;

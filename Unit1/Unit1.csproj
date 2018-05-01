@@ -82,18 +82,33 @@
     <Content Include="assets\images\buttons\see.png" />
     <Content Include="assets\images\buttons\store.png" />
     <Content Include="assets\images\circle.png" />
+    <Content Include="assets\images\clothes\feet\converse.png" />
+    <Content Include="assets\images\clothes\feet\elegantShoes.png" />
+    <Content Include="assets\images\clothes\feet\heels.png" />
+    <Content Include="assets\images\clothes\feet\tennis.png" />
     <Content Include="assets\images\clothes\head\boina.png" />
     <Content Include="assets\images\clothes\head\cachucha.png" />
     <Content Include="assets\images\clothes\head\gorroLana.png" />
     <Content Include="assets\images\clothes\head\noHat.png" />
     <Content Include="assets\images\clothes\head\policeHat.png" />
     <Content Include="assets\images\clothes\head\cowboyHat.png" />
-    <Content Include="assets\images\clothes\skins\skin1.png" />
-    <Content Include="assets\images\clothes\skins\skin2.png" />
-    <Content Include="assets\images\clothes\skins\skin3.png" />
-    <Content Include="assets\images\clothes\skins\skin4.png" />
-    <Content Include="assets\images\clothes\skins\skin5.png" />
-    <Content Include="assets\images\clothes\skins\skin6.png" />
+    <Content Include="assets\images\clothes\legs\elegantPants.png" />
+    <Content Include="assets\images\clothes\legs\jean.png" />
+    <Content Include="assets\images\clothes\legs\pantaloneta.png" />
+    <Content Include="assets\images\clothes\legs\skirt.png" />
+    <Content Include="assets\images\clothes\products.png" />
+    <Content Include="assets\images\clothes\skins\bBlack.png" />
+    <Content Include="assets\images\clothes\skins\bBrown.png" />
+    <Content Include="assets\images\clothes\skins\bCorn.png" />
+    <Content Include="assets\images\clothes\skins\bSkin.png" />
+    <Content Include="assets\images\clothes\skins\bWhite.png" />
+    <Content Include="assets\images\clothes\skins\bYellow.png" />
+    <Content Include="assets\images\clothes\skins\gBlack.png" />
+    <Content Include="assets\images\clothes\skins\gBrown.png" />
+    <Content Include="assets\images\clothes\skins\gCorn.png" />
+    <Content Include="assets\images\clothes\skins\gSkin.png" />
+    <Content Include="assets\images\clothes\skins\gWhite.png" />
+    <Content Include="assets\images\clothes\skins\gYellow.png" />
     <Content Include="assets\images\clothes\torso\blazer.png" />
     <Content Include="assets\images\clothes\torso\camisa.png" />
     <Content Include="assets\images\clothes\torso\camiseta.png" />
@@ -238,8 +253,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\images\clothes\feet\" />
-    <Folder Include="assets\images\clothes\legs\" />
     <Folder Include="css\" />
   </ItemGroup>
   <ItemGroup>

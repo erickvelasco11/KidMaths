@@ -63,7 +63,7 @@ var MrBook;
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
                 _this.loadText.setText("Consiguiendo tu nombre...");
-                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk': 'id' })
+                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 2, 'tabla': 'mb_avatar', 'pk': 'id' })
                     .done(function (data, textStatus, jqXHR) {
                     MrBook.avatar = new MrBook.Avatar();
                     Object.keys(data).forEach(function (key) {

@@ -7,6 +7,7 @@
         public gender: string;
         public idType: string;
         public description: string;
+        public imageKey: string;
 
         constructor() {}
     }

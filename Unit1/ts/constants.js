@@ -4,8 +4,8 @@
 //Constantes
 var MrBook;
 (function (MrBook) {
-    MrBook.MALE = 0;
-    MrBook.FEMALE = 1;
+    MrBook.MALE = "0";
+    MrBook.FEMALE = "1";
     MrBook.READY = 0;
     MrBook.PLAYING = 1;
     MrBook.PAUSE = 2;

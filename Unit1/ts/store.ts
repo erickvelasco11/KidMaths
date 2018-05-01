@@ -7,9 +7,11 @@
         private platform: Phaser.Image;
         private rack: Phaser.Image;
         private background: Phaser.TileSprite;
+        private sprProducts: Phaser.Sprite;
 
         private grpSeeButtons: Phaser.Group;
         private grpBuyButtons: Phaser.Group;
+        private grpAvatar: Phaser.Group;
 
         private btnMenuSkin: Phaser.Button;
         private btnMenuHead: Phaser.Button;
@@ -45,20 +47,23 @@
             this.rack.width = 380;
             this.rack.height = 480;
 
-            if (avatar.gender == MALE) {
-                this.boy = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgBoy");
-                this.boy.anchor.set(0.5, 0.5);
-                this.boy.width = 200;
-                this.boy.height = 400;
-            } else {
-                this.girl = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgGirl");
-                this.girl.anchor.set(0.5, 0.5);
-                this.girl.width = 200;
-                this.girl.height = 400;
-            }
-
             this.grpBuyButtons = this.game.add.group();
             this.grpSeeButtons = this.game.add.group();
+            this.grpAvatar = this.game.add.group();
+
+            if (avatar.gender == MALE) {
+                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgBoy");
+            } else {
+                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgGirl");
+            }
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("skinColorId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shoesId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("pantsId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shirtId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("capId"));
+            this.grpAvatar.width = 200;
+            this.grpAvatar.height = 400;
+            this.grpAvatar.position.set(250, 20);
 
             this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu, this, 0, 1, 2);
             this.btnMenuSkin.height = 50;
@@ -75,6 +80,15 @@
             this.btnMenuFeet = this.game.add.button(0, 390, "btnMenuFeet", this.clickMenu, this, 0, 1, 2);
             this.btnMenuFeet.height = 50;
             this.btnMenuFeet.width = 50;
+        }
+
+        getImageKey(key:string): string {
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].id == avatar[key]) {
+                    return products[i].imageKey;
+                }
+            }
+            return "";
         }
 
         clickMenu = (item) => {

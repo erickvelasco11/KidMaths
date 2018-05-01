@@ -90,20 +90,23 @@ var MrBook;
             this.rack = this.game.add.image(100, 70, "imgRack");
             this.rack.width = 380;
             this.rack.height = 480;
-            if (MrBook.avatar.gender == MrBook.MALE) {
-                this.boy = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgBoy");
-                this.boy.anchor.set(0.5, 0.5);
-                this.boy.width = 200;
-                this.boy.height = 400;
-            }
-            else {
-                this.girl = this.game.add.image((this.game.world.width / 5) * 4, this.world.height - 250, "imgGirl");
-                this.girl.anchor.set(0.5, 0.5);
-                this.girl.width = 200;
-                this.girl.height = 400;
-            }
             this.grpBuyButtons = this.game.add.group();
             this.grpSeeButtons = this.game.add.group();
+            this.grpAvatar = this.game.add.group();
+            if (MrBook.avatar.gender == MrBook.MALE) {
+                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgBoy");
+            }
+            else {
+                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgGirl");
+            }
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("skinColorId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shoesId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("pantsId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shirtId"));
+            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("capId"));
+            this.grpAvatar.width = 200;
+            this.grpAvatar.height = 400;
+            this.grpAvatar.position.set(250, 20);
             this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu, this, 0, 1, 2);
             this.btnMenuSkin.height = 50;
             this.btnMenuSkin.width = 50;
@@ -119,6 +122,14 @@ var MrBook;
             this.btnMenuFeet = this.game.add.button(0, 390, "btnMenuFeet", this.clickMenu, this, 0, 1, 2);
             this.btnMenuFeet.height = 50;
             this.btnMenuFeet.width = 50;
+        };
+        SelectGender.prototype.getImageKey = function (key) {
+            for (var i = 0; i < MrBook.products.length; i++) {
+                if (MrBook.products[i].id == MrBook.avatar[key]) {
+                    return MrBook.products[i].imageKey;
+                }
+            }
+            return "";
         };
         return SelectGender;
     }(Phaser.State));
