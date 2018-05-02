@@ -12,6 +12,7 @@
         private grpSeeButtons: Phaser.Group;
         private grpBuyButtons: Phaser.Group;
         private grpAvatar: Phaser.Group;
+        private grpProducts: Phaser.Group;
 
         private btnMenuSkin: Phaser.Button;
         private btnMenuHead: Phaser.Button;
@@ -43,13 +44,14 @@
             this.platform.width = 250;
             this.platform.height = 120;
 
-            this.rack = this.game.add.image(100, 70, "imgRack");
+            this.rack = this.game.add.image(100, 50, "imgRack");
             this.rack.width = 380;
-            this.rack.height = 480;
+            this.rack.height = 500;
 
             this.grpBuyButtons = this.game.add.group();
             this.grpSeeButtons = this.game.add.group();
             this.grpAvatar = this.game.add.group();
+            this.grpProducts = this.game.add.group();
 
             if (avatar.gender == MALE) {
                 this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgBoy");
@@ -94,6 +96,7 @@
         clickMenu = (item) => {
             this.grpSeeButtons.removeAll();
             this.grpBuyButtons.removeAll();
+            this.grpProducts.removeAll();
 
             switch (item.key) {
                 case "btnMenuSkin":
@@ -123,28 +126,34 @@
         addSeeBuyButtons = (idType: string) => {
             var column = 0;
             var x = 150;
-            var y = 127;
+            var y = 128;
+            var xProduct = 150;
+            var yProduct = 50;
             for (var i = 0; i < products.length; i++) {
-                if (products[i].idType == idType) {
+                if (products[i].idType == idType && (products[i].gender == null || products[i].gender == avatar.gender)) {
                     var btnSee = this.game.add.button(x, y, "btnSee", this.clickSee, this, 0, 1, 2);
                     btnSee.height = 30;
                     btnSee.width = 30;
                     this.grpSeeButtons.add(btnSee);
-
-                    x += 40;
-
-                    var btnBuy = this.game.add.button(x, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
+                    var btnBuy = this.game.add.button(x += 40, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
                     btnBuy.height = 30;
                     btnBuy.width = 30;
                     this.grpBuyButtons.add(btnBuy);
-
+                    var prod = this.game.add.sprite(xProduct, yProduct, "sprProducts", (+products[i].id)-1);
+                    prod.height = 70;
+                    prod.width = 70;
+                    this.grpProducts.add(prod);
+                    
                     if (column != 2) {
                         column++
                         x += 65;
+                        xProduct += 105;
                     } else {
                         column = 0;
                         x = 150;
-                        y += 97;
+                        xProduct = 150;
+                        y += 125;
+                        yProduct += 125;
                     }
                 }
             }
