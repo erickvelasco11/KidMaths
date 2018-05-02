@@ -79,7 +79,9 @@ var MrBook;
                     _this.game.state.start("PrincipalMenuState", true);
                 })
                     .fail(function (jqxhr, textStatus, error) {
-                    alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                    if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
+                        _this.loadComplete();
+                    }
                 });
             };
             return _this;

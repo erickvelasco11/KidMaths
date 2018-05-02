@@ -6,6 +6,7 @@
         private btnBack: Phaser.Button;
         private platform: Phaser.Image;
         private rack: Phaser.Image;
+        private checked: Phaser.Image;
         private background: Phaser.TileSprite;
         private sprProducts: Phaser.Sprite;
 
@@ -19,6 +20,8 @@
         private btnMenuTorso: Phaser.Button;
         private btnMenuLegs: Phaser.Button;
         private btnMenuFeet: Phaser.Button;
+
+        private currentType: string = "0";
 
         constructor() {
             super();
@@ -82,12 +85,16 @@
             this.btnMenuFeet = this.game.add.button(0, 390, "btnMenuFeet", this.clickMenu, this, 0, 1, 2);
             this.btnMenuFeet.height = 50;
             this.btnMenuFeet.width = 50;
+
+            this.grpSeeButtons.onChildInputDown.add(this.clickSee, this);
+            this.grpBuyButtons.onChildInputDown.add(this.clickBuy, this);
+
         }
 
         getImageKey(key:string): string {
-            for (var i = 0; i < products.length; i++) {
-                if (products[i].id == avatar[key]) {
-                    return products[i].imageKey;
+            for (var i = 0; i < productsStore.length; i++) {
+                if (productsStore[i].id == avatar[key]) {
+                    return productsStore[i].imageKey;
                 }
             }
             return "";
@@ -97,63 +104,112 @@
             this.grpSeeButtons.removeAll();
             this.grpBuyButtons.removeAll();
             this.grpProducts.removeAll();
+            if (this.checked != undefined) {
+                this.checked.destroy();
+            }
 
             switch (item.key) {
                 case "btnMenuSkin":
-                    this.addSeeBuyButtons("1");
+                    this.currentType = "1";
                     break;
                 case "btnMenuHead":
-                    this.addSeeBuyButtons("2");
+                    this.currentType = "2";
                     break;
                 case "btnMenuTorso":
-                    this.addSeeBuyButtons("3");
+                    this.currentType = "3";
                     break;
                 case "btnMenuLegs":
-                    this.addSeeBuyButtons("4");
+                    this.currentType = "4";
                     break;
                 case "btnMenuFeet":
-                    this.addSeeBuyButtons("5");
+                    this.currentType = "5";
+                    break;
+            }
+            this.addSeeBuyButtons();
+        }
+
+        clickSee = (item, pointer) => {
+            switch (+this.currentType) {
+                case 1:
+                    this.grpAvatar.removeChildAt(1);
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z].imageKey);
+                    this.grpAvatar.addAt(skin, 1);
+                    break;
+                case 2:
+                    this.grpAvatar.removeChildAt(5);
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 6].imageKey);
+                    this.grpAvatar.addAt(skin, 5);
+                    break;
+                case 3:
+                    this.grpAvatar.removeChildAt(4);
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 12].imageKey);
+                    this.grpAvatar.addAt(skin, 4);
+                    break;
+                case 4:
+                    this.grpAvatar.removeChildAt(3);
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 17].imageKey);
+                    this.grpAvatar.addAt(skin, 3);
+                    break;
+                case 5:
+                    this.grpAvatar.removeChildAt(2);
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 21].imageKey);
+                    this.grpAvatar.addAt(skin, 2);
                     break;
             }
         }
 
-        clickSee = () => {
+        clickBuy = (item) => {
+            debugger
         }
 
-        clickBuy = () => {
-        }
-
-        addSeeBuyButtons = (idType: string) => {
+        addSeeBuyButtons = () => {
             var column = 0;
             var x = 150;
             var y = 128;
             var xProduct = 150;
             var yProduct = 50;
-            for (var i = 0; i < products.length; i++) {
-                if (products[i].idType == idType && (products[i].gender == null || products[i].gender == avatar.gender)) {
-                    var btnSee = this.game.add.button(x, y, "btnSee", this.clickSee, this, 0, 1, 2);
-                    btnSee.height = 30;
-                    btnSee.width = 30;
-                    this.grpSeeButtons.add(btnSee);
-                    var btnBuy = this.game.add.button(x += 40, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
-                    btnBuy.height = 30;
-                    btnBuy.width = 30;
-                    this.grpBuyButtons.add(btnBuy);
-                    var prod = this.game.add.sprite(xProduct, yProduct, "sprProducts", (+products[i].id)-1);
-                    prod.height = 70;
-                    prod.width = 70;
-                    this.grpProducts.add(prod);
-                    
-                    if (column != 2) {
-                        column++
-                        x += 65;
-                        xProduct += 105;
+            for (var i = 0; i < productsStore.length; i++) {
+                if (productsStore[i].idType == this.currentType) {
+                    if (productsStore[i].gender == null || productsStore[i].gender == avatar.gender) {
+                        var btnSee = this.game.add.button(x, y, "btnSee", null, this, 0, 1, 2);
+                        btnSee.height = 30;
+                        btnSee.width = 30;
+                        this.grpSeeButtons.add(btnSee);
+                        var btnBuy = this.game.add.button(x += 40, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
+                        btnBuy.height = 30;
+                        btnBuy.width = 30;
+                        this.grpBuyButtons.add(btnBuy);
+
+                        var prod = this.game.add.sprite(xProduct, yProduct, "sprProducts", (+productsStore[i].id) - 1);
+                        prod.height = 70;
+                        prod.width = 70;
+                        this.grpProducts.add(prod);
+
+                        if (productsStore[i].id == avatar.skinColorId
+                            || productsStore[i].id == avatar.capId
+                            || productsStore[i].id == avatar.shirtId
+                            || productsStore[i].id == avatar.pantsId
+                            || productsStore[i].id == avatar.shoesId) {
+                            this.checked = this.game.add.image(xProduct + 45, yProduct - 10, "imgCheck");
+                            this.checked.height = 30;
+                            this.checked.width = 30;
+                        }
+
+                        if (column != 2) {
+                            column++
+                            x += 65;
+                            xProduct += 105;
+                        } else {
+                            column = 0;
+                            x = 150;
+                            xProduct = 150;
+                            y += 125;
+                            yProduct += 125;
+                        }
                     } else {
-                        column = 0;
-                        x = 150;
-                        xProduct = 150;
-                        y += 125;
-                        yProduct += 125;
+                        this.grpSeeButtons.create(x, y, "strItmNoHat");
+                        this.grpBuyButtons.create(x, y, "strItmNoHat");
+                        this.grpProducts.create(x, y, "strItmNoHat");
                     }
                 }
             }

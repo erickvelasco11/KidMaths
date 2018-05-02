@@ -47,19 +47,29 @@ var MrBook;
             };
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
-                _this.loadText.setText("Trayendo todos los productos");
-                if (MrBook.products.length == 0) {
+                _this.loadText.setText("Llenando la tienda...");
+                if (MrBook.productsStore.length == 0) {
                     $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
                         .done(function (data, textStatus, jqXHR) {
+                        _this.loadText.setText("Mirando cuáles son tus productos...");
                         for (var i = 0; i < Object.keys(data).length; i++) {
                             Object.keys(data).forEach(function (key) {
-                                MrBook.products[key] = data[key];
+                                MrBook.productsStore[key] = data[key];
                             });
                         }
-                        _this.game.load.onLoadStart.removeAll();
-                        _this.game.load.onFileComplete.removeAll();
-                        _this.game.load.onLoadComplete.removeAll();
-                        _this.game.state.start("StoreState", true);
+                        $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product_by_avatar', 'pk': 'idAvatar' })
+                            .done(function (data, textStatus, jqXHR) {
+                            Object.keys(data).forEach(function (key) {
+                                MrBook.myProducts.push(data[key].idProduct);
+                            });
+                            _this.game.load.onLoadStart.removeAll();
+                            _this.game.load.onFileComplete.removeAll();
+                            _this.game.load.onLoadComplete.removeAll();
+                            _this.game.state.start("StoreState", true);
+                        })
+                            .fail(function (jqxhr, textStatus, error) {
+                            alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                        });
                     })
                         .fail(function (jqxhr, textStatus, error) {
                         alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
@@ -79,6 +89,7 @@ var MrBook;
             this.game.load.image('bgrStore', 'assets/images/backgrounds/store.png');
             this.game.load.image('imgRack', 'assets/images/rack.png');
             this.game.load.image('imgBallon', 'assets/images/ballon.png');
+            this.game.load.image('imgCheck', 'assets/images/check.png');
             if (MrBook.avatar.gender == MrBook.MALE) {
                 this.game.load.image('strItmSkin', 'assets/images/clothes/skins/bSkin.png');
                 this.game.load.image('strItmWhite', 'assets/images/clothes/skins/bWhite.png');

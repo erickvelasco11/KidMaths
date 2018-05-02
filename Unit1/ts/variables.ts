@@ -8,6 +8,7 @@
     export var CREDITS_VELOCITY = -20;
 
     export var avatar: Avatar;
-    export var products: Array<Product> = new Array<Product>();
+    export var productsStore: Array<Product> = new Array<Product>();
+    export var myProducts: Array<string> = new Array<string>();
     export var totalPoints: number;
 }

@@ -14,63 +14,112 @@ var MrBook;
         __extends(SelectGender, _super);
         function SelectGender() {
             var _this = _super.call(this) || this;
+            _this.currentType = "0";
             _this.clickMenu = function (item) {
                 _this.grpSeeButtons.removeAll();
                 _this.grpBuyButtons.removeAll();
                 _this.grpProducts.removeAll();
+                if (_this.checked != undefined) {
+                    _this.checked.destroy();
+                }
                 switch (item.key) {
                     case "btnMenuSkin":
-                        _this.addSeeBuyButtons("1");
+                        _this.currentType = "1";
                         break;
                     case "btnMenuHead":
-                        _this.addSeeBuyButtons("2");
+                        _this.currentType = "2";
                         break;
                     case "btnMenuTorso":
-                        _this.addSeeBuyButtons("3");
+                        _this.currentType = "3";
                         break;
                     case "btnMenuLegs":
-                        _this.addSeeBuyButtons("4");
+                        _this.currentType = "4";
                         break;
                     case "btnMenuFeet":
-                        _this.addSeeBuyButtons("5");
+                        _this.currentType = "5";
+                        break;
+                }
+                _this.addSeeBuyButtons();
+            };
+            _this.clickSee = function (item, pointer) {
+                switch (+_this.currentType) {
+                    case 1:
+                        _this.grpAvatar.removeChildAt(1);
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z].imageKey);
+                        _this.grpAvatar.addAt(skin, 1);
+                        break;
+                    case 2:
+                        _this.grpAvatar.removeChildAt(5);
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 6].imageKey);
+                        _this.grpAvatar.addAt(skin, 5);
+                        break;
+                    case 3:
+                        _this.grpAvatar.removeChildAt(4);
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 12].imageKey);
+                        _this.grpAvatar.addAt(skin, 4);
+                        break;
+                    case 4:
+                        _this.grpAvatar.removeChildAt(3);
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 17].imageKey);
+                        _this.grpAvatar.addAt(skin, 3);
+                        break;
+                    case 5:
+                        _this.grpAvatar.removeChildAt(2);
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 21].imageKey);
+                        _this.grpAvatar.addAt(skin, 2);
                         break;
                 }
             };
-            _this.clickSee = function () {
+            _this.clickBuy = function (item) {
+                debugger;
             };
-            _this.clickBuy = function () {
-            };
-            _this.addSeeBuyButtons = function (idType) {
+            _this.addSeeBuyButtons = function () {
                 var column = 0;
                 var x = 150;
                 var y = 128;
                 var xProduct = 150;
                 var yProduct = 50;
-                for (var i = 0; i < MrBook.products.length; i++) {
-                    if (MrBook.products[i].idType == idType && (MrBook.products[i].gender == null || MrBook.products[i].gender == MrBook.avatar.gender)) {
-                        var btnSee = _this.game.add.button(x, y, "btnSee", _this.clickSee, _this, 0, 1, 2);
-                        btnSee.height = 30;
-                        btnSee.width = 30;
-                        _this.grpSeeButtons.add(btnSee);
-                        var btnBuy = _this.game.add.button(x += 40, y, "btnBuy", _this.clickBuy, _this, 0, 1, 2);
-                        btnBuy.height = 30;
-                        btnBuy.width = 30;
-                        _this.grpBuyButtons.add(btnBuy);
-                        var prod = _this.game.add.sprite(xProduct, yProduct, "sprProducts", (+MrBook.products[i].id) - 1);
-                        prod.height = 70;
-                        prod.width = 70;
-                        _this.grpProducts.add(prod);
-                        if (column != 2) {
-                            column++;
-                            x += 65;
-                            xProduct += 105;
+                for (var i = 0; i < MrBook.productsStore.length; i++) {
+                    if (MrBook.productsStore[i].idType == _this.currentType) {
+                        if (MrBook.productsStore[i].gender == null || MrBook.productsStore[i].gender == MrBook.avatar.gender) {
+                            var btnSee = _this.game.add.button(x, y, "btnSee", null, _this, 0, 1, 2);
+                            btnSee.height = 30;
+                            btnSee.width = 30;
+                            _this.grpSeeButtons.add(btnSee);
+                            var btnBuy = _this.game.add.button(x += 40, y, "btnBuy", _this.clickBuy, _this, 0, 1, 2);
+                            btnBuy.height = 30;
+                            btnBuy.width = 30;
+                            _this.grpBuyButtons.add(btnBuy);
+                            var prod = _this.game.add.sprite(xProduct, yProduct, "sprProducts", (+MrBook.productsStore[i].id) - 1);
+                            prod.height = 70;
+                            prod.width = 70;
+                            _this.grpProducts.add(prod);
+                            if (MrBook.productsStore[i].id == MrBook.avatar.skinColorId
+                                || MrBook.productsStore[i].id == MrBook.avatar.capId
+                                || MrBook.productsStore[i].id == MrBook.avatar.shirtId
+                                || MrBook.productsStore[i].id == MrBook.avatar.pantsId
+                                || MrBook.productsStore[i].id == MrBook.avatar.shoesId) {
+                                _this.checked = _this.game.add.image(xProduct + 45, yProduct - 10, "imgCheck");
+                                _this.checked.height = 30;
+                                _this.checked.width = 30;
+                            }
+                            if (column != 2) {
+                                column++;
+                                x += 65;
+                                xProduct += 105;
+                            }
+                            else {
+                                column = 0;
+                                x = 150;
+                                xProduct = 150;
+                                y += 125;
+                                yProduct += 125;
+                            }
                         }
                         else {
-                            column = 0;
-                            x = 150;
-                            xProduct = 150;
-                            y += 125;
-                            yProduct += 125;
+                            _this.grpSeeButtons.create(x, y, "strItmNoHat");
+                            _this.grpBuyButtons.create(x, y, "strItmNoHat");
+                            _this.grpProducts.create(x, y, "strItmNoHat");
                         }
                     }
                 }
@@ -132,11 +181,13 @@ var MrBook;
             this.btnMenuFeet = this.game.add.button(0, 390, "btnMenuFeet", this.clickMenu, this, 0, 1, 2);
             this.btnMenuFeet.height = 50;
             this.btnMenuFeet.width = 50;
+            this.grpSeeButtons.onChildInputDown.add(this.clickSee, this);
+            this.grpBuyButtons.onChildInputDown.add(this.clickBuy, this);
         };
         SelectGender.prototype.getImageKey = function (key) {
-            for (var i = 0; i < MrBook.products.length; i++) {
-                if (MrBook.products[i].id == MrBook.avatar[key]) {
-                    return MrBook.products[i].imageKey;
+            for (var i = 0; i < MrBook.productsStore.length; i++) {
+                if (MrBook.productsStore[i].id == MrBook.avatar[key]) {
+                    return MrBook.productsStore[i].imageKey;
                 }
             }
             return "";

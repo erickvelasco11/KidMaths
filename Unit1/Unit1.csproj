@@ -71,7 +71,6 @@
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
     <Content Include="assets\images\backgrounds\store.png" />
     <Content Include="assets\images\ballon.png" />
-    <Content Include="assets\images\blue.jpg" />
     <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\buy.png" />
     <Content Include="assets\images\buttons\menuFeet.png" />
@@ -115,7 +114,6 @@
     <Content Include="assets\images\clothes\torso\dress.png" />
     <Content Include="assets\images\clothes\torso\sacoLana.png" />
     <Content Include="assets\images\cloud.png" />
-    <Content Include="assets\images\green.jpg" />
     <Content Include="assets\images\items\animals\bear.png" />
     <Content Include="assets\images\items\animals\cat.png" />
     <Content Include="assets\images\items\animals\horse.png" />
@@ -173,12 +171,11 @@
     <Content Include="assets\images\items\utensils\spoon.png" />
     <Content Include="assets\images\platform.png" />
     <Content Include="assets\images\rack.png" />
-    <Content Include="assets\images\red.jpg" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="ts\loadStore.ts" />
-    <TypeScriptCompile Include="ts\product.ts" />
+    <TypeScriptCompile Include="ts\models\product.ts" />
     <TypeScriptCompile Include="ts\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
     <None Include="packages.config" />
@@ -237,7 +234,7 @@
     <Content Include="assets\sounds\three.mp3" />
     <Content Include="assets\sounds\two.mp3" />
     <Content Include="index.html" />
-    <TypeScriptCompile Include="ts\avatar.ts" />
+    <TypeScriptCompile Include="ts\models\avatar.ts" />
     <TypeScriptCompile Include="ts\principalMenu.ts" />
     <Content Include="js\jQuery.js" />
     <Content Include="js\phaser_2.6.2.min.js" />

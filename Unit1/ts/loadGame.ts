@@ -217,7 +217,9 @@
                     this.game.state.start("PrincipalMenuState", true);
                 })
                 .fail((jqxhr, textStatus, error) => {
-                    alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                    if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
+                        this.loadComplete();
+                    }
                 });
         }
     }

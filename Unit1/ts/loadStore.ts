@@ -19,6 +19,7 @@
 
             this.game.load.image('imgRack', 'assets/images/rack.png');
             this.game.load.image('imgBallon', 'assets/images/ballon.png');
+            this.game.load.image('imgCheck', 'assets/images/check.png');
 
             if (avatar.gender == MALE) {
                 this.game.load.image('strItmSkin', 'assets/images/clothes/skins/bSkin.png');
@@ -115,21 +116,33 @@
 
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
-            this.loadText.setText("Trayendo todos los productos");
-            if (products.length == 0) {
+            this.loadText.setText("Llenando la tienda...");
+            if (productsStore.length == 0) {
                 $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
                     .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+
+                        this.loadText.setText("Mirando cuáles son tus productos...");
                         for (var i = 0; i < Object.keys(data).length; i++) {
                             Object.keys(data).forEach(function (key) {
-                                products[key] = data[key];
+                                productsStore[key] = data[key];
                             })
                         }
 
-                        this.game.load.onLoadStart.removeAll();
-                        this.game.load.onFileComplete.removeAll();
-                        this.game.load.onLoadComplete.removeAll();
+                        $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product_by_avatar', 'pk':'idAvatar' })
+                            .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                                Object.keys(data).forEach(function (key) {
+                                    myProducts.push(data[key].idProduct);
+                                })
 
-                        this.game.state.start("StoreState", true);
+                                this.game.load.onLoadStart.removeAll();
+                                this.game.load.onFileComplete.removeAll();
+                                this.game.load.onLoadComplete.removeAll();
+
+                                this.game.state.start("StoreState", true);
+                            })
+                            .fail((jqxhr, textStatus, error) => {
+                                alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                            });
                     })
                     .fail((jqxhr, textStatus, error) => {
                         alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
