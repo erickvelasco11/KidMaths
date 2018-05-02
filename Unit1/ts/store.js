@@ -71,7 +71,51 @@ var MrBook;
                 }
             };
             _this.clickBuy = function (item) {
-                debugger;
+                var purchase = {};
+                purchase["0"] = MrBook.avatar.id;
+                switch (+_this.currentType) {
+                    case 1:
+                        _this.grpAvatar.removeChildAt(1);
+                        purchase["1"] = item.z + 1;
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z].imageKey);
+                        _this.grpAvatar.addAt(skin, 1);
+                        break;
+                    case 2:
+                        _this.grpAvatar.removeChildAt(5);
+                        purchase["1"] = item.z + 6;
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 6].imageKey);
+                        _this.grpAvatar.addAt(skin, 5);
+                        break;
+                    case 3:
+                        _this.grpAvatar.removeChildAt(4);
+                        purchase["1"] = item.z + 12;
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 12].imageKey);
+                        _this.grpAvatar.addAt(skin, 4);
+                        break;
+                    case 4:
+                        _this.grpAvatar.removeChildAt(3);
+                        purchase["1"] = item.z + 17;
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 17].imageKey);
+                        _this.grpAvatar.addAt(skin, 3);
+                        break;
+                    case 5:
+                        _this.grpAvatar.removeChildAt(2);
+                        purchase["1"] = item.z + 21;
+                        var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 21].imageKey);
+                        _this.grpAvatar.addAt(skin, 2);
+                        break;
+                }
+                _this.insertPurchase(purchase);
+            };
+            _this.insertPurchase = function (purchase) {
+                $.ajax("https://www.mrbook.com.co/api/php/crud.php", {
+                    type: "post",
+                    data: {
+                        'option': 'Insert', 'tabla': 'mb_products_by_avatar', 'datos': purchase, 'pk': ''
+                    }
+                }).done(function (data, textStatus, jqXHR) {
+                }).fail(function (jqxhr, textStatus, error) {
+                });
             };
             _this.addSeeBuyButtons = function () {
                 var column = 0;

@@ -88,7 +88,6 @@
 
             this.grpSeeButtons.onChildInputDown.add(this.clickSee, this);
             this.grpBuyButtons.onChildInputDown.add(this.clickBuy, this);
-
         }
 
         getImageKey(key:string): string {
@@ -159,7 +158,52 @@
         }
 
         clickBuy = (item) => {
-            debugger
+            var purchase = {};
+            purchase["0"] = avatar.id;
+            switch (+this.currentType) {
+                case 1:
+                    this.grpAvatar.removeChildAt(1);
+                    purchase["1"] = item.z + 1;
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z].imageKey);
+                    this.grpAvatar.addAt(skin, 1);
+                    break;
+                case 2:
+                    this.grpAvatar.removeChildAt(5);
+                    purchase["1"] = item.z + 6;
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 6].imageKey);
+                    this.grpAvatar.addAt(skin, 5);
+                    break;
+                case 3:
+                    this.grpAvatar.removeChildAt(4);
+                    purchase["1"] = item.z + 12;
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 12].imageKey);
+                    this.grpAvatar.addAt(skin, 4);
+                    break;
+                case 4:
+                    this.grpAvatar.removeChildAt(3);
+                    purchase["1"] = item.z + 17;
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 17].imageKey);
+                    this.grpAvatar.addAt(skin, 3);
+                    break;
+                case 5:
+                    this.grpAvatar.removeChildAt(2);
+                    purchase["1"] = item.z + 21;
+                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 21].imageKey);
+                    this.grpAvatar.addAt(skin, 2);
+                    break;
+            }
+            this.insertPurchase(purchase);
+        }
+
+        insertPurchase = (purchase) => {
+            $.ajax("https://www.mrbook.com.co/api/php/crud.php", {
+                type: "post",
+                data: {
+                    'option': 'Insert', 'tabla': 'mb_products_by_avatar', 'datos': purchase, 'pk': ''
+                }
+            }).done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+            }).fail((jqxhr, textStatus, error) => {
+            });
         }
 
         addSeeBuyButtons = () => {
