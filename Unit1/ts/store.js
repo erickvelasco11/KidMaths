@@ -39,7 +39,7 @@ var MrBook;
                         _this.currentType = "5";
                         break;
                 }
-                _this.addSeeBuyButtons();
+                _this.addProductsToRack();
             };
             _this.clickSee = function (item, pointer) {
                 switch (+_this.currentType) {
@@ -82,30 +82,32 @@ var MrBook;
                         break;
                     case 2:
                         _this.grpAvatar.removeChildAt(5);
-                        purchase["1"] = item.z + 6;
+                        purchase["1"] = item.z + 7;
                         var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 6].imageKey);
                         _this.grpAvatar.addAt(skin, 5);
                         break;
                     case 3:
                         _this.grpAvatar.removeChildAt(4);
-                        purchase["1"] = item.z + 12;
+                        purchase["1"] = item.z + 13;
                         var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 12].imageKey);
                         _this.grpAvatar.addAt(skin, 4);
                         break;
                     case 4:
                         _this.grpAvatar.removeChildAt(3);
-                        purchase["1"] = item.z + 17;
+                        purchase["1"] = item.z + 18;
                         var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 17].imageKey);
                         _this.grpAvatar.addAt(skin, 3);
                         break;
                     case 5:
                         _this.grpAvatar.removeChildAt(2);
-                        purchase["1"] = item.z + 21;
+                        purchase["1"] = item.z + 22;
                         var skin = _this.game.add.image(_this.world.width - 50, _this.world.height - 250, MrBook.productsStore[item.z + 21].imageKey);
                         _this.grpAvatar.addAt(skin, 2);
                         break;
                 }
                 _this.insertPurchase(purchase);
+            };
+            _this.clickUse = function () {
             };
             _this.insertPurchase = function (purchase) {
                 $.ajax("https://www.mrbook.com.co/api/php/crud.php", {
@@ -117,12 +119,13 @@ var MrBook;
                 }).fail(function (jqxhr, textStatus, error) {
                 });
             };
-            _this.addSeeBuyButtons = function () {
+            _this.addProductsToRack = function () {
                 var column = 0;
                 var x = 150;
                 var y = 128;
                 var xProduct = 150;
                 var yProduct = 50;
+                var isPurchased;
                 for (var i = 0; i < MrBook.productsStore.length; i++) {
                     if (MrBook.productsStore[i].idType == _this.currentType) {
                         if (MrBook.productsStore[i].gender == null || MrBook.productsStore[i].gender == MrBook.avatar.gender) {
@@ -130,10 +133,25 @@ var MrBook;
                             btnSee.height = 30;
                             btnSee.width = 30;
                             _this.grpSeeButtons.add(btnSee);
-                            var btnBuy = _this.game.add.button(x += 40, y, "btnBuy", _this.clickBuy, _this, 0, 1, 2);
-                            btnBuy.height = 30;
-                            btnBuy.width = 30;
-                            _this.grpBuyButtons.add(btnBuy);
+                            isPurchased = false;
+                            for (var j = 0; j < MrBook.myProducts.length; j++) {
+                                if (MrBook.productsStore[i].id == MrBook.myProducts[j]) {
+                                    isPurchased = true;
+                                    break;
+                                }
+                            }
+                            if (isPurchased) {
+                                var btnUse = _this.game.add.button(x += 40, y, "btnUse", _this.clickUse, _this, 0, 1, 2);
+                                btnUse.height = 30;
+                                btnUse.width = 30;
+                                _this.grpBuyButtons.add(btnUse);
+                            }
+                            else {
+                                var btnBuy = _this.game.add.button(x += 40, y, "btnBuy", _this.clickBuy, _this, 0, 1, 2);
+                                btnBuy.height = 30;
+                                btnBuy.width = 30;
+                                _this.grpBuyButtons.add(btnBuy);
+                            }
                             var prod = _this.game.add.sprite(xProduct, yProduct, "sprProducts", (+MrBook.productsStore[i].id) - 1);
                             prod.height = 70;
                             prod.width = 70;

@@ -69,6 +69,7 @@
             this.game.load.spritesheet('btnBack', 'assets/images/buttons/back.png', 200, 200);
             this.game.load.spritesheet('btnSee', 'assets/images/buttons/see.png', 200, 200);
             this.game.load.spritesheet('btnBuy', 'assets/images/buttons/buy.png', 200, 200);
+            this.game.load.spritesheet('btnUse', 'assets/images/buttons/use.png', 200, 200);
 
             this.game.load.spritesheet('sprProducts', 'assets/images/clothes/products.png', 64, 64, 25, 0, 0);
             
@@ -128,7 +129,7 @@
                             })
                         }
 
-                        $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product_by_avatar', 'pk':'idAvatar' })
+                        $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_products_by_avatar', 'pk':'idAvatar' })
                             .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
                                 Object.keys(data).forEach(function (key) {
                                     myProducts.push(data[key].idProduct);

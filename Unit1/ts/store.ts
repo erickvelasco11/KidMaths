@@ -124,7 +124,7 @@
                     this.currentType = "5";
                     break;
             }
-            this.addSeeBuyButtons();
+            this.addProductsToRack();
         }
 
         clickSee = (item, pointer) => {
@@ -169,30 +169,34 @@
                     break;
                 case 2:
                     this.grpAvatar.removeChildAt(5);
-                    purchase["1"] = item.z + 6;
+                    purchase["1"] = item.z + 7;
                     var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 6].imageKey);
                     this.grpAvatar.addAt(skin, 5);
                     break;
                 case 3:
                     this.grpAvatar.removeChildAt(4);
-                    purchase["1"] = item.z + 12;
+                    purchase["1"] = item.z + 13;
                     var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 12].imageKey);
                     this.grpAvatar.addAt(skin, 4);
                     break;
                 case 4:
                     this.grpAvatar.removeChildAt(3);
-                    purchase["1"] = item.z + 17;
+                    purchase["1"] = item.z + 18;
                     var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 17].imageKey);
                     this.grpAvatar.addAt(skin, 3);
                     break;
                 case 5:
                     this.grpAvatar.removeChildAt(2);
-                    purchase["1"] = item.z + 21;
+                    purchase["1"] = item.z + 22;
                     var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 21].imageKey);
                     this.grpAvatar.addAt(skin, 2);
                     break;
             }
             this.insertPurchase(purchase);
+        }
+
+        clickUse = () => {
+
         }
 
         insertPurchase = (purchase) => {
@@ -206,12 +210,13 @@
             });
         }
 
-        addSeeBuyButtons = () => {
+        addProductsToRack = () => {
             var column = 0;
             var x = 150;
             var y = 128;
             var xProduct = 150;
             var yProduct = 50;
+            var isPurchased;
             for (var i = 0; i < productsStore.length; i++) {
                 if (productsStore[i].idType == this.currentType) {
                     if (productsStore[i].gender == null || productsStore[i].gender == avatar.gender) {
@@ -219,10 +224,25 @@
                         btnSee.height = 30;
                         btnSee.width = 30;
                         this.grpSeeButtons.add(btnSee);
-                        var btnBuy = this.game.add.button(x += 40, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
-                        btnBuy.height = 30;
-                        btnBuy.width = 30;
-                        this.grpBuyButtons.add(btnBuy);
+
+                        isPurchased = false;
+                        for (var j = 0; j < myProducts.length; j++) {
+                            if (productsStore[i].id == myProducts[j]) {
+                                isPurchased = true;
+                                break;
+                            }
+                        }
+                        if (isPurchased) {
+                            var btnUse = this.game.add.button(x += 40, y, "btnUse", this.clickUse, this, 0, 1, 2);
+                            btnUse.height = 30;
+                            btnUse.width = 30;
+                            this.grpBuyButtons.add(btnUse);
+                        } else {
+                            var btnBuy = this.game.add.button(x += 40, y, "btnBuy", this.clickBuy, this, 0, 1, 2);
+                            btnBuy.height = 30;
+                            btnBuy.width = 30;
+                            this.grpBuyButtons.add(btnBuy);
+                        }
 
                         var prod = this.game.add.sprite(xProduct, yProduct, "sprProducts", (+productsStore[i].id) - 1);
                         prod.height = 70;
