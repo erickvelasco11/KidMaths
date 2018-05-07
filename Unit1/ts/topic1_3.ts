@@ -150,6 +150,7 @@
         }
 
         finishTopic1_3() {
+            this.clear();
             totalPoints = 0;
         }
     }

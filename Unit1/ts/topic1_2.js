@@ -122,6 +122,7 @@ var MrBook;
             this.game.state.start("PrincipalMenuState", true);
         };
         Topic1_2.prototype.finishTopic1_2 = function () {
+            MrBook.totalPoints = 0;
             this.figure.kill();
         };
         return Topic1_2;

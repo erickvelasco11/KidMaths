@@ -4,7 +4,7 @@
         private fruits: Array<string> = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
         private school: Array<string> = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
         private clothes: Array<string> = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
-        private items: Phaser.Group;
+        private items: Array<Phaser.Sprite> = [];
         private birds: Phaser.Group;
         private boxes: Phaser.Group;
 
@@ -25,10 +25,13 @@
 
             this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
-            this.items = this.game.add.group(this.game, "items", true, true, Phaser.Physics.ARCADE);
-            this.birds = this.game.add.group(this.game, "birds", true, true, Phaser.Physics.ARCADE);
-            this.boxes = this.game.add.group(this.game, "boxes", true, true, Phaser.Physics.ARCADE);
+
+            //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
+            this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
+            this.boxes = this.game.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
+
             this.boxes.inputEnableChildren = true;
+            //this.items.inputEnableChildren = true;
 
             var box1 = this.boxes.create(this.game.world.centerX / 2, 500, "itmFruitBasket");
             box1.anchor.setTo(0.5, 0.5);
@@ -54,6 +57,7 @@
 
             this.startReadyCountdown();
             this.timer.startTimer(100, this.launchBird);
+            
         }
 
         update() {
@@ -63,7 +67,11 @@
         }
 
         finishTopic1_1() {
-            this.items.removeAll();
+            this.items.forEach((item, index, array) => {
+                item.kill();
+            });
+
+            this.items = [];
         }
 
         launchBird = () => {
@@ -73,16 +81,8 @@
                 var y = this.game.rnd.integerInRange(50, 300);
                 var velocity = this.game.rnd.integerInRange(50, 100) * isFromLeft;
 
-                isFromLeft == 1 ? x = -110 : x = this.game.world.width + 110;
-
-                var bird = this.birds.create(x, y - 45, 'sprBird');
-                bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
-                bird.animations.play('right');
-                bird.width = 100;
-                bird.height = 100;
-                bird.body.velocity.x = velocity;
-                bird.scale.x *= isFromLeft;
-
+                isFromLeft == 1 ? x = -70 : x = this.game.world.width + 50;
+                
                 if (this.subState == PLAYING) {
                     var category = this.game.rnd.integerInRange(0, 2);
                     var idItem;
@@ -97,22 +97,36 @@
                             idItem = this.clothes[this.game.rnd.integerInRange(0, 4)];
                             break;
                     }
-                    isFromLeft == 1 ? x += 60 : x -= 110;
-                    this.item = this.items.create(x, y, idItem);
+                    this.item = this.game.add.sprite(x, y, idItem);
                     this.item.width = 50;
                     this.item.height = 50;
+                    this.item.physicsEnabled = true;
+                    this.item.physicsType = Phaser.Physics.ARCADE;
+                    this.game.physics.arcade.enable(this.item);
                     this.item.body.velocity.x = velocity
 
                     this.item.inputEnabled = true;
-                    this.item.input.enableDrag(false, true);
-                    this.item.input.pixelPerfectOver = true;
-                    this.item.events.onDragStart.add(this.onDragStart, this);
                     if (+avatar.age < MINIMUM_AGE) {
                         this.item.events.onInputDown.add(this.onDragStop, this);
                     } else {
+                        this.item.input.enableDrag(false, true);
+                        //this.item.input.pixelPerfectOver = true;
+                        this.item.events.onDragStart.add(this.onDragStart, this);
                         this.item.events.onDragStop.add(this.onDragStop, this);
                     }
+
+                    this.items.push(this.item);
                 }
+
+                isFromLeft == 1 ? x -= 60 : x += 110;
+                var bird = this.birds.create(x, y - 45, 'sprBird');
+                bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
+                bird.animations.play('right');
+                bird.width = 100;
+                bird.height = 100;
+                bird.body.velocity.x = velocity;
+                bird.scale.x *= isFromLeft;
+
                 this.timer.startTimer(2000, this.launchBird);
             }
         }
@@ -126,11 +140,13 @@
                 item.body.velocity.x = 0;
                 this.clickedItem = item;
                 this.subState = PAUSE;
-                this.items.remove(item, false, false);
-                putInPause(this.birds, this.dataPause);
-                putInPause(this.items, this.dataPause);
+
+                this.putInPause(this.birds);
+                this.putInPauseArray(this.items);
                 this.bgrPause = this.game.add.image(0, 0, "bgrPause");
-                this.bgrPause.bringToTop();
+                this.game.world.bringToTop(this.boxes);
+                this.game.world.bringToTop(item);
+
                 this.timer.pause();
                 this.boxes.onChildInputUp.add(this.clickBox);
             } else {
@@ -143,10 +159,11 @@
 
             this.bgrPause.kill();
             this.boxes.onChildInputUp.removeAll();
-            removePause(this.birds, this.dataPause);
-            removePause(this.items, this.dataPause);
+            this.removePause(this.birds);
+            this.removePauseArray(this.items);
             this.putInChest(this.clickedItem, item);
             this.timer.resume();
+            this.clickedItem.kill();
         }
 
         putInChest = (item, chest) => {
@@ -169,22 +186,33 @@
 
             this.game.state.start("PrincipalMenuState", true);
         }
-    }
-}
 
-function putInPause(set, dataPause) {
-    debugger
-    for (var i = 0; i < set.length; i++) {
-        dataPause.push(set.children[i].body.velocity.x);
-        set.children[i].body.velocity.x = 0;
-        set.children[i].inputEnabled = false;
-    }
-}
+        putInPause(set: Phaser.Group) {
+            for (var i = 0; i < set.length; i++) {
+                this.dataPause.push((set.children[i] as Phaser.Sprite).body.velocity.x);
+                (set.children[i] as Phaser.Sprite).body.velocity.x = 0;
+            }
+        }
 
-function removePause(set, dataPause) {
-    debugger
-    for (var i = 0; i < set.length; i++) {
-        set.children[i].body.velocity.x = dataPause.shift();
-        set.children[i].inputEnabled = true;
+        putInPauseArray(set: Array<Phaser.Sprite>) {
+            for (var i = 0; i < set.length; i++) {
+                this.dataPause.push(set[i].body.velocity.x);
+                set[i].body.velocity.x = 0;
+                set[i].inputEnabled = false;
+            }
+        }
+
+        removePause(set: Phaser.Group) {
+            for (var i = 0; i < set.length; i++) {
+                (set.children[i] as Phaser.Sprite).body.velocity.x = this.dataPause.shift();
+            }
+        }
+
+        removePauseArray(set: Array<Phaser.Sprite>) {
+            for (var i = 0; i < set.length; i++) {
+                set[i].body.velocity.x = this.dataPause.shift();
+                set[i].inputEnabled = true;
+            }
+        }
     }
 }

@@ -17,6 +17,7 @@ var MrBook;
             _this.fruits = ["itmApple", "itmBananas", "itmPear", "itmStrawberry", "itmTomato"];
             _this.school = ["itmBook", "itmErase", "itmPencil", "itmPencilColors", "itmPencilCase"];
             _this.clothes = ["itmClothCap", "itmDress", "itmJacket", "itmShirt", "itmSocks"];
+            _this.items = [];
             _this.dataPause = [];
             _this.launchBird = function () {
                 if (_this.subState != MrBook.PAUSE) {
@@ -24,14 +25,7 @@ var MrBook;
                     var x;
                     var y = _this.game.rnd.integerInRange(50, 300);
                     var velocity = _this.game.rnd.integerInRange(50, 100) * isFromLeft;
-                    isFromLeft == 1 ? x = -110 : x = _this.game.world.width + 110;
-                    var bird = _this.birds.create(x, y - 45, 'sprBird');
-                    bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
-                    bird.animations.play('right');
-                    bird.width = 100;
-                    bird.height = 100;
-                    bird.body.velocity.x = velocity;
-                    bird.scale.x *= isFromLeft;
+                    isFromLeft == 1 ? x = -70 : x = _this.game.world.width + 50;
                     if (_this.subState == MrBook.PLAYING) {
                         var category = _this.game.rnd.integerInRange(0, 2);
                         var idItem;
@@ -46,22 +40,33 @@ var MrBook;
                                 idItem = _this.clothes[_this.game.rnd.integerInRange(0, 4)];
                                 break;
                         }
-                        isFromLeft == 1 ? x += 60 : x -= 110;
-                        _this.item = _this.items.create(x, y, idItem);
+                        _this.item = _this.game.add.sprite(x, y, idItem);
                         _this.item.width = 50;
                         _this.item.height = 50;
+                        _this.item.physicsEnabled = true;
+                        _this.item.physicsType = Phaser.Physics.ARCADE;
+                        _this.game.physics.arcade.enable(_this.item);
                         _this.item.body.velocity.x = velocity;
                         _this.item.inputEnabled = true;
-                        _this.item.input.enableDrag(false, true);
-                        _this.item.input.pixelPerfectOver = true;
-                        _this.item.events.onDragStart.add(_this.onDragStart, _this);
                         if (+MrBook.avatar.age < MrBook.MINIMUM_AGE) {
                             _this.item.events.onInputDown.add(_this.onDragStop, _this);
                         }
                         else {
+                            _this.item.input.enableDrag(false, true);
+                            //this.item.input.pixelPerfectOver = true;
+                            _this.item.events.onDragStart.add(_this.onDragStart, _this);
                             _this.item.events.onDragStop.add(_this.onDragStop, _this);
                         }
+                        _this.items.push(_this.item);
                     }
+                    isFromLeft == 1 ? x -= 60 : x += 110;
+                    var bird = _this.birds.create(x, y - 45, 'sprBird');
+                    bird.animations.add('right', [0, 1, 2, 3, 4, 5], 15, true);
+                    bird.animations.play('right');
+                    bird.width = 100;
+                    bird.height = 100;
+                    bird.body.velocity.x = velocity;
+                    bird.scale.x *= isFromLeft;
                     _this.timer.startTimer(2000, _this.launchBird);
                 }
             };
@@ -73,11 +78,11 @@ var MrBook;
                     item.body.velocity.x = 0;
                     _this.clickedItem = item;
                     _this.subState = MrBook.PAUSE;
-                    _this.items.remove(item, false, false);
-                    putInPause(_this.birds, _this.dataPause);
-                    putInPause(_this.items, _this.dataPause);
+                    _this.putInPause(_this.birds);
+                    _this.putInPauseArray(_this.items);
                     _this.bgrPause = _this.game.add.image(0, 0, "bgrPause");
-                    _this.bgrPause.bringToTop();
+                    _this.game.world.bringToTop(_this.boxes);
+                    _this.game.world.bringToTop(item);
                     _this.timer.pause();
                     _this.boxes.onChildInputUp.add(_this.clickBox);
                 }
@@ -89,10 +94,11 @@ var MrBook;
                 _this.subState = MrBook.PLAYING;
                 _this.bgrPause.kill();
                 _this.boxes.onChildInputUp.removeAll();
-                removePause(_this.birds, _this.dataPause);
-                removePause(_this.items, _this.dataPause);
+                _this.removePause(_this.birds);
+                _this.removePauseArray(_this.items);
                 _this.putInChest(_this.clickedItem, item);
                 _this.timer.resume();
+                _this.clickedItem.kill();
             };
             _this.putInChest = function (item, chest) {
                 if (_this.fruits.indexOf(item.key) != -1 && chest.key == "itmFruitBasket"
@@ -116,10 +122,11 @@ var MrBook;
             MrBook.totalPoints = 0;
             this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
-            this.items = this.game.add.group(this.game, "items", true, true, Phaser.Physics.ARCADE);
-            this.birds = this.game.add.group(this.game, "birds", true, true, Phaser.Physics.ARCADE);
-            this.boxes = this.game.add.group(this.game, "boxes", true, true, Phaser.Physics.ARCADE);
+            //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
+            this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
+            this.boxes = this.game.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
             this.boxes.inputEnableChildren = true;
+            //this.items.inputEnableChildren = true;
             var box1 = this.boxes.create(this.game.world.centerX / 2, 500, "itmFruitBasket");
             box1.anchor.setTo(0.5, 0.5);
             box1.width = 120;
@@ -149,7 +156,10 @@ var MrBook;
             }
         };
         Topic1_1.prototype.finishTopic1_1 = function () {
-            this.items.removeAll();
+            this.items.forEach(function (item, index, array) {
+                item.kill();
+            });
+            this.items = [];
         };
         Topic1_1.prototype.next = function () {
             this.removeResults();
@@ -157,23 +167,32 @@ var MrBook;
             this.boxes.removeAll();
             this.game.state.start("PrincipalMenuState", true);
         };
+        Topic1_1.prototype.putInPause = function (set) {
+            for (var i = 0; i < set.length; i++) {
+                this.dataPause.push(set.children[i].body.velocity.x);
+                set.children[i].body.velocity.x = 0;
+            }
+        };
+        Topic1_1.prototype.putInPauseArray = function (set) {
+            for (var i = 0; i < set.length; i++) {
+                this.dataPause.push(set[i].body.velocity.x);
+                set[i].body.velocity.x = 0;
+                set[i].inputEnabled = false;
+            }
+        };
+        Topic1_1.prototype.removePause = function (set) {
+            for (var i = 0; i < set.length; i++) {
+                set.children[i].body.velocity.x = this.dataPause.shift();
+            }
+        };
+        Topic1_1.prototype.removePauseArray = function (set) {
+            for (var i = 0; i < set.length; i++) {
+                set[i].body.velocity.x = this.dataPause.shift();
+                set[i].inputEnabled = true;
+            }
+        };
         return Topic1_1;
     }(MrBook.Topic));
     MrBook.Topic1_1 = Topic1_1;
 })(MrBook || (MrBook = {}));
-function putInPause(set, dataPause) {
-    debugger;
-    for (var i = 0; i < set.length; i++) {
-        dataPause.push(set.children[i].body.velocity.x);
-        set.children[i].body.velocity.x = 0;
-        set.children[i].inputEnabled = false;
-    }
-}
-function removePause(set, dataPause) {
-    debugger;
-    for (var i = 0; i < set.length; i++) {
-        set.children[i].body.velocity.x = dataPause.shift();
-        set.children[i].inputEnabled = true;
-    }
-}
 //# sourceMappingURL=topic1_1.js.map

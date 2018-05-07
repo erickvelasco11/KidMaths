@@ -132,6 +132,7 @@
         }
 
         finishTopic1_2() {
+            totalPoints = 0;
             this.figure.kill();
         }
     }
