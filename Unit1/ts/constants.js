@@ -17,6 +17,6 @@ var MrBook;
     MrBook.BLUE = 0x0000FF;
     MrBook.GRAVITY = 1000;
     MrBook.ROUND_TIME = 60;
-    MrBook.MINIMUM_AGE = 8;
+    MrBook.MINIMUM_AGE = 18;
 })(MrBook || (MrBook = {}));
 //# sourceMappingURL=constants.js.map
