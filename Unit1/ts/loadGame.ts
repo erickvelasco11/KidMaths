@@ -126,7 +126,9 @@
             this.game.load.image('itmKnife', 'assets/images/items/utensils/knife.png');
             this.game.load.image('itmAxe', 'assets/images/items/utensils/axe.png');
 
-            this.game.load.spritesheet('btnStart', 'assets/images/buttons/start.png', 200, 80);
+            this.game.load.spritesheet('btnStart1', 'assets/images/buttons/start1.png', 200, 97);
+            this.game.load.spritesheet('btnStart2', 'assets/images/buttons/start2.png', 200, 97);
+            this.game.load.spritesheet('btnStart3', 'assets/images/buttons/start3.png', 200, 97);
             this.game.load.spritesheet('btnNext', 'assets/images/buttons/next.png', 200, 80);
             this.game.load.spritesheet('btnStore', 'assets/images/buttons/store.png', 300, 100);
 

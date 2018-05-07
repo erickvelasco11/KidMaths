@@ -14,10 +14,20 @@ var MrBook;
         __extends(PrincipalMenu, _super);
         function PrincipalMenu() {
             var _this = _super.call(this) || this;
-            _this.startGame = function () {
+            _this.startGame1 = function () {
                 _this.btnStart.kill();
                 _this.title.kill();
                 _this.game.state.start("Topic1_1State", true);
+            };
+            _this.startGame2 = function () {
+                _this.btnStart.kill();
+                _this.title.kill();
+                _this.game.state.start("Topic1_2State", true);
+            };
+            _this.startGame3 = function () {
+                _this.btnStart.kill();
+                _this.title.kill();
+                _this.game.state.start("Topic1_3State", true);
             };
             _this.startStore = function () {
                 _this.game.state.start("LoadStoreState");
@@ -31,7 +41,11 @@ var MrBook;
             else {
                 this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPlayingGirl");
             }
-            this.btnStart = this.game.add.button(this.game.world.centerX, 400, 'btnStart', this.startGame, this, 0, 1, 2);
+            this.btnStart = this.game.add.button(this.game.world.centerX - 200, 300, 'btnStart1', this.startGame1, this, 0, 1, 2);
+            this.btnStart.anchor.x = 0.5;
+            this.btnStart = this.game.add.button(this.game.world.centerX, 300, 'btnStart2', this.startGame2, this, 0, 1, 2);
+            this.btnStart.anchor.x = 0.5;
+            this.btnStart = this.game.add.button(this.game.world.centerX + 200, 300, 'btnStart3', this.startGame3, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStore = this.game.add.button(100, this.game.world.height - 80, 'btnStore', this.startStore, this, 0, 1, 2);
             this.btnStore.anchor.x = 0.5;
