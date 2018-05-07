@@ -7,6 +7,7 @@
         private items: Array<Phaser.Sprite> = [];
         private birds: Phaser.Group;
         private boxes: Phaser.Group;
+        private floor: Phaser.Sprite;
 
         private item: Phaser.Sprite;
         private clickedItem;
@@ -23,8 +24,13 @@
             this.finishTopic = this.finishTopic1_1;
             totalPoints = 0;
 
-            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
+            this.floor = this.game.add.sprite(0, this.game.world.height - 20, "imgFloor");
+            this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
+            this.floor.body.immovable = true;
+            this.floor.body.checkCollision.up = true;
 
             //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
             this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
@@ -63,6 +69,7 @@
         update() {
             if (this.subState == PLAYING) {
                 this.game.physics.arcade.collide(this.items, this.boxes, this.putInChest);
+                this.game.physics.arcade.collide(this.floor, this.items);
             }
         }
 
@@ -110,9 +117,13 @@
                         this.item.events.onInputDown.add(this.onDragStop, this);
                     } else {
                         this.item.input.enableDrag(false, true);
-                        //this.item.input.pixelPerfectOver = true;
+                        this.item.input.pixelPerfectOver = true;
                         this.item.events.onDragStart.add(this.onDragStart, this);
                         this.item.events.onDragStop.add(this.onDragStop, this);
+                        this.item.body.bounce.set(0.3);
+
+                        this.item.body.onCollide = new Phaser.Signal();
+                        this.item.body.onCollide.add(this.onFloor, this);
                     }
 
                     this.items.push(this.item);
@@ -131,14 +142,23 @@
             }
         }
 
+        onFloor = (item1, item2) => {
+            item1.body.onCollide.removeAll();
+            this.timer.startTimer(3000, () => { item1.kill() });
+        }
+        disapearItem = (item) => {
+            alert("Desaparecer")
+            item.kill();
+        }
+
         onDragStart = (item, pointer) => {
             item.body.velocity.x = 0;
         }
 
         onDragStop = (item, pointer) => {
+            this.clickedItem = item;
             if (+avatar.age < MINIMUM_AGE) {
                 item.body.velocity.x = 0;
-                this.clickedItem = item;
                 this.subState = PAUSE;
 
                 this.putInPause(this.birds);

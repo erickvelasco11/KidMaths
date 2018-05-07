@@ -111,6 +111,7 @@ var MrBook;
             this.game.load.image('imgSquare', 'assets/images/square.png');
             this.game.load.image('imgPlatform', 'assets/images/platform.png');
             this.game.load.image('imgCloud', 'assets/images/cloud.png');
+            this.game.load.image('imgFloor', 'assets/images/floor.png');
             this.game.load.image('itmSchoolBag', 'assets/images/items/schoolBag.png');
             this.game.load.image('itmClothesbasket', 'assets/images/items/clothesBasket.png');
             this.game.load.image('itmFruitBasket', 'assets/images/items/fruitBasket.png');

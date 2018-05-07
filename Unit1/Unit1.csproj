@@ -170,6 +170,7 @@
     <Content Include="assets\images\items\utensils\knife.png" />
     <Content Include="assets\images\items\utensils\spoon.png" />
     <Content Include="assets\images\platform.png" />
+    <Content Include="assets\images\floor.png" />
     <Content Include="assets\images\rack.png" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />

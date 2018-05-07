@@ -53,9 +53,12 @@ var MrBook;
                         }
                         else {
                             _this.item.input.enableDrag(false, true);
-                            //this.item.input.pixelPerfectOver = true;
+                            _this.item.input.pixelPerfectOver = true;
                             _this.item.events.onDragStart.add(_this.onDragStart, _this);
                             _this.item.events.onDragStop.add(_this.onDragStop, _this);
+                            _this.item.body.bounce.set(0.3);
+                            _this.item.body.onCollide = new Phaser.Signal();
+                            _this.item.body.onCollide.add(_this.onFloor, _this);
                         }
                         _this.items.push(_this.item);
                     }
@@ -70,13 +73,21 @@ var MrBook;
                     _this.timer.startTimer(2000, _this.launchBird);
                 }
             };
+            _this.onFloor = function (item1, item2) {
+                item1.body.onCollide.removeAll();
+                _this.timer.startTimer(3000, function () { item1.kill(); });
+            };
+            _this.disapearItem = function (item) {
+                alert("Desaparecer");
+                item.kill();
+            };
             _this.onDragStart = function (item, pointer) {
                 item.body.velocity.x = 0;
             };
             _this.onDragStop = function (item, pointer) {
+                _this.clickedItem = item;
                 if (+MrBook.avatar.age < MrBook.MINIMUM_AGE) {
                     item.body.velocity.x = 0;
-                    _this.clickedItem = item;
                     _this.subState = MrBook.PAUSE;
                     _this.putInPause(_this.birds);
                     _this.putInPauseArray(_this.items);
@@ -120,8 +131,12 @@ var MrBook;
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_1;
             MrBook.totalPoints = 0;
-            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
+            this.floor = this.game.add.sprite(0, this.game.world.height - 20, "imgFloor");
+            this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
+            this.floor.body.immovable = true;
+            this.floor.body.checkCollision.up = true;
             //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
             this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
             this.boxes = this.game.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
@@ -153,6 +168,7 @@ var MrBook;
         Topic1_1.prototype.update = function () {
             if (this.subState == MrBook.PLAYING) {
                 this.game.physics.arcade.collide(this.items, this.boxes, this.putInChest);
+                this.game.physics.arcade.collide(this.floor, this.items);
             }
         };
         Topic1_1.prototype.finishTopic1_1 = function () {

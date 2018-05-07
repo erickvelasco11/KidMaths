@@ -21,5 +21,5 @@ module MrBook {
 
     export const GRAVITY = 1000;
     export const ROUND_TIME = 60;
-    export const MINIMUM_AGE = 18;
+    export const MINIMUM_AGE = 8;
 }
