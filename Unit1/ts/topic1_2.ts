@@ -128,7 +128,7 @@
 
         next() {
             this.removeResults();
-            this.game.state.start("Topic1_3State", true);
+            this.game.state.start("PrincipalMenuState", true);
         }
 
         finishTopic1_2() {

@@ -8,6 +8,12 @@ var MrBook;
             this.timer.add(delay, callback, this);
             this.timer.start();
         };
+        Timer.prototype.pause = function () {
+            this.timer.pause();
+        };
+        Timer.prototype.resume = function () {
+            this.timer.resume();
+        };
         return Timer;
     }());
     MrBook.Timer = Timer;

@@ -12,5 +12,13 @@
             this.timer.start();
         }
 
+        pause() {
+            this.timer.pause();
+        }
+
+        resume() {
+            this.timer.resume();
+        }
+
     }
 }
