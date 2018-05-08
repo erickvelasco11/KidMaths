@@ -175,9 +175,9 @@
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="ts\loadStore.ts" />
+    <TypeScriptCompile Include="ts\loads\loadStore.ts" />
     <TypeScriptCompile Include="ts\models\product.ts" />
-    <TypeScriptCompile Include="ts\topic1_2.ts" />
+    <TypeScriptCompile Include="ts\topics\topic1\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -240,12 +240,12 @@
     <Content Include="js\jQuery.js" />
     <Content Include="js\phaser_2.6.2.min.js" />
     <TypeScriptCompile Include="ts\store.ts" />
-    <TypeScriptCompile Include="ts\topic1_3.ts" />
+    <TypeScriptCompile Include="ts\topics\topic1\topic1_3.ts" />
     <Content Include="Web.config" />
-    <TypeScriptCompile Include="ts\timer.ts" />
-    <TypeScriptCompile Include="ts\topic.ts" />
-    <TypeScriptCompile Include="ts\topic1_1.ts" />
-    <TypeScriptCompile Include="ts\variables.ts" />
+    <TypeScriptCompile Include="ts\utils\timer.ts" />
+    <TypeScriptCompile Include="ts\topics\topic.ts" />
+    <TypeScriptCompile Include="ts\topics\topic1\topic1_1.ts" />
+    <TypeScriptCompile Include="ts\utils\variables.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,12 +254,12 @@
     <Folder Include="css\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="ts\constants.ts" />
+    <TypeScriptCompile Include="ts\utils\constants.ts" />
     <TypeScriptCompile Include="ts\kidMaths.ts" />
     <TypeScriptCompile Include="ts\libraries\p2.d.ts" />
     <TypeScriptCompile Include="ts\libraries\phaser.d.ts" />
     <TypeScriptCompile Include="ts\libraries\pixi.d.ts" />
-    <TypeScriptCompile Include="ts\loadGame.ts" />
+    <TypeScriptCompile Include="ts\loads\loadGame.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
