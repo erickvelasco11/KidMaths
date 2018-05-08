@@ -57,6 +57,8 @@ var MrBook;
         LoadTopic8_1.prototype.preload = function () {
             this.game.load.image('bgrJungle', 'assets/images/backgrounds/jungle.jpg');
             this.game.load.image('imgCannon', 'assets/images/cannon.png');
+            this.game.load.image('imgBall', 'assets/images/ball.png');
+            this.game.load.image('imgMonkey', 'assets/images/monkey.png');
             this.game.load.onLoadStart.add(this.loadStart, this);
             this.game.load.onFileComplete.add(this.fileComplete, this);
             this.game.load.onLoadComplete.add(this.loadComplete, this);
