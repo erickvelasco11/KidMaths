@@ -21,31 +21,31 @@ var MrBook;
             _this.dataPause = [];
             _this.launchBird = function () {
                 if (_this.subState != MrBook.PAUSE) {
-                    var isFromLeft = _this.game.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
+                    var isFromLeft = _this.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
                     var x;
-                    var y = _this.game.rnd.integerInRange(50, 300);
-                    var velocity = _this.game.rnd.integerInRange(50, 100) * isFromLeft;
-                    isFromLeft == 1 ? x = -70 : x = _this.game.world.width + 50;
+                    var y = _this.rnd.integerInRange(50, 300);
+                    var velocity = _this.rnd.integerInRange(50, 100) * isFromLeft;
+                    isFromLeft == 1 ? x = -70 : x = _this.world.width + 50;
                     if (_this.subState == MrBook.PLAYING) {
-                        var category = _this.game.rnd.integerInRange(0, 2);
+                        var category = _this.rnd.integerInRange(0, 2);
                         var idItem;
                         switch (category) {
                             case 0:
-                                idItem = _this.fruits[_this.game.rnd.integerInRange(0, 4)];
+                                idItem = _this.fruits[_this.rnd.integerInRange(0, 4)];
                                 break;
                             case 1:
-                                idItem = _this.school[_this.game.rnd.integerInRange(0, 4)];
+                                idItem = _this.school[_this.rnd.integerInRange(0, 4)];
                                 break;
                             case 2:
-                                idItem = _this.clothes[_this.game.rnd.integerInRange(0, 4)];
+                                idItem = _this.clothes[_this.rnd.integerInRange(0, 4)];
                                 break;
                         }
-                        _this.item = _this.game.add.sprite(x, y, idItem);
+                        _this.item = _this.add.sprite(x, y, idItem);
                         _this.item.width = 50;
                         _this.item.height = 50;
                         _this.item.physicsEnabled = true;
                         _this.item.physicsType = Phaser.Physics.ARCADE;
-                        _this.game.physics.arcade.enable(_this.item);
+                        _this.physics.arcade.enable(_this.item);
                         _this.item.body.velocity.x = velocity;
                         _this.item.inputEnabled = true;
                         if (+MrBook.avatar.age < MrBook.MINIMUM_AGE) {
@@ -91,9 +91,9 @@ var MrBook;
                     _this.subState = MrBook.PAUSE;
                     _this.putInPause(_this.birds);
                     _this.putInPauseArray(_this.items);
-                    _this.bgrPause = _this.game.add.image(0, 0, "bgrPause");
-                    _this.game.world.bringToTop(_this.boxes);
-                    _this.game.world.bringToTop(item);
+                    _this.bgrPause = _this.add.image(0, 0, "bgrPause");
+                    _this.world.bringToTop(_this.boxes);
+                    _this.world.bringToTop(item);
                     _this.timer.pause();
                     _this.boxes.onChildInputUp.add(_this.clickBox);
                 }
@@ -117,10 +117,10 @@ var MrBook;
                     || _this.school.indexOf(item.key) != -1 && chest.key == "itmSchoolBag") {
                     _this.points++;
                     _this.txtPoints.setText("Puntos: " + _this.points);
-                    _this.game.add.audio("sndPoint").play('', 0);
+                    _this.add.audio("sndPoint").play('', 0);
                 }
                 else {
-                    _this.game.add.audio("sndError").play('', 0);
+                    _this.add.audio("sndError").play('', 0);
                 }
                 item.kill();
             };
@@ -131,30 +131,30 @@ var MrBook;
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_1;
             MrBook.totalPoints = 0;
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);
-            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
-            this.floor = this.game.add.sprite(0, this.game.world.height - 20, "imgFloor");
-            this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
+            this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrArcade");
+            this.floor = this.add.sprite(0, this.world.height - 20, "imgFloor");
+            this.physics.enable(this.floor, Phaser.Physics.ARCADE);
             this.floor.body.immovable = true;
             this.floor.body.checkCollision.up = true;
-            //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
-            this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
-            this.boxes = this.game.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
+            //this.items = this.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
+            this.birds = this.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
+            this.boxes = this.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
             this.boxes.inputEnableChildren = true;
             //this.items.inputEnableChildren = true;
-            var box1 = this.boxes.create(this.game.world.centerX / 2, 500, "itmFruitBasket");
+            var box1 = this.boxes.create(this.world.centerX / 2, 500, "itmFruitBasket");
             box1.anchor.setTo(0.5, 0.5);
             box1.width = 120;
             box1.height = 120;
             box1.enableBody = true;
             box1.body.immovable = true;
-            var box2 = this.boxes.create(this.game.world.centerX, 500, "itmSchoolBag");
+            var box2 = this.boxes.create(this.world.centerX, 500, "itmSchoolBag");
             box2.anchor.setTo(0.5, 0.5);
             box2.width = 120;
             box2.height = 120;
             box2.enableBody = true;
             box2.body.immovable = true;
-            var box3 = this.boxes.create(this.game.world.centerX + (this.game.world.centerX / 2), 500, "itmClothesbasket");
+            var box3 = this.boxes.create(this.world.centerX + (this.world.centerX / 2), 500, "itmClothesbasket");
             box3.anchor.setTo(0.5, 0.5);
             box3.width = 120;
             box3.height = 120;
@@ -167,8 +167,8 @@ var MrBook;
         };
         Topic1_1.prototype.update = function () {
             if (this.subState == MrBook.PLAYING) {
-                this.game.physics.arcade.collide(this.items, this.boxes, this.putInChest);
-                this.game.physics.arcade.collide(this.floor, this.items);
+                this.physics.arcade.collide(this.items, this.boxes, this.putInChest);
+                this.physics.arcade.collide(this.floor, this.items);
             }
         };
         Topic1_1.prototype.finishTopic1_1 = function () {

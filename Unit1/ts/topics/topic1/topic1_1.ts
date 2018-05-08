@@ -19,7 +19,7 @@
         }
 
         create() {
-            this.timer = new Timer(this);
+            this.timer = new Timer(this.game);
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_1;
             totalPoints = 0;
@@ -204,7 +204,7 @@
             this.birds.removeAll();
             this.boxes.removeAll();
 
-            this.state.start("PrincipalMenu", true);
+            this.game.state.start("PrincipalMenu", true);
         }
 
         putInPause(set: Phaser.Group) {
