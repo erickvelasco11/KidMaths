@@ -1,8 +1,8 @@
 ﻿module MrBook {
     export class Topic8_1 extends Topic {
 
-        private imgCannon: Phaser.Image;
-        private imgBall: Phaser.Image;
+        private imgCannon: Phaser.Sprite;
+        private imgBall: Phaser.Sprite;
         private grpMonkeys: Phaser.Group;
         private grpCannon: Phaser.Group;
 
@@ -25,26 +25,32 @@
             this.createMonkey((this.world.width / 6)*4);
             this.createMonkey((this.world.width / 6)*5);
 
-            this.imgCannon = this.add.image(this.world.centerX, this.world.height, "imgCannon");
+            this.imgCannon = this.add.sprite(this.world.centerX, this.world.height, "imgCannon");
             this.imgCannon.anchor.set(0.5, 0.5)
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
-            this.imgBall = this.add.image(this.world.centerX, this.world.height, "imgBall");
+            this.imgBall = this.add.sprite(this.world.centerX, this.world.height, "imgBall");
             this.imgBall.anchor.set(0.5);
             this.imgBall.pivot.y = 700;
             this.imgBall.height = 50;
             this.imgBall.width = 50;
+            this.physics.enable(this.imgBall, Phaser.Physics.ARCADE);
+            this.imgBall.physicsEnabled = true;
+            //this.imgBall.body.collideWorldBounds = true;
+
+            this.input.onUp.add(this.shoot);
         }
-        render() {
-        }
+
         update() {
             this.height = (this.world.height - this.input.y);
             this.width = (this.input.x - this.world.centerX);
             this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
-            this.angle = Math.asin(this.height / this.hypo)*(180 / Math.PI);
+            this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
+
             this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y - 10), '#ffff00');
+            if (this.subState != SHOOTING) {
+                this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+            }
             this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
         }
 
@@ -53,6 +59,12 @@
             img.anchor.x = 0.5;
             img.height = 100;
             img.width = 100;
+        }
+
+        shoot = () => {
+            this.subState = SHOOTING;
+            this.input.onUp.removeAll();
+            this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 500);
         }
 
     }

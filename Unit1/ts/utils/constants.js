@@ -10,6 +10,7 @@ var MrBook;
     MrBook.PLAYING = 1;
     MrBook.PAUSE = 2;
     MrBook.RESULTS = 3;
+    MrBook.SHOOTING = 4;
     MrBook.GREEN = 0x00FF00;
     MrBook.YELLOW = 0xFCD516;
     MrBook.RED = 0xFF0000;

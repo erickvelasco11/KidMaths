@@ -12,6 +12,7 @@ module MrBook {
     export const PLAYING = 1;
     export const PAUSE = 2;
     export const RESULTS = 3;
+    export const SHOOTING = 4;
 
     export const GREEN = 0x00FF00;
     export const YELLOW = 0xFCD516;

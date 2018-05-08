@@ -19,39 +19,39 @@
         }
 
         create() {
-            this.timer = new Timer(this.game);
+            this.timer = new Timer(this);
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic1_1;
             totalPoints = 0;
 
-            this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            this.physics.startSystem(Phaser.Physics.ARCADE);
 
-            this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrArcade");
-            this.floor = this.game.add.sprite(0, this.game.world.height - 20, "imgFloor");
-            this.game.physics.enable(this.floor, Phaser.Physics.ARCADE);
+            this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrArcade");
+            this.floor = this.add.sprite(0, this.world.height - 20, "imgFloor");
+            this.physics.enable(this.floor, Phaser.Physics.ARCADE);
             this.floor.body.immovable = true;
             this.floor.body.checkCollision.up = true;
 
-            //this.items = this.game.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
-            this.birds = this.game.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
-            this.boxes = this.game.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
+            //this.items = this.add.group(undefined, "grpItems", undefined, true, Phaser.Physics.ARCADE);
+            this.birds = this.add.group(undefined, "grpBirds", undefined, true, Phaser.Physics.ARCADE);
+            this.boxes = this.add.group(undefined, "grpBoxes", false, true, Phaser.Physics.ARCADE);
 
             this.boxes.inputEnableChildren = true;
             //this.items.inputEnableChildren = true;
 
-            var box1 = this.boxes.create(this.game.world.centerX / 2, 500, "itmFruitBasket");
+            var box1 = this.boxes.create(this.world.centerX / 2, 500, "itmFruitBasket");
             box1.anchor.setTo(0.5, 0.5);
             box1.width = 120;
             box1.height = 120;
             box1.enableBody = true;
             box1.body.immovable = true;
-            var box2 = this.boxes.create(this.game.world.centerX, 500, "itmSchoolBag");
+            var box2 = this.boxes.create(this.world.centerX, 500, "itmSchoolBag");
             box2.anchor.setTo(0.5, 0.5);
             box2.width = 120;
             box2.height = 120;
             box2.enableBody = true;
             box2.body.immovable = true;
-            var box3 = this.boxes.create(this.game.world.centerX + (this.game.world.centerX / 2), 500, "itmClothesbasket");
+            var box3 = this.boxes.create(this.world.centerX + (this.world.centerX / 2), 500, "itmClothesbasket");
             box3.anchor.setTo(0.5, 0.5);
             box3.width = 120;
             box3.height = 120;
@@ -68,8 +68,8 @@
 
         update() {
             if (this.subState == PLAYING) {
-                this.game.physics.arcade.collide(this.items, this.boxes, this.putInChest);
-                this.game.physics.arcade.collide(this.floor, this.items);
+                this.physics.arcade.collide(this.items, this.boxes, this.putInChest);
+                this.physics.arcade.collide(this.floor, this.items);
             }
         }
 
@@ -83,33 +83,33 @@
 
         launchBird = () => {
             if (this.subState != PAUSE) {
-                var isFromLeft = this.game.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
+                var isFromLeft = this.rnd.integerInRange(0, 1) == 0 ? -1 : 1;
                 var x;
-                var y = this.game.rnd.integerInRange(50, 300);
-                var velocity = this.game.rnd.integerInRange(50, 100) * isFromLeft;
+                var y = this.rnd.integerInRange(50, 300);
+                var velocity = this.rnd.integerInRange(50, 100) * isFromLeft;
 
-                isFromLeft == 1 ? x = -70 : x = this.game.world.width + 50;
+                isFromLeft == 1 ? x = -70 : x = this.world.width + 50;
                 
                 if (this.subState == PLAYING) {
-                    var category = this.game.rnd.integerInRange(0, 2);
+                    var category = this.rnd.integerInRange(0, 2);
                     var idItem;
                     switch (category) {
                         case 0:
-                            idItem = this.fruits[this.game.rnd.integerInRange(0, 4)];
+                            idItem = this.fruits[this.rnd.integerInRange(0, 4)];
                             break;
                         case 1:
-                            idItem = this.school[this.game.rnd.integerInRange(0, 4)];
+                            idItem = this.school[this.rnd.integerInRange(0, 4)];
                             break;
                         case 2:
-                            idItem = this.clothes[this.game.rnd.integerInRange(0, 4)];
+                            idItem = this.clothes[this.rnd.integerInRange(0, 4)];
                             break;
                     }
-                    this.item = this.game.add.sprite(x, y, idItem);
+                    this.item = this.add.sprite(x, y, idItem);
                     this.item.width = 50;
                     this.item.height = 50;
                     this.item.physicsEnabled = true;
                     this.item.physicsType = Phaser.Physics.ARCADE;
-                    this.game.physics.arcade.enable(this.item);
+                    this.physics.arcade.enable(this.item);
                     this.item.body.velocity.x = velocity
 
                     this.item.inputEnabled = true;
@@ -163,9 +163,9 @@
 
                 this.putInPause(this.birds);
                 this.putInPauseArray(this.items);
-                this.bgrPause = this.game.add.image(0, 0, "bgrPause");
-                this.game.world.bringToTop(this.boxes);
-                this.game.world.bringToTop(item);
+                this.bgrPause = this.add.image(0, 0, "bgrPause");
+                this.world.bringToTop(this.boxes);
+                this.world.bringToTop(item);
 
                 this.timer.pause();
                 this.boxes.onChildInputUp.add(this.clickBox);
@@ -192,9 +192,9 @@
                 || this.school.indexOf(item.key) != -1 && chest.key == "itmSchoolBag") {
                 this.points++;
                 this.txtPoints.setText("Puntos: " + this.points);
-                this.game.add.audio("sndPoint").play('', 0);
+                this.add.audio("sndPoint").play('', 0);
             } else {
-                this.game.add.audio("sndError").play('', 0);
+                this.add.audio("sndError").play('', 0);
             }
             item.kill();
         }
@@ -204,7 +204,7 @@
             this.birds.removeAll();
             this.boxes.removeAll();
 
-            this.game.state.start("PrincipalMenu", true);
+            this.state.start("PrincipalMenu", true);
         }
 
         putInPause(set: Phaser.Group) {

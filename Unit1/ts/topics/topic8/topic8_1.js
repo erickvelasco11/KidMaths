@@ -18,6 +18,11 @@ var MrBook;
             _this.height = 0;
             _this.hypo = 0;
             _this.width = 0;
+            _this.shoot = function () {
+                _this.subState = MrBook.SHOOTING;
+                _this.input.onUp.removeAll();
+                _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 500);
+            };
             return _this;
         }
         Topic8_1.prototype.create = function () {
@@ -29,17 +34,19 @@ var MrBook;
             this.createMonkey(this.world.centerX);
             this.createMonkey((this.world.width / 6) * 4);
             this.createMonkey((this.world.width / 6) * 5);
-            this.imgCannon = this.add.image(this.world.centerX, this.world.height, "imgCannon");
+            this.imgCannon = this.add.sprite(this.world.centerX, this.world.height, "imgCannon");
             this.imgCannon.anchor.set(0.5, 0.5);
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
-            this.imgBall = this.add.image(this.world.centerX, this.world.height, "imgBall");
+            this.imgBall = this.add.sprite(this.world.centerX, this.world.height, "imgBall");
             this.imgBall.anchor.set(0.5);
             this.imgBall.pivot.y = 700;
             this.imgBall.height = 50;
             this.imgBall.width = 50;
-        };
-        Topic8_1.prototype.render = function () {
+            this.physics.enable(this.imgBall, Phaser.Physics.ARCADE);
+            this.imgBall.physicsEnabled = true;
+            //this.imgBall.body.collideWorldBounds = true;
+            this.input.onUp.add(this.shoot);
         };
         Topic8_1.prototype.update = function () {
             this.height = (this.world.height - this.input.y);
@@ -47,8 +54,9 @@ var MrBook;
             this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
             this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
             this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y - 10), '#ffff00');
+            if (this.subState != MrBook.SHOOTING) {
+                this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+            }
             this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
         };
         Topic8_1.prototype.createMonkey = function (xPos) {
