@@ -13,41 +13,39 @@ var MrBook;
     var PrincipalMenu = /** @class */ (function (_super) {
         __extends(PrincipalMenu, _super);
         function PrincipalMenu() {
-            var _this = _super.call(this) || this;
-            _this.startGame1 = function () {
-                _this.btnStart.kill();
-                _this.title.kill();
-                _this.game.state.start("Topic1_1State", true);
-            };
-            _this.startGame2 = function () {
-                _this.btnStart.kill();
-                _this.title.kill();
-                _this.game.state.start("Topic1_2State", true);
-            };
-            _this.startGame3 = function () {
-                _this.btnStart.kill();
-                _this.title.kill();
-                _this.game.state.start("Topic1_3State", true);
-            };
-            _this.startStore = function () {
-                _this.game.state.start("LoadStoreState");
-            };
-            return _this;
+            return _super.call(this) || this;
         }
         PrincipalMenu.prototype.create = function () {
+            var _this = this;
             if (MrBook.avatar.gender == MrBook.MALE) {
                 this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPlayingBoy");
             }
             else {
                 this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPlayingGirl");
             }
-            this.btnStart = this.game.add.button(this.game.world.centerX - 200, 300, 'btnStart1', this.startGame1, this, 0, 1, 2);
+            this.btnStart = this.game.add.button(this.game.world.centerX - 200, 250, 'btnStart1', function () {
+                _this.game.state.start("Topic1_1");
+            }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
-            this.btnStart = this.game.add.button(this.game.world.centerX, 300, 'btnStart2', this.startGame2, this, 0, 1, 2);
+            this.btnStart.scale.set(0.8, 0.8);
+            this.btnStart = this.game.add.button(this.game.world.centerX, 250, 'btnStart2', function () {
+                _this.game.state.start("Topic1_2");
+            }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
-            this.btnStart = this.game.add.button(this.game.world.centerX + 200, 300, 'btnStart3', this.startGame3, this, 0, 1, 2);
+            this.btnStart.scale.set(0.8, 0.8);
+            this.btnStart = this.game.add.button(this.game.world.centerX + 200, 250, 'btnStart3', function () {
+                _this.game.state.start("Topic1_3");
+            }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
-            this.btnStore = this.game.add.button(100, this.game.world.height - 80, 'btnStore', this.startStore, this, 0, 1, 2);
+            this.btnStart.scale.set(0.8, 0.8);
+            this.btnStart = this.game.add.button(this.game.world.centerX, 350, 'btnStart2', function () {
+                _this.game.state.start("LoadTopic8_1");
+            }, this, 0, 1, 2);
+            this.btnStart.anchor.x = 0.5;
+            this.btnStart.scale.set(0.8, 0.8);
+            this.btnStore = this.game.add.button(100, this.game.world.height - 80, 'btnStore', function () {
+                _this.game.state.start("LoadStore");
+            }, this, 0, 1, 2);
             this.btnStore.anchor.x = 0.5;
             this.btnStore.scale.set(0.6, 0.6);
             this.title = this.game.add.image(this.game.world.centerX, 100, 'titNameUnit');

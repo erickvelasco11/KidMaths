@@ -20,12 +20,11 @@
             this.game.load.image('titNameUnit', 'assets/images/titles/nameUnit.png');
 
             this.game.load.image('bgrPause', 'assets/images/backgrounds/pause.png');
-            this.game.load.image('bgrOptions', 'assets/images/backgrounds/options.jpg');
+            this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
             this.game.load.image('bgrPlayingBoy', 'assets/images/backgrounds/playingBoy.jpg');
             this.game.load.image('bgrPlayingGirl', 'assets/images/backgrounds/playingGirl.jpg');
             this.game.load.image('bgrArcade', 'assets/images/backgrounds/arcade.png');
             this.game.load.image('bgrPuzzle', 'assets/images/backgrounds/puzzle.jpg');
-            this.game.load.image('bgrSelect', 'assets/images/backgrounds/select.png');
             
             this.game.load.image('tit1', 'assets/images/titles/1.png');
             this.game.load.image('tit2', 'assets/images/titles/2.png');
@@ -217,7 +216,7 @@
                     this.game.load.onFileComplete.removeAll();
                     this.game.load.onLoadComplete.removeAll();
 
-                    this.game.state.start("PrincipalMenuState", true);
+                    this.game.state.start("PrincipalMenu", true);
                 })
                 .fail((jqxhr, textStatus, error) => {
                     if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {

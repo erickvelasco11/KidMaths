@@ -181,7 +181,7 @@ var MrBook;
             this.removeResults();
             this.birds.removeAll();
             this.boxes.removeAll();
-            this.game.state.start("PrincipalMenuState", true);
+            this.game.state.start("PrincipalMenu", true);
         };
         Topic1_1.prototype.putInPause = function (set) {
             for (var i = 0; i < set.length; i++) {

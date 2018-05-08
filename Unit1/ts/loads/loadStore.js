@@ -65,7 +65,7 @@ var MrBook;
                             _this.game.load.onLoadStart.removeAll();
                             _this.game.load.onFileComplete.removeAll();
                             _this.game.load.onLoadComplete.removeAll();
-                            _this.game.state.start("StoreState", true);
+                            _this.game.state.start("Store", true);
                         })
                             .fail(function (jqxhr, textStatus, error) {
                             alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
@@ -79,14 +79,14 @@ var MrBook;
                     _this.game.load.onLoadStart.removeAll();
                     _this.game.load.onFileComplete.removeAll();
                     _this.game.load.onLoadComplete.removeAll();
-                    _this.game.state.start("StoreState", true);
+                    _this.game.state.start("Store", true);
                 }
             };
             return _this;
         }
         //Función para listar los componentes que se van a cargar para el juego
         LoadStore.prototype.preload = function () {
-            this.game.load.image('bgrStore', 'assets/images/backgrounds/store.png');
+            this.game.load.image('bgrStore', 'assets/images/backgrounds/store.jpg');
             this.game.load.image('imgRack', 'assets/images/rack.png');
             this.game.load.image('imgBallon', 'assets/images/ballon.png');
             this.game.load.image('imgCheck', 'assets/images/check.png');

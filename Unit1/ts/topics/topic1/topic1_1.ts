@@ -204,7 +204,7 @@
             this.birds.removeAll();
             this.boxes.removeAll();
 
-            this.game.state.start("PrincipalMenuState", true);
+            this.game.state.start("PrincipalMenu", true);
         }
 
         putInPause(set: Phaser.Group) {

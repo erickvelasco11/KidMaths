@@ -68,8 +68,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\backgrounds\jungle.jpg" />
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
-    <Content Include="assets\images\backgrounds\store.png" />
+    <Content Include="assets\images\backgrounds\store.jpg" />
     <Content Include="assets\images\ballon.png" />
     <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\buy.png" />
@@ -79,7 +80,12 @@
     <Content Include="assets\images\buttons\menuSkin.png" />
     <Content Include="assets\images\buttons\menuTorso.png" />
     <Content Include="assets\images\buttons\see.png" />
+    <Content Include="assets\images\buttons\start1.png" />
+    <Content Include="assets\images\buttons\start2.png" />
+    <Content Include="assets\images\buttons\start3.png" />
     <Content Include="assets\images\buttons\store.png" />
+    <Content Include="assets\images\cannon.png" />
+    <Content Include="assets\images\check.png" />
     <Content Include="assets\images\circle.png" />
     <Content Include="assets\images\clothes\feet\converse.png" />
     <Content Include="assets\images\clothes\feet\elegantShoes.png" />
@@ -175,6 +181,7 @@
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="ts\loads\loadTopic8_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadStore.ts" />
     <TypeScriptCompile Include="ts\models\product.ts" />
     <TypeScriptCompile Include="ts\topics\topic1\topic1_2.ts" />
@@ -190,7 +197,6 @@
   <ItemGroup>
     <Content Include="assets\images\backgrounds\pause.png" />
     <Content Include="assets\images\backgrounds\loading.jpg" />
-    <Content Include="assets\images\backgrounds\options.jpg" />
     <Content Include="assets\images\backgrounds\page.jpg" />
     <Content Include="assets\images\backgrounds\playing.jpg" />
     <Content Include="assets\images\backgrounds\playingBoy.jpg" />
@@ -242,6 +248,7 @@
     <TypeScriptCompile Include="ts\store.ts" />
     <TypeScriptCompile Include="ts\topics\topic1\topic1_3.ts" />
     <Content Include="Web.config" />
+    <TypeScriptCompile Include="ts\topics\topic8\topic8_1.ts" />
     <TypeScriptCompile Include="ts\utils\timer.ts" />
     <TypeScriptCompile Include="ts\topics\topic.ts" />
     <TypeScriptCompile Include="ts\topics\topic1\topic1_1.ts" />
