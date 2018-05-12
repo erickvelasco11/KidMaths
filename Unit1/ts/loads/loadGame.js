@@ -102,8 +102,6 @@ var MrBook;
             this.load.image('tit3', 'assets/images/titles/3.png');
             this.load.image('titNow', 'assets/images/titles/now.png');
             this.load.image('titCongrats', 'assets/images/titles/congrats.png');
-            this.load.image('imgBoy', 'assets/images/boy.png');
-            this.load.image('imgGirl', 'assets/images/girl.png');
             this.load.image('imgOpenBox', 'assets/images/openBox.png');
             this.load.image('imgTriangle', 'assets/images/triangle.png');
             this.load.image('imgCircle', 'assets/images/circle.png');
@@ -202,7 +200,7 @@ var MrBook;
             this.load.start();
         };
         return LoadGame;
-    }(Phaser.State));
+    }(MrBook.Loads));
     MrBook.LoadGame = LoadGame;
 })(MrBook || (MrBook = {}));
 //# sourceMappingURL=loadGame.js.map

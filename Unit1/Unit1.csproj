@@ -181,6 +181,7 @@
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="ts\loads\loads.ts" />
     <TypeScriptCompile Include="ts\loads\loadTopic8_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadStore.ts" />
     <TypeScriptCompile Include="ts\models\product.ts" />

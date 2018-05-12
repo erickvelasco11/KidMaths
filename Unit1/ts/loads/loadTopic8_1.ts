@@ -1,5 +1,5 @@
 ﻿module MrBook {
-    export class LoadTopic8_1 extends Phaser.State {
+    export class LoadTopic8_1 extends Loads {
 
         //Variables de manejo de estados de carga
         private loadBar: Phaser.Graphics;
@@ -15,6 +15,8 @@
 
         //Función para listar los componentes que se van a cargar para el juego
         preload() {
+            this.superPreload();
+
             this.load.image('bgrJungle', 'assets/images/backgrounds/jungle.jpg');
             this.load.image('imgCannon', 'assets/images/cannon.png');
             this.load.image('imgBall', 'assets/images/ball.png');
@@ -63,11 +65,32 @@
 
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
-            this.load.onLoadStart.removeAll();
-            this.load.onFileComplete.removeAll();
-            this.load.onLoadComplete.removeAll();
+            if (productsStore.length == 0) {
+                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
+                    .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
 
-            this.game.state.start("Topic8_1", true);
+                        this.loadText.setText("Mirando cuáles son tus productos...");
+                        for (var i = 0; i < Object.keys(data).length; i++) {
+                            Object.keys(data).forEach(function (key) {
+                                productsStore[key] = data[key];
+                            })
+                        }
+                        this.game.load.onLoadStart.removeAll();
+                        this.game.load.onFileComplete.removeAll();
+                        this.game.load.onLoadComplete.removeAll();
+
+                        this.game.state.start("Topic8_1", true);
+                    })
+                    .fail((jqxhr, textStatus, error) => {
+                        alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                    });
+            } else {
+                this.game.load.onLoadStart.removeAll();
+                this.game.load.onFileComplete.removeAll();
+                this.game.load.onLoadComplete.removeAll();
+
+                this.game.state.start("Topic8_1", true);
+            }
         }
     }
 }

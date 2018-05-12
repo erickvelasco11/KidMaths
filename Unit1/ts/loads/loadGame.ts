@@ -1,5 +1,5 @@
 ﻿module MrBook {
-    export class LoadGame extends Phaser.State {
+    export class LoadGame extends Loads {
 
         //Variables de manejo de estados de carga
         private loadBar: Phaser.Graphics;
@@ -32,8 +32,6 @@
             this.load.image('titNow', 'assets/images/titles/now.png');
             this.load.image('titCongrats', 'assets/images/titles/congrats.png');
 
-            this.load.image('imgBoy', 'assets/images/boy.png');
-            this.load.image('imgGirl', 'assets/images/girl.png');
             this.load.image('imgOpenBox', 'assets/images/openBox.png');
             this.load.image('imgTriangle', 'assets/images/triangle.png');
             this.load.image('imgCircle', 'assets/images/circle.png');

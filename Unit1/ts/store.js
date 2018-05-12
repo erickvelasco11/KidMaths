@@ -141,7 +141,7 @@ var MrBook;
             this.grpBuyButtons = this.game.add.group();
             this.grpSeeButtons = this.game.add.group();
             this.grpProducts = this.game.add.group();
-            MrBook.avatar.paint(this.game, this.world.width - 50, this.world.height - 250);
+            MrBook.avatar.paint(this.game, this.world.width - 250, this.world.height - 450);
             this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu, this, 0, 1, 2);
             this.btnMenuSkin.height = 50;
             this.btnMenuSkin.width = 50;

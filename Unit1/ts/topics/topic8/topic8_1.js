@@ -28,13 +28,12 @@ var MrBook;
                 _this.physics.enable(_this.imgBall, Phaser.Physics.ARCADE);
                 _this.imgBall.physicsEnabled = true;
                 //this.imgBall.body.collideWorldBounds = true;
-                _this.input.onUp.add(_this.shoot);
+                _this.input.onTap.add(_this.shoot);
             };
             _this.shoot = function () {
                 _this.subState = MrBook.SHOOTING;
                 _this.input.onUp.removeAll();
-                _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 500);
-                _this.timer.startTimer(3000, _this.prepareBall);
+                _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 1500);
             };
             return _this;
         }
@@ -52,6 +51,7 @@ var MrBook;
             this.imgCannon.anchor.set(0.5, 0.5);
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
+            MrBook.avatar.paint(this.game, this.world.width - 250, this.world.height - 250);
             this.prepareBall();
         };
         Topic8_1.prototype.update = function () {
@@ -63,7 +63,13 @@ var MrBook;
             if (this.subState != MrBook.SHOOTING) {
                 this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
             }
-            this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
+            else {
+                if (!this.imgBall.inCamera) {
+                    this.imgBall.kill();
+                    this.prepareBall();
+                }
+            }
+            // this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
         };
         Topic8_1.prototype.createMonkey = function (xPos) {
             var img = this.grpMonkeys.create(xPos, 0, "imgMonkey");

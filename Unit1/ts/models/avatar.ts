@@ -30,9 +30,6 @@
             this.grpAvatar.create(x, y, this.getImageKey("pantsId"));
             this.grpAvatar.create(x, y, this.getImageKey("shirtId"));
             this.grpAvatar.create(x, y, this.getImageKey("capId"));
-            this.grpAvatar.width = 200;
-            this.grpAvatar.height = 400;
-            this.grpAvatar.position.set(250, 20);
         }
 
         changeClothes(type: number, indexSprite: number) {

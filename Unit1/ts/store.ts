@@ -54,7 +54,7 @@
             this.grpSeeButtons = this.game.add.group();
             this.grpProducts = this.game.add.group();
 
-            avatar.paint(this.game, this.world.width - 50, this.world.height - 250);
+            avatar.paint(this.game, this.world.width - 250, this.world.height - 450);
 
             this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu, this, 0, 1, 2);
             this.btnMenuSkin.height = 50;

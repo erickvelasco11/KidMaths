@@ -21,15 +21,17 @@
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
             this.createMonkey((this.world.width / 6));
-            this.createMonkey((this.world.width / 6)*2);
+            this.createMonkey((this.world.width / 6) * 2);
             this.createMonkey(this.world.centerX);
-            this.createMonkey((this.world.width / 6)*4);
-            this.createMonkey((this.world.width / 6)*5);
+            this.createMonkey((this.world.width / 6) * 4);
+            this.createMonkey((this.world.width / 6) * 5);
 
             this.imgCannon = this.add.sprite(this.world.centerX, this.world.height, "imgCannon");
             this.imgCannon.anchor.set(0.5, 0.5)
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
+
+            avatar.paint(this.game, this.world.width - 250, this.world.height - 250);
 
             this.prepareBall();
         }
@@ -43,8 +45,13 @@
             this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
             if (this.subState != SHOOTING) {
                 this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+            } else {
+                if (!this.imgBall.inCamera) {
+                    this.imgBall.kill();
+                    this.prepareBall();
+                }
             }
-            this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
+            // this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
         }
 
         createMonkey(xPos: number) {
@@ -65,14 +72,13 @@
             this.imgBall.physicsEnabled = true;
             //this.imgBall.body.collideWorldBounds = true;
 
-            this.input.onUp.add(this.shoot);
+            this.input.onTap.add(this.shoot);
         }
 
         shoot = () => {
             this.subState = SHOOTING;
             this.input.onUp.removeAll();
-            this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 500);
-            this.timer.startTimer(3000, this.prepareBall);
+            this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 1500);
         }
 
     }

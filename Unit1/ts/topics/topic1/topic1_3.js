@@ -136,7 +136,7 @@ var MrBook;
         };
         Topic1_3.prototype.next = function () {
             this.removeResults();
-            this.game.state.start("PrincipalMenuState", true);
+            this.game.state.start("PrincipalMenu", true);
         };
         Topic1_3.prototype.finishTopic1_3 = function () {
             this.clear();

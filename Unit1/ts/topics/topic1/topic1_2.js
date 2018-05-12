@@ -119,7 +119,7 @@ var MrBook;
         };
         Topic1_2.prototype.next = function () {
             this.removeResults();
-            this.game.state.start("PrincipalMenuState", true);
+            this.game.state.start("PrincipalMenu", true);
         };
         Topic1_2.prototype.finishTopic1_2 = function () {
             MrBook.totalPoints = 0;
