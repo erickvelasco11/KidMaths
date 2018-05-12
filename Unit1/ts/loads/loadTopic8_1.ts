@@ -15,37 +15,37 @@
 
         //Función para listar los componentes que se van a cargar para el juego
         preload() {
-            this.game.load.image('bgrJungle', 'assets/images/backgrounds/jungle.jpg');
-            this.game.load.image('imgCannon', 'assets/images/cannon.png');
-            this.game.load.image('imgBall', 'assets/images/ball.png');
-            this.game.load.image('imgMonkey', 'assets/images/monkey.png');
+            this.load.image('bgrJungle', 'assets/images/backgrounds/jungle.jpg');
+            this.load.image('imgCannon', 'assets/images/cannon.png');
+            this.load.image('imgBall', 'assets/images/ball.png');
+            this.load.image('imgMonkey', 'assets/images/monkey.png');
 
-            this.game.load.onLoadStart.add(this.loadStart, this);
-            this.game.load.onFileComplete.add(this.fileComplete, this);
-            this.game.load.onLoadComplete.add(this.loadComplete, this);
-            this.game.load.start();
+            this.load.onLoadStart.add(this.loadStart, this);
+            this.load.onFileComplete.add(this.fileComplete, this);
+            this.load.onLoadComplete.add(this.loadComplete, this);
+            this.load.start();
         }
 
         loadStart = () => {
-            this.background = this.game.add.sprite(0, 0, 'bgrLoading');
-            this.background.height = this.game.world.height;
-            this.background.width = this.game.world.width;
+            this.background = this.add.sprite(0, 0, 'bgrLoading');
+            this.background.height = this.world.height;
+            this.background.width = this.world.width;
             this.background.sendToBack();
 
-            var image = this.game.add.image(0, this.game.world.centerY, "bgrPause");
+            var image = this.add.image(0, this.world.centerY, "bgrPause");
 
-            this.loadBar = this.game.add.graphics(100, this.game.world.centerY + 100);
+            this.loadBar = this.add.graphics(100, this.world.centerY + 100);
             this.loadBar.lineStyle(35, 0xffffff, 1);
             this.loadBar.tint = YELLOW;
             this.loadBar.moveTo(0, 0);
-            this.loadBar.lineTo(this.game.world.width - 200, 0);
+            this.loadBar.lineTo(this.world.width - 200, 0);
             this.loadBar.scale.x = 0;
             this.loadBar.endFill();
 
-            this.loadText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 140, "Cargando...", { font: "30px Arial", align: "center", fill: '#ffffff' });
+            this.loadText = this.add.text(this.world.centerX, this.world.centerY + 140, "Cargando...", { font: "30px Arial", align: "center", fill: '#ffffff' });
             this.loadText.anchor.set(0.5);
 
-            this.player1 = this.game.add.sprite(52, this.game.world.centerY + 72, 'pikachu');
+            this.player1 = this.add.sprite(52, this.world.centerY + 72, 'pikachu');
             this.player1.animations.add('right', [1, 2, 3, 4, 5], 10, true);
             this.player1.animations.play('right');
             this.player1.bringToTop();
@@ -63,9 +63,9 @@
 
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
-            this.game.load.onLoadStart.removeAll();
-            this.game.load.onFileComplete.removeAll();
-            this.game.load.onLoadComplete.removeAll();
+            this.load.onLoadStart.removeAll();
+            this.load.onFileComplete.removeAll();
+            this.load.onLoadComplete.removeAll();
 
             this.game.state.start("Topic8_1", true);
         }

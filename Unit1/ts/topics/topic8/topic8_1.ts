@@ -17,6 +17,7 @@
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.timer = new Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
             this.createMonkey((this.world.width / 6));
@@ -29,16 +30,8 @@
             this.imgCannon.anchor.set(0.5, 0.5)
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
-            this.imgBall = this.add.sprite(this.world.centerX, this.world.height, "imgBall");
-            this.imgBall.anchor.set(0.5);
-            this.imgBall.pivot.y = 700;
-            this.imgBall.height = 50;
-            this.imgBall.width = 50;
-            this.physics.enable(this.imgBall, Phaser.Physics.ARCADE);
-            this.imgBall.physicsEnabled = true;
-            //this.imgBall.body.collideWorldBounds = true;
 
-            this.input.onUp.add(this.shoot);
+            this.prepareBall();
         }
 
         update() {
@@ -61,10 +54,25 @@
             img.width = 100;
         }
 
+        prepareBall = () => {
+            this.subState = PLAYING;
+            this.imgBall = this.add.sprite(this.world.centerX, this.world.height, "imgBall");
+            this.imgBall.anchor.set(0.5);
+            this.imgBall.pivot.y = 700;
+            this.imgBall.height = 50;
+            this.imgBall.width = 50;
+            this.physics.enable(this.imgBall, Phaser.Physics.ARCADE);
+            this.imgBall.physicsEnabled = true;
+            //this.imgBall.body.collideWorldBounds = true;
+
+            this.input.onUp.add(this.shoot);
+        }
+
         shoot = () => {
             this.subState = SHOOTING;
             this.input.onUp.removeAll();
             this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 500);
+            this.timer.startTimer(3000, this.prepareBall);
         }
 
     }

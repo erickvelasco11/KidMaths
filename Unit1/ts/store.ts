@@ -12,7 +12,6 @@
 
         private grpSeeButtons: Phaser.Group;
         private grpBuyButtons: Phaser.Group;
-        private grpAvatar: Phaser.Group;
         private grpProducts: Phaser.Group;
 
         private btnMenuSkin: Phaser.Button;
@@ -53,22 +52,9 @@
 
             this.grpBuyButtons = this.game.add.group();
             this.grpSeeButtons = this.game.add.group();
-            this.grpAvatar = this.game.add.group();
             this.grpProducts = this.game.add.group();
 
-            if (avatar.gender == MALE) {
-                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgBoy");
-            } else {
-                this.grpAvatar.create(this.world.width - 50, this.world.height - 250, "imgGirl");
-            }
-            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("skinColorId"));
-            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shoesId"));
-            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("pantsId"));
-            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("shirtId"));
-            this.grpAvatar.create(this.world.width - 50, this.world.height - 250, this.getImageKey("capId"));
-            this.grpAvatar.width = 200;
-            this.grpAvatar.height = 400;
-            this.grpAvatar.position.set(250, 20);
+            avatar.paint(this.game, this.world.width - 50, this.world.height - 250);
 
             this.btnMenuSkin = this.game.add.button(0, 150, "btnMenuSkin", this.clickMenu, this, 0, 1, 2);
             this.btnMenuSkin.height = 50;
@@ -89,15 +75,6 @@
             this.grpSeeButtons.onChildInputDown.add(this.clickSee, this);
             this.grpBuyButtons.onChildInputDown.add(this.clickBuy, this);
 
-        }
-
-        getImageKey(key:string): string {
-            for (var i = 0; i < productsStore.length; i++) {
-                if (productsStore[i].id == avatar[key]) {
-                    return productsStore[i].imageKey;
-                }
-            }
-            return "";
         }
 
         clickMenu = (item) => {
@@ -131,29 +108,19 @@
         clickSee = (item, pointer) => {
             switch (+this.currentType) {
                 case 1:
-                    this.grpAvatar.removeChildAt(1);
-                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z].imageKey);
-                    this.grpAvatar.addAt(skin, 1);
+                    avatar.changeClothes(SKIN, item.z);
                     break;
                 case 2:
-                    this.grpAvatar.removeChildAt(5);
-                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 6].imageKey);
-                    this.grpAvatar.addAt(skin, 5);
+                    avatar.changeClothes(HAT, item.z + 6);
                     break;
                 case 3:
-                    this.grpAvatar.removeChildAt(4);
-                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 12].imageKey);
-                    this.grpAvatar.addAt(skin, 4);
+                    avatar.changeClothes(SHIRT, item.z + 12);
                     break;
                 case 4:
-                    this.grpAvatar.removeChildAt(3);
-                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 17].imageKey);
-                    this.grpAvatar.addAt(skin, 3);
+                    avatar.changeClothes(PANTS, item.z + 17);
                     break;
                 case 5:
-                    this.grpAvatar.removeChildAt(2);
-                    var skin = this.game.add.image(this.world.width - 50, this.world.height - 250, productsStore[item.z + 21].imageKey);
-                    this.grpAvatar.addAt(skin, 2);
+                    avatar.changeClothes(SHOES, item.z + 21);
                     break;
             }
         }

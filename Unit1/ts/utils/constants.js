@@ -19,5 +19,10 @@ var MrBook;
     MrBook.GRAVITY = 1000;
     MrBook.ROUND_TIME = 60;
     MrBook.MINIMUM_AGE = 18;
+    MrBook.SKIN = 1;
+    MrBook.SHOES = 2;
+    MrBook.PANTS = 3;
+    MrBook.SHIRT = 4;
+    MrBook.HAT = 5;
 })(MrBook || (MrBook = {}));
 //# sourceMappingURL=constants.js.map

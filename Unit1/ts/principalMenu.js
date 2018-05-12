@@ -18,37 +18,37 @@ var MrBook;
         PrincipalMenu.prototype.create = function () {
             var _this = this;
             if (MrBook.avatar.gender == MrBook.MALE) {
-                this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPlayingBoy");
+                this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrPlayingBoy");
             }
             else {
-                this.background = this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, "bgrPlayingGirl");
+                this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrPlayingGirl");
             }
-            this.btnStart = this.game.add.button(this.game.world.centerX - 200, 250, 'btnStart1', function () {
+            this.btnStart = this.add.button(this.world.centerX - 200, 250, 'btnStart1', function () {
                 _this.game.state.start("Topic1_1");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
-            this.btnStart = this.game.add.button(this.game.world.centerX, 250, 'btnStart2', function () {
+            this.btnStart = this.add.button(this.world.centerX, 250, 'btnStart2', function () {
                 _this.game.state.start("Topic1_2");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
-            this.btnStart = this.game.add.button(this.game.world.centerX + 200, 250, 'btnStart3', function () {
+            this.btnStart = this.add.button(this.world.centerX + 200, 250, 'btnStart3', function () {
                 _this.game.state.start("Topic1_3");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
-            this.btnStart = this.game.add.button(this.game.world.centerX, 350, 'btnStart2', function () {
+            this.btnStart = this.add.button(this.world.centerX, 350, 'btnStart2', function () {
                 _this.game.state.start("LoadTopic8_1");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
-            this.btnStore = this.game.add.button(100, this.game.world.height - 80, 'btnStore', function () {
+            this.btnStore = this.add.button(100, this.world.height - 80, 'btnStore', function () {
                 _this.game.state.start("LoadStore");
             }, this, 0, 1, 2);
             this.btnStore.anchor.x = 0.5;
             this.btnStore.scale.set(0.6, 0.6);
-            this.title = this.game.add.image(this.game.world.centerX, 100, 'titNameUnit');
+            this.title = this.add.image(this.world.centerX, 100, 'titNameUnit');
             this.title.anchor.set(0.5, 0.5);
         };
         return PrincipalMenu;

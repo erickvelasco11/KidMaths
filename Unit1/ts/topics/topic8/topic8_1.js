@@ -18,15 +18,29 @@ var MrBook;
             _this.height = 0;
             _this.hypo = 0;
             _this.width = 0;
+            _this.prepareBall = function () {
+                _this.subState = MrBook.PLAYING;
+                _this.imgBall = _this.add.sprite(_this.world.centerX, _this.world.height, "imgBall");
+                _this.imgBall.anchor.set(0.5);
+                _this.imgBall.pivot.y = 700;
+                _this.imgBall.height = 50;
+                _this.imgBall.width = 50;
+                _this.physics.enable(_this.imgBall, Phaser.Physics.ARCADE);
+                _this.imgBall.physicsEnabled = true;
+                //this.imgBall.body.collideWorldBounds = true;
+                _this.input.onUp.add(_this.shoot);
+            };
             _this.shoot = function () {
                 _this.subState = MrBook.SHOOTING;
                 _this.input.onUp.removeAll();
                 _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 500);
+                _this.timer.startTimer(3000, _this.prepareBall);
             };
             return _this;
         }
         Topic8_1.prototype.create = function () {
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.timer = new MrBook.Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
             this.createMonkey((this.world.width / 6));
@@ -38,15 +52,7 @@ var MrBook;
             this.imgCannon.anchor.set(0.5, 0.5);
             this.imgCannon.height = 120;
             this.imgCannon.width = 50;
-            this.imgBall = this.add.sprite(this.world.centerX, this.world.height, "imgBall");
-            this.imgBall.anchor.set(0.5);
-            this.imgBall.pivot.y = 700;
-            this.imgBall.height = 50;
-            this.imgBall.width = 50;
-            this.physics.enable(this.imgBall, Phaser.Physics.ARCADE);
-            this.imgBall.physicsEnabled = true;
-            //this.imgBall.body.collideWorldBounds = true;
-            this.input.onUp.add(this.shoot);
+            this.prepareBall();
         };
         Topic8_1.prototype.update = function () {
             this.height = (this.world.height - this.input.y);
