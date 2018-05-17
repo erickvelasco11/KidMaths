@@ -68,9 +68,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\arrow.png" />
     <Content Include="assets\images\backgrounds\jungle.jpg" />
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
     <Content Include="assets\images\backgrounds\store.jpg" />
+    <Content Include="assets\images\ball.png" />
     <Content Include="assets\images\ballon.png" />
     <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\buy.png" />
@@ -175,6 +177,7 @@
     <Content Include="assets\images\items\utensils\fork2.png" />
     <Content Include="assets\images\items\utensils\knife.png" />
     <Content Include="assets\images\items\utensils\spoon.png" />
+    <Content Include="assets\images\monkey.png" />
     <Content Include="assets\images\platform.png" />
     <Content Include="assets\images\floor.png" />
     <Content Include="assets\images\rack.png" />

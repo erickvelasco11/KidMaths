@@ -3,6 +3,7 @@
 
         private imgCannon: Phaser.Sprite;
         private imgBall: Phaser.Sprite;
+        private imgArrow: Phaser.Sprite;
         private grpMonkeys: Phaser.Group;
         private grpBallons: Phaser.Group;
         private grpCannon: Phaser.Group;
@@ -30,6 +31,11 @@
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
             this.grpBallons = this.add.group(undefined, "grpBalls", undefined, true, Phaser.Physics.ARCADE);
+
+            this.imgArrow = this.add.sprite(this.world.centerX, this.world.height, "imgArrow");
+            this.imgArrow.anchor.set(0.5, 1)
+            this.imgArrow.height = 400;
+            this.imgArrow.width = 10;
 
             this.createMonkey((this.world.width / 6));
             this.createMonkey((this.world.width / 6) * 2);
@@ -71,6 +77,7 @@
             this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
 
             this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+            this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
             if (this.subState != SHOOTING) {
                 this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
                 this.imgBall.visible = true;

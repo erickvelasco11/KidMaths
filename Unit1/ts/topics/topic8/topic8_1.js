@@ -53,6 +53,10 @@ var MrBook;
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
             this.grpBallons = this.add.group(undefined, "grpBalls", undefined, true, Phaser.Physics.ARCADE);
+            this.imgArrow = this.add.sprite(this.world.centerX, this.world.height, "imgArrow");
+            this.imgArrow.anchor.set(0.5, 1);
+            this.imgArrow.height = 400;
+            this.imgArrow.width = 10;
             this.createMonkey((this.world.width / 6));
             this.createMonkey((this.world.width / 6) * 2);
             this.createMonkey(this.world.centerX);
@@ -87,6 +91,7 @@ var MrBook;
             this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
             this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
             this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+            this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
             if (this.subState != MrBook.SHOOTING) {
                 this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
                 this.imgBall.visible = true;

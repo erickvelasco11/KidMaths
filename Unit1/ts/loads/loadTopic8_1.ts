@@ -21,6 +21,7 @@
             this.load.image('imgCannon', 'assets/images/cannon.png');
             this.load.image('imgBall', 'assets/images/ball.png');
             this.load.image('imgMonkey', 'assets/images/monkey.png');
+            this.load.image('imgArrow', 'assets/images/arrow.png');
 
             this.load.onLoadStart.add(this.loadStart, this);
             this.load.onFileComplete.add(this.fileComplete, this);
