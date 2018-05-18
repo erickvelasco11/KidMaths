@@ -36,19 +36,34 @@ var MrBook;
                 _this.imgBall.body.bounce.set(1.0, 1.0);
                 _this.input.onTap.add(_this.shoot);
             };
-            _this.destroyBall = function () {
+            _this.destroyBall = function (item1, item2) {
                 _this.imgBall.kill();
                 _this.prepareBall();
             };
             _this.shoot = function () {
-                _this.subState = MrBook.SHOOTING;
-                _this.input.onTap.removeAll();
-                _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 1500);
+                if (_this.subState == MrBook.PLAYING) {
+                    _this.subState = MrBook.SHOOTING;
+                    _this.input.onTap.removeAll();
+                    _this.physics.arcade.moveToXY(_this.imgBall, _this.input.x, _this.input.y, 1500);
+                }
+            };
+            _this.finish = function () {
+                _this.txtSum.destroy();
+                _this.txtSum1.destroy();
+                _this.txtSum2.destroy();
+                _this.txtSum3.destroy();
+                _this.txtSum4.destroy();
+                _this.txtSum5.destroy();
+            };
+            _this.next = function () {
+                _this.game.state.start("PrincipalMenu");
             };
             return _this;
         }
         Topic8_1.prototype.create = function () {
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.finishTopic = this.finish;
+            this.actionNext = this.next;
             this.timer = new MrBook.Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
@@ -84,24 +99,26 @@ var MrBook;
             this.txtSum5 = this.add.text((this.world.width / 6) * 5, 110, "", {});
             this.txtSum5.anchor.set(0.5, 0.5);
             this.prepareBall();
+            this.initPointsText();
+            this.initTimeText();
+            this.startReadyCountdown();
         };
         Topic8_1.prototype.update = function () {
-            this.height = (this.world.height - this.input.y);
-            this.width = (this.input.x - this.world.centerX);
-            this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
-            this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
-            this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            if (this.subState != MrBook.SHOOTING) {
-                this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-                this.imgBall.visible = true;
+            if (this.subState == MrBook.PLAYING || this.subState == MrBook.SHOOTING) {
+                this.height = (this.world.height - this.input.y);
+                this.width = (this.input.x - this.world.centerX);
+                this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
+                this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
+                this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                if (this.subState != MrBook.SHOOTING) {
+                    this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                    this.imgBall.visible = true;
+                }
+                this.physics.arcade.collide(this.imgBall, this.grpBallons, this.destroyBall);
+                //this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
+                //this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y), '#000000');
             }
-            if (!this.imgBall.inCamera) {
-                this.destroyBall();
-            }
-            this.physics.arcade.collide(this.imgBall, this.grpBallons, this.destroyBall);
-            //this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
-            //this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y), '#000000');
         };
         Topic8_1.prototype.createMonkey = function (xPos) {
             var img = this.grpMonkeys.create(xPos, -20, "imgMonkey");

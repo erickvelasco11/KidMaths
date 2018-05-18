@@ -27,6 +27,9 @@
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE);
+            this.finishTopic = this.finish;
+            this.actionNext = this.next;
+
             this.timer = new Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
@@ -68,28 +71,30 @@
             this.txtSum5 = this.add.text((this.world.width / 6) * 5, 110, "", {});
             this.txtSum5.anchor.set(0.5, 0.5);
             this.prepareBall();
+
+            this.initPointsText();
+            this.initTimeText();
+            this.startReadyCountdown();
         }
 
         update() {
-            this.height = (this.world.height - this.input.y);
-            this.width = (this.input.x - this.world.centerX);
-            this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
-            this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
+            if (this.subState == PLAYING || this.subState == SHOOTING) {
+                this.height = (this.world.height - this.input.y);
+                this.width = (this.input.x - this.world.centerX);
+                this.hypo = Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2));
+                this.angle = Math.asin(this.height / this.hypo) * (180 / Math.PI);
 
-            this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-            if (this.subState != SHOOTING) {
-                this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
-                this.imgBall.visible = true;
+                this.imgCannon.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                this.imgArrow.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                if (this.subState != SHOOTING) {
+                    this.imgBall.angle = this.width < 0 ? this.angle - 90 : 90 - this.angle;
+                    this.imgBall.visible = true;
+                }
+
+                this.physics.arcade.collide(this.imgBall, this.grpBallons, this.destroyBall);
+                //this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
+                //this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y), '#000000');
             } 
-
-            if (!this.imgBall.inCamera) {
-                this.destroyBall();
-            }
-
-            this.physics.arcade.collide(this.imgBall, this.grpBallons, this.destroyBall);
-            //this.game.debug.geom(new Phaser.Point(this.imgBall.x, this.imgBall.y), '#ffff00');
-            //this.game.debug.geom(new Phaser.Point(this.imgCannon.x, this.imgCannon.y), '#000000');
         }
 
         createMonkey(xPos: number) {
@@ -126,8 +131,10 @@
             this.input.onTap.add(this.shoot);
         }
 
-        destroyBall = () => {
+        destroyBall = (item1, item2) => {
             this.imgBall.kill();
+
+
             this.prepareBall();
         }
 
@@ -153,11 +160,25 @@
         }
 
         shoot = () => {
-            this.subState = SHOOTING;
-            this.input.onTap.removeAll();
-            this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 1500);
+            if (this.subState == PLAYING) {
+                this.subState = SHOOTING;
+                this.input.onTap.removeAll();
+                this.physics.arcade.moveToXY(this.imgBall, this.input.x, this.input.y, 1500);
+            }
         }
 
+        finish = () => {
+            this.txtSum.destroy();
+            this.txtSum1.destroy();
+            this.txtSum2.destroy();
+            this.txtSum3.destroy();
+            this.txtSum4.destroy();
+            this.txtSum5.destroy();
+        }
+
+        next = () => {
+            this.game.state.start("PrincipalMenu")
+        }
 
     }
 
