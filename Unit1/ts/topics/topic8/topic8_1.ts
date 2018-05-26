@@ -20,6 +20,7 @@
         private width: number = 0;
         private number1: number = 0;
         private number2: number = 0;
+            private numbers: Array<number> = [];
 
         constructor() {
             super();
@@ -133,7 +134,13 @@
 
         destroyBall = (item1, item2) => {
             this.imgBall.kill();
-
+            if (this.numbers[item2.z] == (this.number1 + this.number2)) {
+                this.points++;
+                this.txtPoints.setText("Puntos: " + this.points);
+                this.add.audio("sndPoint").play('', 0);
+            } else {
+                this.add.audio("sndError").play('', 0);
+            }
 
             this.prepareBall();
         }
@@ -145,18 +152,18 @@
         }
 
         prepareBallons() {
-            var numbers = [];
-            numbers.push(this.number1 + this.number2);
-            numbers.push((numbers[0] + this.rnd.integerInRange(1, 4))%19);
-            numbers.push((numbers[1] + this.rnd.integerInRange(1, 4))%19);
-            numbers.push((numbers[2] + this.rnd.integerInRange(1, 4))%19);
-            numbers.push((numbers[3] + this.rnd.integerInRange(1, 4)) % 19);
-            shuffle(numbers);
-            this.txtSum1.setText(numbers[0]+"");
-            this.txtSum2.setText(numbers[1]+"");
-            this.txtSum3.setText(numbers[2]+"");
-            this.txtSum4.setText(numbers[3]+"");
-            this.txtSum5.setText(numbers[4]+"");
+            this.numbers = [];
+            this.numbers.push(this.number1 + this.number2);
+            this.numbers.push((this.numbers[0] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[1] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[2] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[3] + this.rnd.integerInRange(1, 4)) % 19);
+            shuffle(this.numbers);
+            this.txtSum1.setText(this.numbers[0] + "");
+            this.txtSum2.setText(this.numbers[1] + "");
+            this.txtSum3.setText(this.numbers[2] + "");
+            this.txtSum4.setText(this.numbers[3] + "");
+            this.txtSum5.setText(this.numbers[4] + "");
         }
 
         shoot = () => {

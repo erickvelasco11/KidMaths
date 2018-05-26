@@ -20,6 +20,7 @@ var MrBook;
             _this.width = 0;
             _this.number1 = 0;
             _this.number2 = 0;
+            _this.numbers = [];
             _this.prepareBall = function () {
                 _this.subState = MrBook.PLAYING;
                 _this.prepareSum();
@@ -38,6 +39,14 @@ var MrBook;
             };
             _this.destroyBall = function (item1, item2) {
                 _this.imgBall.kill();
+                if (_this.numbers[item2.z] == (_this.number1 + _this.number2)) {
+                    _this.points++;
+                    _this.txtPoints.setText("Puntos: " + _this.points);
+                    _this.add.audio("sndPoint").play('', 0);
+                }
+                else {
+                    _this.add.audio("sndError").play('', 0);
+                }
                 _this.prepareBall();
             };
             _this.shoot = function () {
@@ -139,18 +148,18 @@ var MrBook;
             this.txtSum.setText("Cuanto es: " + this.number1 + " + " + this.number2);
         };
         Topic8_1.prototype.prepareBallons = function () {
-            var numbers = [];
-            numbers.push(this.number1 + this.number2);
-            numbers.push((numbers[0] + this.rnd.integerInRange(1, 4)) % 19);
-            numbers.push((numbers[1] + this.rnd.integerInRange(1, 4)) % 19);
-            numbers.push((numbers[2] + this.rnd.integerInRange(1, 4)) % 19);
-            numbers.push((numbers[3] + this.rnd.integerInRange(1, 4)) % 19);
-            shuffle(numbers);
-            this.txtSum1.setText(numbers[0] + "");
-            this.txtSum2.setText(numbers[1] + "");
-            this.txtSum3.setText(numbers[2] + "");
-            this.txtSum4.setText(numbers[3] + "");
-            this.txtSum5.setText(numbers[4] + "");
+            this.numbers = [];
+            this.numbers.push(this.number1 + this.number2);
+            this.numbers.push((this.numbers[0] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[1] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[2] + this.rnd.integerInRange(1, 4)) % 19);
+            this.numbers.push((this.numbers[3] + this.rnd.integerInRange(1, 4)) % 19);
+            shuffle(this.numbers);
+            this.txtSum1.setText(this.numbers[0] + "");
+            this.txtSum2.setText(this.numbers[1] + "");
+            this.txtSum3.setText(this.numbers[2] + "");
+            this.txtSum4.setText(this.numbers[3] + "");
+            this.txtSum5.setText(this.numbers[4] + "");
         };
         return Topic8_1;
     }(MrBook.Topic));

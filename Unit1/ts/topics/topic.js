@@ -85,6 +85,14 @@ var MrBook;
             this.txtResult2.kill();
             this.titResult.kill();
         };
+        Topic.prototype.gofull = function () {
+            if (this.scale.isFullScreen) {
+                this.scale.stopFullScreen();
+            }
+            else {
+                this.scale.startFullScreen(false);
+            }
+        };
         return Topic;
     }(Phaser.State));
     MrBook.Topic = Topic;

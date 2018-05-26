@@ -101,5 +101,15 @@
                 }
             }
         }
+
+
+        gofull() {
+            if (this.scale.isFullScreen) {
+                this.scale.stopFullScreen();
+            }
+            else {
+                this.scale.startFullScreen(false);
+            }
+        }
     }
 }
