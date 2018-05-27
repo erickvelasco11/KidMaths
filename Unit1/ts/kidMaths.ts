@@ -17,6 +17,8 @@
             this.pGame.state.add("Topic1_3", Topic1_3, false);
             this.pGame.state.add("LoadTopic8_1", LoadTopic8_1, false);
             this.pGame.state.add("Topic8_1", Topic8_1, false);
+            this.pGame.state.add("LoadTopic15_1", LoadTopic15_1, false);
+            this.pGame.state.add("Topic15_1", Topic15_1, false);
 
             this.pGame.state.start("LoadGame", true, true);
         }

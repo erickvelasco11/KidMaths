@@ -185,9 +185,11 @@
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="ts\loads\loads.ts" />
+    <TypeScriptCompile Include="ts\loads\loadTopic15_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadTopic8_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadStore.ts" />
     <TypeScriptCompile Include="ts\models\product.ts" />
+    <TypeScriptCompile Include="ts\topics\topic15\topic15_1.ts" />
     <TypeScriptCompile Include="ts\topics\topic1\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
     <None Include="packages.config" />

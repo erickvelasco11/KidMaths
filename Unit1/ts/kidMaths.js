@@ -13,6 +13,8 @@ var MrBook;
             this.pGame.state.add("Topic1_3", MrBook.Topic1_3, false);
             this.pGame.state.add("LoadTopic8_1", MrBook.LoadTopic8_1, false);
             this.pGame.state.add("Topic8_1", MrBook.Topic8_1, false);
+            this.pGame.state.add("LoadTopic15_1", MrBook.LoadTopic15_1, false);
+            this.pGame.state.add("Topic15_1", MrBook.Topic15_1, false);
             this.pGame.state.start("LoadGame", true, true);
         }
         return KidMaths;
