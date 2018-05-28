@@ -11,6 +11,8 @@ var MrBook;
             this.pGame.state.add("Topic1_1", MrBook.Topic1_1, false);
             this.pGame.state.add("Topic1_2", MrBook.Topic1_2, false);
             this.pGame.state.add("Topic1_3", MrBook.Topic1_3, false);
+            this.pGame.state.add("LoadTopic7_1", MrBook.LoadTopic7_1, false);
+            this.pGame.state.add("Topic7_1", MrBook.Topic7_1, false);
             this.pGame.state.add("LoadTopic8_1", MrBook.LoadTopic8_1, false);
             this.pGame.state.add("Topic8_1", MrBook.Topic8_1, false);
             this.pGame.state.add("LoadTopic15_1", MrBook.LoadTopic15_1, false);

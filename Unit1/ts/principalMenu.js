@@ -39,11 +39,16 @@ var MrBook;
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
             this.btnStart = this.add.button(this.world.centerX - 200, 350, 'btnStart1', function () {
-                _this.game.state.start("LoadTopic8_1");
+                _this.game.state.start("LoadTopic7_1");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;
             this.btnStart.scale.set(0.8, 0.8);
             this.btnStart = this.add.button(this.world.centerX, 350, 'btnStart2', function () {
+                _this.game.state.start("LoadTopic8_1");
+            }, this, 0, 1, 2);
+            this.btnStart.anchor.x = 0.5;
+            this.btnStart.scale.set(0.8, 0.8);
+            this.btnStart = this.add.button(this.world.centerX + 200, 350, 'btnStart3', function () {
                 _this.game.state.start("LoadTopic15_1");
             }, this, 0, 1, 2);
             this.btnStart.anchor.x = 0.5;

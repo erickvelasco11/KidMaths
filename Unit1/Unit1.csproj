@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\images\arrow.png" />
+    <Content Include="assets\images\backgrounds\car.jpg" />
     <Content Include="assets\images\backgrounds\jungle.jpg" />
     <Content Include="assets\images\backgrounds\puzzle.jpg" />
     <Content Include="assets\images\backgrounds\store.jpg" />
@@ -87,6 +88,10 @@
     <Content Include="assets\images\buttons\start3.png" />
     <Content Include="assets\images\buttons\store.png" />
     <Content Include="assets\images\cannon.png" />
+    <Content Include="assets\images\carGame\asd.png" />
+    <Content Include="assets\images\carGame\car.png" />
+    <Content Include="assets\images\carGame\carEnemy.png" />
+    <Content Include="assets\images\carGame\roadBlock.png" />
     <Content Include="assets\images\check.png" />
     <Content Include="assets\images\circle.png" />
     <Content Include="assets\images\clothes\feet\converse.png" />
@@ -181,17 +186,23 @@
     <Content Include="assets\images\platform.png" />
     <Content Include="assets\images\floor.png" />
     <Content Include="assets\images\rack.png" />
+    <Content Include="assets\images\sprites\coin.png" />
+    <Content Include="assets\images\sprites\dominoes.png" />
     <Content Include="assets\images\square.png" />
     <Content Include="assets\images\triangle.png" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="ts\loads\loads.ts" />
+    <TypeScriptCompile Include="ts\loads\loadTopic7_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadTopic15_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadTopic8_1.ts" />
     <TypeScriptCompile Include="ts\loads\loadStore.ts" />
     <TypeScriptCompile Include="ts\models\product.ts" />
+    <TypeScriptCompile Include="ts\topics\topic7\topic7_1.ts" />
     <TypeScriptCompile Include="ts\topics\topic15\topic15_1.ts" />
     <TypeScriptCompile Include="ts\topics\topic1\topic1_2.ts" />
     <Content Include="assets\images\backgrounds\select.png" />
+    <Content Include="assets\images\sprites\coin.json" />
+    <Content Include="assets\images\sprites\dominoes.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
