@@ -77,7 +77,10 @@ var MrBook;
         LoadTopic15_1.prototype.preload = function () {
             this.superPreload();
             this.load.image('bgrCar', 'assets/images/backgrounds/car.jpg');
-            this.load.image('car', 'assets/images/car.png');
+            this.load.image('car', 'assets/images/carGame/car.png');
+            this.load.image('carEnemy', 'assets/images/carGame/carEnemy.png');
+            this.load.image('roadBlock', 'assets/images/carGame/roadBlock.png');
+            this.game.load.atlas('sprCoin', 'assets/images/sprites/coin.png', 'assets/images/sprites/coin.json');
             this.load.onLoadStart.add(this.loadStart, this);
             this.load.onFileComplete.add(this.fileComplete, this);
             this.load.onLoadComplete.add(this.loadComplete, this);

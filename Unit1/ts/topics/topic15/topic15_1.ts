@@ -1,12 +1,17 @@
 ﻿module MrBook {
     export class Topic15_1 extends Topic {
 
-        private text: Phaser.Text;
-        private car: Phaser.Image;
-
+        private txtWarning: Phaser.Text;
+        private sprCar: Phaser.Sprite;
+        private grpObstacles: Phaser.Group;
+        private grpCoins: Phaser.Group;
         private keyLeft: Phaser.Key;
         private keyRight: Phaser.Key;
 
+        private obstacles: Array<string> = ["Cuidado a la izquierda", "Cuidado al centro", "Cuidado a la derecha",
+            "Ve por la izquierda", "Ve por el centro", "Ve por la derecha",
+            "Bonus a la izquierda", "Bonus al centro", "Bonus a la derecha"];
+        private selectedIndex: number;
         private velocity: number = 0;
         private roadLimitLeft: number = 240;
         private roadLimitRight: number = 430;
@@ -19,11 +24,17 @@
         create() {
             this.timer = new Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrCar");
+            
+            this.grpObstacles = this.add.group(undefined, "grpObstacles", undefined, true, Phaser.Physics.ARCADE);
+            this.grpCoins = this.add.group(undefined, "grpCoins", undefined, true, Phaser.Physics.ARCADE);
 
-            this.car = this.add.image(300, 490, "car")
-            this.car.width = 40;
-            this.car.height = 60;
-            this.text = this.add.text(50, 50, "", {});
+            this.sprCar = this.add.sprite(320, 490, "car")
+            this.sprCar.width = 30;
+            this.sprCar.height = 60;
+            this.physics.enable(this.sprCar, Phaser.Physics.ARCADE);
+            this.sprCar.physicsEnabled = true;
+
+            this.txtWarning = this.add.text(50, 50, "", {});
 
             this.keyLeft = this.input.keyboard.addKey(Phaser.Keyboard.LEFT);
             this.keyRight = this.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
@@ -33,22 +44,115 @@
             this.initPointsText();
 
             this.startReadyCountdown();
+
+            this.timer.startTimer(9000, this.warningLaunch);
         }
 
         update() {
-            if (this.velocity < 10 && this.subState == PLAYING) {
-                if (this.keyLeft.isDown && this.car.position.x > this.roadLimitLeft) {
-                    this.car.position.x -= 2;
+            if (this.subState == PLAYING) {
+                if (this.keyLeft.isDown && this.sprCar.position.x > this.roadLimitLeft) {
+                    this.sprCar.position.x -= 2;
                 }
-                if (this.keyRight.isDown && this.car.position.x < this.roadLimitRight - 40) {
-                    this.car.position.x += 2;
+                if (this.keyRight.isDown && this.sprCar.position.x < this.roadLimitRight - 40) {
+                    this.sprCar.position.x += 2;
                 }
 
-
-                this.velocity += 0.05;
+                if (this.velocity < 10) {
+                    this.velocity += 0.05;
+                }
 
                 this.background.tilePosition.y += this.velocity;
+
+                this.physics.arcade.collide(this.sprCar, this.grpObstacles, this.crash);
             }
+        }
+
+        crash = () => {
+        }
+
+        warningLaunch = () => {
+            this.selectedIndex = this.rnd.integerInRange(0, 8);
+            this.txtWarning.setText(this.obstacles[this.selectedIndex]);
+            this.timer.startTimer(2500, this.launchEnemy);
+        }
+
+        launchEnemy = () => {
+            this.txtWarning.setText("");
+            switch (this.selectedIndex) {
+                case 0:
+                    var enemy = this.add.sprite(260, -100, "carEnemy");
+                    enemy.width = 30;
+                    enemy.height = 60;
+                    enemy.physicsEnabled = true;
+                    enemy.physicsType = Phaser.Physics.ARCADE;
+                    this.physics.arcade.enable(enemy);
+                    enemy.body.velocity.y = 250;
+
+                    this.grpObstacles.add(enemy);
+                    break;
+                case 1:
+                    var enemy = this.add.sprite(320, -100, "carEnemy");
+                    enemy.width = 30;
+                    enemy.height = 60;
+                    enemy.physicsEnabled = true;
+                    enemy.physicsType = Phaser.Physics.ARCADE;
+                    this.physics.arcade.enable(enemy);
+                    enemy.body.velocity.y = 250;
+
+                    this.grpObstacles.add(enemy);
+                    break;
+                case 2:
+                    var enemy = this.add.sprite(380, -100, "carEnemy");
+                    enemy.width = 30;
+                    enemy.height = 60;
+                    enemy.physicsEnabled = true;
+                    enemy.physicsType = Phaser.Physics.ARCADE;
+                    this.physics.arcade.enable(enemy);
+                    enemy.body.velocity.y = 250;
+
+                    this.grpObstacles.add(enemy);
+                    break;
+                case 6:
+                    var y = -80;
+                    for (var i = 0; i < 5; i++) {
+                        var coin = this.grpCoins.create(270, y, "sprCoin");
+                        coin.animations.add('coin', [0, 1, 2, 3, 4, 5], 15, true);
+                        coin.animations.play('coin');
+                        coin.width = 40;
+                        coin.height = 40;
+                        coin.anchor.set(0.5, 0.5);
+                        coin.body.velocity.y = 600;
+                        y -= 50;
+                    }
+                    break;
+                case 7:
+                    var y = -80;
+                    for (var i = 0; i < 5; i++) {
+                        var coin = this.grpCoins.create(335, y, "sprCoin");
+                        coin.animations.add('coin', [0, 1, 2, 3, 4, 5], 15, true);
+                        coin.animations.play('coin');
+                        coin.width = 40;
+                        coin.height = 40;
+                        coin.anchor.set(0.5, 0.5);
+                        coin.body.velocity.y = 600;
+                        y -= 50;
+                    }
+                    break;
+                 case 8:
+                    var y = -80;
+                    for (var i = 0; i < 5; i++) {
+                        var coin = this.grpCoins.create(400, y, "sprCoin");
+                        coin.animations.add('coin', [0, 1, 2, 3, 4, 5], 15, true);
+                        coin.animations.play('coin');
+                        coin.width = 40;
+                        coin.height = 40;
+                        coin.anchor.set(0.5, 0.5);
+                        coin.body.velocity.y = 600;
+                        y -= 50;
+                    }
+                    break;
+            }
+            this.timer.startTimer(2000, this.warningLaunch);
         }
     }
 }

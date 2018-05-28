@@ -20,7 +20,7 @@
         private width: number = 0;
         private number1: number = 0;
         private number2: number = 0;
-            private numbers: Array<number> = [];
+        private numbers: Array<number> = [];
 
         constructor() {
             super();
@@ -34,7 +34,7 @@
             this.timer = new Timer(this.game);
             this.background = this.add.tileSprite(0, 0, 800, 600, "bgrJungle");
             this.grpMonkeys = this.add.group();
-            this.grpBallons = this.add.group(undefined, "grpBalls", undefined, true, Phaser.Physics.ARCADE);
+            this.grpBallons = this.add.group(undefined, "grpBallons", undefined, true, Phaser.Physics.ARCADE);
 
             this.imgArrow = this.add.sprite(this.world.centerX, this.world.height, "imgArrow");
             this.imgArrow.anchor.set(0.5, 1)
