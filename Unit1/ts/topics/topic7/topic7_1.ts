@@ -11,6 +11,7 @@
         private xPos: number = 0;
         private yPos: number = 0;
         private isDominoesInTable: boolean = false;
+        private sums: Array<number> = new Array<number>();
 
         constructor() {
             super();
@@ -58,6 +59,7 @@
                     this.totalSum = one + two;
                     this.txtNumber.setText(this.totalSum + "");
                 }
+                this.sums.push((one + two));
 
                 var domino = this.game.add.sprite(x, 450, 'sprDominoes');
                 domino.width = 60;
@@ -86,8 +88,16 @@
 
         endDrag = (item, pointer: Phaser.Pointer) => {
             if (pointer.x > 200 && pointer.x < 600 && pointer.y > 100 && pointer.y < 400) {
+                if (this.totalSum == this.sums[item.z]) {
+                    this.points++;
+                    this.txtPoints.setText("Puntos: " + this.points);
+                    this.add.audio("sndPoint").play('', 0);
+                } else {
+                    this.add.audio("sndError").play('', 0);
+                }
                 this.grpDominoes.removeAll(true);
                 this.totalSum = -1;
+                this.sums = new Array<number>();
                 this.generateRandomDominoes();
             } else {
                 item.position.x = this.xPos;
@@ -101,7 +111,7 @@
         }
 
         finishTopic15_1 = () => {
-
+            this.grpDominoes.removeAll(true);
         }
     }
 }

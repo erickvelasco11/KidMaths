@@ -20,14 +20,24 @@ var MrBook;
             _this.xPos = 0;
             _this.yPos = 0;
             _this.isDominoesInTable = false;
+            _this.sums = new Array();
             _this.startDrag = function (item, pointer) {
                 _this.xPos = item.position.x;
                 _this.yPos = item.position.y;
             };
             _this.endDrag = function (item, pointer) {
                 if (pointer.x > 200 && pointer.x < 600 && pointer.y > 100 && pointer.y < 400) {
+                    if (_this.totalSum == _this.sums[item.z]) {
+                        _this.points++;
+                        _this.txtPoints.setText("Puntos: " + _this.points);
+                        _this.add.audio("sndPoint").play('', 0);
+                    }
+                    else {
+                        _this.add.audio("sndError").play('', 0);
+                    }
                     _this.grpDominoes.removeAll(true);
                     _this.totalSum = -1;
+                    _this.sums = new Array();
                     _this.generateRandomDominoes();
                 }
                 else {
@@ -39,6 +49,7 @@ var MrBook;
                 _this.game.state.start("PrincipalMenu", true);
             };
             _this.finishTopic15_1 = function () {
+                _this.grpDominoes.removeAll(true);
             };
             return _this;
         }
@@ -76,6 +87,7 @@ var MrBook;
                     this.totalSum = one + two;
                     this.txtNumber.setText(this.totalSum + "");
                 }
+                this.sums.push((one + two));
                 var domino = this.game.add.sprite(x, 450, 'sprDominoes');
                 domino.width = 60;
                 domino.height = 120;
