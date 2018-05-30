@@ -19,6 +19,7 @@ module MrBook {
     export const RED = 0xFF0000;
     export const WHITE = 0xFFFFFF;
     export const BLUE = 0x0000FF;
+    export const BLACK = 0x000000;
 
     export const GRAVITY = 1000;
     export const ROUND_TIME = 60;

@@ -14,7 +14,26 @@ var MrBook;
         __extends(Topic7_1, _super);
         function Topic7_1() {
             var _this = _super.call(this) || this;
-            _this.clicked = function () {
+            _this.totalSum = -1;
+            _this.sum1 = 0;
+            _this.sum2 = 0;
+            _this.xPos = 0;
+            _this.yPos = 0;
+            _this.isDominoesInTable = false;
+            _this.startDrag = function (item, pointer) {
+                _this.xPos = item.position.x;
+                _this.yPos = item.position.y;
+            };
+            _this.endDrag = function (item, pointer) {
+                if (pointer.x > 200 && pointer.x < 600 && pointer.y > 100 && pointer.y < 400) {
+                    _this.grpDominoes.removeAll(true);
+                    _this.totalSum = -1;
+                    _this.generateRandomDominoes();
+                }
+                else {
+                    item.position.x = _this.xPos;
+                    item.position.y = _this.yPos;
+                }
             };
             _this.next = function () {
                 _this.game.state.start("PrincipalMenu", true);
@@ -29,14 +48,21 @@ var MrBook;
             this.actionNext = this.next;
             this.finishTopic = this.finishTopic15_1;
             MrBook.totalPoints = 0;
+            this.txtNumber = this.add.text(this.world.centerX, 250, "", { font: "180px Arial", align: "center", fill: '#dddddd' });
+            this.txtNumber.anchor.set(0.5, 0.5);
+            this.graphics = this.game.add.graphics(0, 0);
             this.grpDominoes = this.add.group(undefined, "grpDominoes", undefined, true, Phaser.Physics.ARCADE);
-            this.generateRandomDominoes();
+            this.graphics.lineStyle(2, MrBook.BLACK, 1);
+            this.graphics.drawRect(200, 100, 400, 300);
             this.initTimeText();
             this.initPointsText();
             this.startReadyCountdown();
         };
         Topic7_1.prototype.update = function () {
             if (this.subState == MrBook.PLAYING) {
+                if (!this.isDominoesInTable) {
+                    this.generateRandomDominoes();
+                }
             }
         };
         Topic7_1.prototype.generateRandomDominoes = function () {
@@ -44,6 +70,12 @@ var MrBook;
             for (var i = 0; i < 8; i++) {
                 var one = this.rnd.integerInRange(0, 6);
                 var two = this.rnd.integerInRange(0, 6);
+                if ((this.totalSum == -1 && this.rnd.integerInRange(0, 1) == 0) || (i == 7 && this.totalSum == -1)) {
+                    this.sum1 = one;
+                    this.sum2 = two;
+                    this.totalSum = one + two;
+                    this.txtNumber.setText(this.totalSum + "");
+                }
                 var domino = this.game.add.sprite(x, 450, 'sprDominoes');
                 domino.width = 60;
                 domino.height = 120;
@@ -55,8 +87,12 @@ var MrBook;
                 }
                 domino.inputEnabled = true;
                 domino.input.pixelPerfectClick = true;
-                domino.events.onInputDown.add(this.clicked);
+                domino.input.enableDrag();
+                domino.events.onDragStart.add(this.startDrag, this);
+                domino.events.onDragStop.add(this.endDrag, this);
+                this.grpDominoes.add(domino);
                 x += 100;
+                this.isDominoesInTable = true;
             }
         };
         return Topic7_1;

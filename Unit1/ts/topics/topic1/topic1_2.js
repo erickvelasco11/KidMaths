@@ -74,7 +74,7 @@ var MrBook;
             this.figure.height = this.game.rnd.integerInRange(50, 120);
             this.figure.width = this.game.rnd.integerInRange(50, 120);
             this.figure.anchor.setTo(0.5, 0.5);
-            this.figure.tint = Phaser.Color.getRandomColor(); //'rgba(' + this.rnd.between(0, 255) + ', ' + this.rnd.between(0, 255) + ', ' + this.rnd.between(0, 255) + ')';
+            this.figure.tint = Phaser.Color.getRandomColor();
             this.figure.inputEnabled = true;
             this.figure.input.enableDrag();
             this.figure.events.onDragStop.add(this.stopDragGraphic, this);

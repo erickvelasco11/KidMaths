@@ -16,6 +16,7 @@ var MrBook;
     MrBook.RED = 0xFF0000;
     MrBook.WHITE = 0xFFFFFF;
     MrBook.BLUE = 0x0000FF;
+    MrBook.BLACK = 0x000000;
     MrBook.GRAVITY = 1000;
     MrBook.ROUND_TIME = 60;
     MrBook.MINIMUM_AGE = 18;
