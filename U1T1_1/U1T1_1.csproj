@@ -1,0 +1,309 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7CE8858-D56D-4998-8298-9D7D5CFA2F63}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>U1T1_1</RootNamespace>
+    <AssemblyName>U1T1_1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\images\arrow.png" />
+    <Content Include="assets\images\backgrounds\topic1_1.png" />
+    <Content Include="assets\images\backgrounds\loading.jpg" />
+    <Content Include="assets\images\backgrounds\pause.png" />
+    <Content Include="assets\images\backgrounds\playingBoy.jpg" />
+    <Content Include="assets\images\backgrounds\playingGirl.jpg" />
+    <Content Include="assets\images\backgrounds\store.jpg" />
+    <Content Include="assets\images\ball.png" />
+    <Content Include="assets\images\ballon.png" />
+    <Content Include="assets\images\boy.png" />
+    <Content Include="assets\images\buttons\back.png" />
+    <Content Include="assets\images\buttons\buy.png" />
+    <Content Include="assets\images\buttons\menuFeet.png" />
+    <Content Include="assets\images\buttons\menuHead.png" />
+    <Content Include="assets\images\buttons\menuLegs.png" />
+    <Content Include="assets\images\buttons\menuSkin.png" />
+    <Content Include="assets\images\buttons\menuTorso.png" />
+    <Content Include="assets\images\buttons\next.png" />
+    <Content Include="assets\images\buttons\see.png" />
+    <Content Include="assets\images\buttons\start.png" />
+    <Content Include="assets\images\buttons\start1.png" />
+    <Content Include="assets\images\buttons\start2.png" />
+    <Content Include="assets\images\buttons\start3.png" />
+    <Content Include="assets\images\buttons\store.png" />
+    <Content Include="assets\images\cannon.png" />
+    <Content Include="assets\images\check.png" />
+    <Content Include="assets\images\circle.png" />
+    <Content Include="assets\images\clothes\feet\converse.png" />
+    <Content Include="assets\images\clothes\feet\elegantShoes.png" />
+    <Content Include="assets\images\clothes\feet\heels.png" />
+    <Content Include="assets\images\clothes\feet\tennis.png" />
+    <Content Include="assets\images\clothes\head\boina.png" />
+    <Content Include="assets\images\clothes\head\cachucha.png" />
+    <Content Include="assets\images\clothes\head\cowboyHat.png" />
+    <Content Include="assets\images\clothes\head\gorroLana.png" />
+    <Content Include="assets\images\clothes\head\noHat.png" />
+    <Content Include="assets\images\clothes\head\policeHat.png" />
+    <Content Include="assets\images\clothes\legs\elegantPants.png" />
+    <Content Include="assets\images\clothes\legs\jean.png" />
+    <Content Include="assets\images\clothes\legs\pantaloneta.png" />
+    <Content Include="assets\images\clothes\legs\skirt.png" />
+    <Content Include="assets\images\clothes\products.png" />
+    <Content Include="assets\images\clothes\skins\bBlack.png" />
+    <Content Include="assets\images\clothes\skins\bBrown.png" />
+    <Content Include="assets\images\clothes\skins\bCorn.png" />
+    <Content Include="assets\images\clothes\skins\bSkin.png" />
+    <Content Include="assets\images\clothes\skins\bWhite.png" />
+    <Content Include="assets\images\clothes\skins\bYellow.png" />
+    <Content Include="assets\images\clothes\skins\gBlack.png" />
+    <Content Include="assets\images\clothes\skins\gBrown.png" />
+    <Content Include="assets\images\clothes\skins\gCorn.png" />
+    <Content Include="assets\images\clothes\skins\gSkin.png" />
+    <Content Include="assets\images\clothes\skins\gWhite.png" />
+    <Content Include="assets\images\clothes\skins\gYellow.png" />
+    <Content Include="assets\images\clothes\torso\blazer.png" />
+    <Content Include="assets\images\clothes\torso\camisa.png" />
+    <Content Include="assets\images\clothes\torso\camiseta.png" />
+    <Content Include="assets\images\clothes\torso\dress.png" />
+    <Content Include="assets\images\clothes\torso\sacoLana.png" />
+    <Content Include="assets\images\cloud.png" />
+    <Content Include="assets\images\floor.png" />
+    <Content Include="assets\images\girl.png" />
+    <Content Include="assets\images\items\animals\bear.png" />
+    <Content Include="assets\images\items\animals\cat.png" />
+    <Content Include="assets\images\items\animals\horse.png" />
+    <Content Include="assets\images\items\animals\rabbit.png" />
+    <Content Include="assets\images\items\animals\tiger.png" />
+    <Content Include="assets\images\items\apple.png" />
+    <Content Include="assets\images\items\bananas.png" />
+    <Content Include="assets\images\items\book.png" />
+    <Content Include="assets\images\items\books\book1.png" />
+    <Content Include="assets\images\items\books\book2.png" />
+    <Content Include="assets\images\items\books\book3.png" />
+    <Content Include="assets\images\items\books\book4.png" />
+    <Content Include="assets\images\items\books\book5.png" />
+    <Content Include="assets\images\items\clothCap.png" />
+    <Content Include="assets\images\items\clothesBasket.png" />
+    <Content Include="assets\images\items\dress.png" />
+    <Content Include="assets\images\items\erase.png" />
+    <Content Include="assets\images\items\figures\circle.png" />
+    <Content Include="assets\images\items\figures\hexagon.png" />
+    <Content Include="assets\images\items\figures\pentagon.png" />
+    <Content Include="assets\images\items\figures\square.png" />
+    <Content Include="assets\images\items\figures\triangle.png" />
+    <Content Include="assets\images\items\flags\argentina.png" />
+    <Content Include="assets\images\items\flags\australia.png" />
+    <Content Include="assets\images\items\flags\brasil.png" />
+    <Content Include="assets\images\items\flags\colombia.png" />
+    <Content Include="assets\images\items\flags\usa.png" />
+    <Content Include="assets\images\items\flowers\loto.png" />
+    <Content Include="assets\images\items\flowers\margarita.png" />
+    <Content Include="assets\images\items\flowers\narciso.png" />
+    <Content Include="assets\images\items\flowers\rosa.png" />
+    <Content Include="assets\images\items\flowers\sakura.png" />
+    <Content Include="assets\images\items\fruitBasket.png" />
+    <Content Include="assets\images\items\jacket.png" />
+    <Content Include="assets\images\items\numbers\five.png" />
+    <Content Include="assets\images\items\numbers\four.png" />
+    <Content Include="assets\images\items\numbers\one.png" />
+    <Content Include="assets\images\items\numbers\three.png" />
+    <Content Include="assets\images\items\numbers\two.png" />
+    <Content Include="assets\images\items\pear.png" />
+    <Content Include="assets\images\items\pencil.png" />
+    <Content Include="assets\images\items\pencilCase.png" />
+    <Content Include="assets\images\items\pencilColors.png" />
+    <Content Include="assets\images\items\schoolBag.png" />
+    <Content Include="assets\images\items\setAnimals.jpg" />
+    <Content Include="assets\images\items\setBooks.png" />
+    <Content Include="assets\images\items\setFigures.png" />
+    <Content Include="assets\images\items\setFlags.png" />
+    <Content Include="assets\images\items\setFlowers.png" />
+    <Content Include="assets\images\items\setFruits.png" />
+    <Content Include="assets\images\items\setNumbers.png" />
+    <Content Include="assets\images\items\setShoes.jpg" />
+    <Content Include="assets\images\items\setToys.jpg" />
+    <Content Include="assets\images\items\setUtensils.jpg" />
+    <Content Include="assets\images\items\shirt.png" />
+    <Content Include="assets\images\items\shoes\blackShoe.png" />
+    <Content Include="assets\images\items\shoes\boot.png" />
+    <Content Include="assets\images\items\shoes\heel.png" />
+    <Content Include="assets\images\items\shoes\sandal.png" />
+    <Content Include="assets\images\items\shoes\tennis.png" />
+    <Content Include="assets\images\items\socks.png" />
+    <Content Include="assets\images\items\strawberry.png" />
+    <Content Include="assets\images\items\tomato.png" />
+    <Content Include="assets\images\items\toys\toy1.png" />
+    <Content Include="assets\images\items\toys\toy2.png" />
+    <Content Include="assets\images\items\toys\toy3.png" />
+    <Content Include="assets\images\items\toys\toy4.png" />
+    <Content Include="assets\images\items\toys\toy5.png" />
+    <Content Include="assets\images\items\utensils\axe.png" />
+    <Content Include="assets\images\items\utensils\fork.png" />
+    <Content Include="assets\images\items\utensils\fork2.png" />
+    <Content Include="assets\images\items\utensils\knife.png" />
+    <Content Include="assets\images\items\utensils\spoon.png" />
+    <Content Include="assets\images\monkey.png" />
+    <Content Include="assets\images\openBox.png" />
+    <Content Include="assets\images\pikachu.png" />
+    <Content Include="assets\images\platform.png" />
+    <Content Include="assets\images\rack.png" />
+    <Content Include="assets\images\sprites\alien.png" />
+    <Content Include="assets\images\square.png" />
+    <Content Include="assets\images\titles\1.png" />
+    <Content Include="assets\images\titles\2.png" />
+    <Content Include="assets\images\titles\3.png" />
+    <Content Include="assets\images\titles\congrats.png" />
+    <Content Include="assets\images\titles\gender.png" />
+    <Content Include="assets\images\titles\nameUnit.png" />
+    <Content Include="assets\images\titles\now.png" />
+    <Content Include="assets\images\triangle.png" />
+    <Content Include="assets\sounds\error.wav" />
+    <Content Include="assets\sounds\now.mp3" />
+    <Content Include="assets\sounds\one.mp3" />
+    <Content Include="assets\sounds\point.wav" />
+    <Content Include="assets\sounds\three.mp3" />
+    <Content Include="assets\sounds\two.mp3" />
+    <Content Include="index.html" />
+    <Content Include="js\jQuery.js" />
+    <Content Include="js\phaser_2.6.2.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="ts\kidMaths.ts" />
+    <TypeScriptCompile Include="ts\libraries\p2.d.ts" />
+    <TypeScriptCompile Include="ts\libraries\phaser.d.ts" />
+    <TypeScriptCompile Include="ts\libraries\pixi.d.ts" />
+    <TypeScriptCompile Include="ts\loads\loadGame.ts" />
+    <TypeScriptCompile Include="ts\loads\loads.ts" />
+    <TypeScriptCompile Include="ts\loads\loadStore.ts" />
+    <TypeScriptCompile Include="ts\loads\loadTopic1_1.ts" />
+    <TypeScriptCompile Include="ts\models\avatar.ts" />
+    <TypeScriptCompile Include="ts\models\product.ts" />
+    <TypeScriptCompile Include="ts\principalMenu.ts" />
+    <TypeScriptCompile Include="ts\store.ts" />
+    <TypeScriptCompile Include="ts\topics\topic.ts" />
+    <TypeScriptCompile Include="ts\topics\topic1\topic1_1.ts" />
+    <TypeScriptCompile Include="ts\utils\constants.ts" />
+    <TypeScriptCompile Include="ts\utils\timer.ts" />
+    <TypeScriptCompile Include="ts\utils\variables.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54750</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54750/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
