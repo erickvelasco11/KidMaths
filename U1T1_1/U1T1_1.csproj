@@ -70,15 +70,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\images\arrow.png" />
     <Content Include="assets\images\backgrounds\topic1_1.png" />
     <Content Include="assets\images\backgrounds\loading.jpg" />
     <Content Include="assets\images\backgrounds\pause.png" />
     <Content Include="assets\images\backgrounds\playingBoy.jpg" />
     <Content Include="assets\images\backgrounds\playingGirl.jpg" />
     <Content Include="assets\images\backgrounds\store.jpg" />
-    <Content Include="assets\images\ball.png" />
-    <Content Include="assets\images\ballon.png" />
     <Content Include="assets\images\boy.png" />
     <Content Include="assets\images\buttons\back.png" />
     <Content Include="assets\images\buttons\buy.png" />
@@ -94,9 +91,7 @@
     <Content Include="assets\images\buttons\start2.png" />
     <Content Include="assets\images\buttons\start3.png" />
     <Content Include="assets\images\buttons\store.png" />
-    <Content Include="assets\images\cannon.png" />
     <Content Include="assets\images\check.png" />
-    <Content Include="assets\images\circle.png" />
     <Content Include="assets\images\clothes\feet\converse.png" />
     <Content Include="assets\images\clothes\feet\elegantShoes.png" />
     <Content Include="assets\images\clothes\feet\heels.png" />
@@ -146,7 +141,6 @@
     <Content Include="assets\images\items\books\book4.png" />
     <Content Include="assets\images\items\books\book5.png" />
     <Content Include="assets\images\items\clothCap.png" />
-    <Content Include="assets\images\items\clothesBasket.png" />
     <Content Include="assets\images\items\dress.png" />
     <Content Include="assets\images\items\erase.png" />
     <Content Include="assets\images\items\figures\circle.png" />
@@ -164,7 +158,6 @@
     <Content Include="assets\images\items\flowers\narciso.png" />
     <Content Include="assets\images\items\flowers\rosa.png" />
     <Content Include="assets\images\items\flowers\sakura.png" />
-    <Content Include="assets\images\items\fruitBasket.png" />
     <Content Include="assets\images\items\jacket.png" />
     <Content Include="assets\images\items\numbers\five.png" />
     <Content Include="assets\images\items\numbers\four.png" />
@@ -175,7 +168,6 @@
     <Content Include="assets\images\items\pencil.png" />
     <Content Include="assets\images\items\pencilCase.png" />
     <Content Include="assets\images\items\pencilColors.png" />
-    <Content Include="assets\images\items\schoolBag.png" />
     <Content Include="assets\images\items\setAnimals.jpg" />
     <Content Include="assets\images\items\setBooks.png" />
     <Content Include="assets\images\items\setFigures.png" />
@@ -205,13 +197,13 @@
     <Content Include="assets\images\items\utensils\fork2.png" />
     <Content Include="assets\images\items\utensils\knife.png" />
     <Content Include="assets\images\items\utensils\spoon.png" />
-    <Content Include="assets\images\monkey.png" />
-    <Content Include="assets\images\openBox.png" />
     <Content Include="assets\images\pikachu.png" />
     <Content Include="assets\images\platform.png" />
     <Content Include="assets\images\rack.png" />
     <Content Include="assets\images\sprites\alien.png" />
-    <Content Include="assets\images\square.png" />
+    <Content Include="assets\images\sprites\fruitBasket.png" />
+    <Content Include="assets\images\sprites\clothesBasket.png" />
+    <Content Include="assets\images\sprites\schoolBag.png" />
     <Content Include="assets\images\titles\1.png" />
     <Content Include="assets\images\titles\2.png" />
     <Content Include="assets\images\titles\3.png" />
@@ -219,7 +211,6 @@
     <Content Include="assets\images\titles\gender.png" />
     <Content Include="assets\images\titles\nameUnit.png" />
     <Content Include="assets\images\titles\now.png" />
-    <Content Include="assets\images\triangle.png" />
     <Content Include="assets\sounds\error.wav" />
     <Content Include="assets\sounds\now.mp3" />
     <Content Include="assets\sounds\one.mp3" />

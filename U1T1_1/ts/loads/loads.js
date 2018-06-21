@@ -18,7 +18,7 @@ var MrBook;
         Loads.prototype.superPreload = function () {
             this.load.image('imgBoy', 'assets/images/boy.png');
             this.load.image('imgGirl', 'assets/images/girl.png');
-            if (MrBook.avatar.gender == MrBook.MALE) {
+            if (MrBook.avatar == undefined || MrBook.avatar.gender == MrBook.MALE) {
                 this.game.load.image('strItmSkin', 'assets/images/clothes/skins/bSkin.png');
                 this.game.load.image('strItmWhite', 'assets/images/clothes/skins/bWhite.png');
                 this.game.load.image('strItmYellow', 'assets/images/clothes/skins/bYellow.png');

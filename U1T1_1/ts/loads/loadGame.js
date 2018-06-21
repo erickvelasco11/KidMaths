@@ -63,26 +63,30 @@ var MrBook;
             //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
             _this.loadComplete = function () {
                 _this.loadText.setText("Consiguiendo tu nombre...");
-                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk': 'id' })
-                    .done(function (data, textStatus, jqXHR) {
-                    MrBook.avatar = new MrBook.Avatar();
-                    Object.keys(data).forEach(function (key) {
-                        MrBook.avatar[key] = data[key];
-                    });
-                    _this.player1.visible = false;
-                    _this.loadBar.destroy();
-                    _this.loadText.destroy();
-                    _this.title.kill();
-                    _this.load.onLoadStart.removeAll();
-                    _this.load.onFileComplete.removeAll();
-                    _this.load.onLoadComplete.removeAll();
-                    _this.game.state.start("PrincipalMenu", true);
-                })
-                    .fail(function (jqxhr, textStatus, error) {
-                    if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
-                        _this.loadComplete();
-                    }
-                });
+                _this.load.onLoadStart.removeAll();
+                _this.load.onFileComplete.removeAll();
+                _this.load.onLoadComplete.removeAll();
+                _this.game.state.start("PrincipalMenu", true);
+                //$.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk':'id' })
+                //    .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                //        avatar = new Avatar();
+                //        Object.keys(data).forEach(function (key) {
+                //            avatar[key] = data[key];
+                //        })
+                //        this.player1.visible = false;
+                //        this.loadBar.destroy();
+                //        this.loadText.destroy();
+                //        this.title.kill();
+                //        this.load.onLoadStart.removeAll();
+                //        this.load.onFileComplete.removeAll();
+                //        this.load.onLoadComplete.removeAll();
+                //        this.game.state.start("PrincipalMenu", true);
+                //    })
+                //    .fail((jqxhr, textStatus, error) => {
+                //        if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
+                //            //this.loadComplete();
+                //        }
+                //    });
             };
             return _this;
         }

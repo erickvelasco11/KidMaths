@@ -25,7 +25,7 @@ var MrBook;
                     var x;
                     var y = _this.rnd.integerInRange(50, 300);
                     var velocity = _this.rnd.integerInRange(50, 100) * isFromLeft;
-                    isFromLeft == 1 ? x = -70 : x = _this.world.width + 50;
+                    isFromLeft == 1 ? x = -100 : x = _this.world.width + 50;
                     if (_this.subState == MrBook.PLAYING) {
                         var category = _this.rnd.integerInRange(0, 2);
                         var idItem;
@@ -40,15 +40,15 @@ var MrBook;
                                 idItem = _this.clothes[_this.rnd.integerInRange(0, 4)];
                                 break;
                         }
-                        _this.item = _this.add.sprite(x, y, idItem);
-                        _this.item.width = 50;
-                        _this.item.height = 50;
+                        _this.item = _this.add.sprite(x, y + 10, idItem);
+                        _this.item.width = 40;
+                        _this.item.height = 40;
                         _this.item.physicsEnabled = true;
                         _this.item.physicsType = Phaser.Physics.ARCADE;
                         _this.physics.arcade.enable(_this.item);
                         _this.item.body.velocity.x = velocity;
                         _this.item.inputEnabled = true;
-                        if (+MrBook.avatar.age < MrBook.MINIMUM_AGE) {
+                        if (MrBook.avatar == undefined || +MrBook.avatar.age < MrBook.MINIMUM_AGE) {
                             _this.item.events.onInputDown.add(_this.onDragStop, _this);
                         }
                         else {
@@ -62,7 +62,8 @@ var MrBook;
                         }
                         _this.items.push(_this.item);
                     }
-                    isFromLeft == 1 ? x -= 60 : x += 110;
+                    //isFromLeft == 1 ? x -= 60 : x += 110;
+                    isFromLeft == 1 ? x -= 15 : x += 65;
                     var bird = _this.birds.create(x, y - 45, 'sprBird');
                     bird.animations.add('right', [0, 1, 2, 3, 4, 5], 10, true);
                     bird.animations.play('right');
@@ -86,7 +87,7 @@ var MrBook;
             };
             _this.onDragStop = function (item, pointer) {
                 _this.clickedItem = item;
-                if (+MrBook.avatar.age < MrBook.MINIMUM_AGE) {
+                if (MrBook.avatar == undefined || +MrBook.avatar.age < MrBook.MINIMUM_AGE) {
                     item.body.velocity.x = 0;
                     _this.subState = MrBook.PAUSE;
                     _this.putInPause(_this.birds);

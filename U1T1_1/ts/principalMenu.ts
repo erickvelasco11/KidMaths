@@ -11,7 +11,7 @@
         }
 
         create() {
-            if (avatar.gender == MALE) {
+            if (avatar == undefined || avatar.gender == MALE) {
                 this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrPlayingBoy");
             } else {
                 this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrPlayingGirl");

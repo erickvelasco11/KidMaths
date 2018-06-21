@@ -88,7 +88,7 @@
                 var y = this.rnd.integerInRange(50, 300);
                 var velocity = this.rnd.integerInRange(50, 100) * isFromLeft;
 
-                isFromLeft == 1 ? x = -70 : x = this.world.width + 50;
+                isFromLeft == 1 ? x = -100 : x = this.world.width + 50;
                 
                 if (this.subState == PLAYING) {
                     var category = this.rnd.integerInRange(0, 2);
@@ -104,16 +104,16 @@
                             idItem = this.clothes[this.rnd.integerInRange(0, 4)];
                             break;
                     }
-                    this.item = this.add.sprite(x, y, idItem);
-                    this.item.width = 50;
-                    this.item.height = 50;
+                    this.item = this.add.sprite(x, y+10, idItem);
+                    this.item.width = 40;
+                    this.item.height = 40;
                     this.item.physicsEnabled = true;
                     this.item.physicsType = Phaser.Physics.ARCADE;
                     this.physics.arcade.enable(this.item);
                     this.item.body.velocity.x = velocity
 
                     this.item.inputEnabled = true;
-                    if (+avatar.age < MINIMUM_AGE) {
+                    if (avatar == undefined || +avatar.age < MINIMUM_AGE) {
                         this.item.events.onInputDown.add(this.onDragStop, this);
                     } else {
                         this.item.input.enableDrag(false, true);
@@ -129,7 +129,8 @@
                     this.items.push(this.item);
                 }
 
-                isFromLeft == 1 ? x -= 60 : x += 110;
+                //isFromLeft == 1 ? x -= 60 : x += 110;
+                isFromLeft == 1 ? x-=15 : x += 65;
                 var bird = this.birds.create(x, y - 45, 'sprBird');
                 bird.animations.add('right', [0, 1, 2, 3, 4, 5], 10, true);
                 bird.animations.play('right');
@@ -157,7 +158,7 @@
 
         onDragStop = (item, pointer) => {
             this.clickedItem = item;
-            if (+avatar.age < MINIMUM_AGE) {
+            if (avatar == undefined || +avatar.age < MINIMUM_AGE) {
                 item.body.velocity.x = 0;
                 this.subState = PAUSE;
 

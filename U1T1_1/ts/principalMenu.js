@@ -17,7 +17,7 @@ var MrBook;
         }
         PrincipalMenu.prototype.create = function () {
             var _this = this;
-            if (MrBook.avatar.gender == MrBook.MALE) {
+            if (MrBook.avatar == undefined || MrBook.avatar.gender == MrBook.MALE) {
                 this.background = this.add.tileSprite(0, 0, this.world.width, this.world.height, "bgrPlayingBoy");
             }
             else {

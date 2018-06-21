@@ -9,7 +9,7 @@
             this.load.image('imgBoy', 'assets/images/boy.png');
             this.load.image('imgGirl', 'assets/images/girl.png');
 
-            if (avatar.gender == MALE) {
+            if (avatar == undefined || avatar.gender == MALE) {
                 this.game.load.image('strItmSkin', 'assets/images/clothes/skins/bSkin.png');
                 this.game.load.image('strItmWhite', 'assets/images/clothes/skins/bWhite.png');
                 this.game.load.image('strItmYellow', 'assets/images/clothes/skins/bYellow.png');
