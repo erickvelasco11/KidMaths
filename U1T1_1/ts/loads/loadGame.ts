@@ -102,32 +102,28 @@
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
             this.loadText.setText("Consiguiendo tu nombre...");
+            $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk':'id' })
+                .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+                    avatar = new Avatar();
+                    Object.keys(data).forEach(function (key) {
+                        avatar[key] = data[key];
+                    })
+                    this.player1.visible = false;
+                    this.loadBar.destroy();
+                    this.loadText.destroy();
+                    this.title.kill();
+
                     this.load.onLoadStart.removeAll();
                     this.load.onFileComplete.removeAll();
                     this.load.onLoadComplete.removeAll();
-            this.game.state.start("PrincipalMenu", true);
-            //$.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetById', 'id': 1, 'tabla': 'mb_avatar', 'pk':'id' })
-            //    .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
-            //        avatar = new Avatar();
-            //        Object.keys(data).forEach(function (key) {
-            //            avatar[key] = data[key];
-            //        })
-            //        this.player1.visible = false;
-            //        this.loadBar.destroy();
-            //        this.loadText.destroy();
-            //        this.title.kill();
 
-            //        this.load.onLoadStart.removeAll();
-            //        this.load.onFileComplete.removeAll();
-            //        this.load.onLoadComplete.removeAll();
-
-            //        this.game.state.start("PrincipalMenu", true);
-            //    })
-            //    .fail((jqxhr, textStatus, error) => {
-            //        if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
-            //            //this.loadComplete();
-            //        }
-            //    });
+                    this.game.state.start("PrincipalMenu", true);
+                })
+                .fail((jqxhr, textStatus, error) => {
+                    if (confirm("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.")) {
+                        this.loadComplete();
+                    }
+                });
         }
     }
 }

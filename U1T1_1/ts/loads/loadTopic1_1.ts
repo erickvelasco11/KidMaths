@@ -19,34 +19,22 @@
 
             this.load.image('bgrArcade', 'assets/images/backgrounds/topic1_1.png');
 
-            this.load.image('itmApple', 'assets/images/items/apple.png');
-            this.load.image('itmBananas', 'assets/images/items/bananas.png');
-            this.load.image('itmStrawberry', 'assets/images/items/strawberry.png');
-            this.load.image('itmPear', 'assets/images/items/pear.png');
-            this.load.image('itmTomato', 'assets/images/items/tomato.png');
-            this.load.image('itmBook', 'assets/images/items/book.png');
-            this.load.image('itmErase', 'assets/images/items/erase.png');
-            this.load.image('itmPencil', 'assets/images/items/pencil.png');
-            this.load.image('itmPencilColors', 'assets/images/items/pencilColors.png');
-            this.load.image('itmPencilCase', 'assets/images/items/pencilCase.png');
-            this.load.image('itmClothCap', 'assets/images/items/clothCap.png');
-            this.load.image('itmDress', 'assets/images/items/dress.png');
-            this.load.image('itmJacket', 'assets/images/items/jacket.png');
-            this.load.image('itmShirt', 'assets/images/items/shirt.png');
-            this.load.image('itmSocks', 'assets/images/items/socks.png');
-
-            this.load.image('itmBook1', 'assets/images/items/books/book1.png');
-            this.load.image('itmBook2', 'assets/images/items/books/book2.png');
-            this.load.image('itmBook3', 'assets/images/items/books/book3.png');
-            this.load.image('itmBook4', 'assets/images/items/books/book4.png');
-            this.load.image('itmBook5', 'assets/images/items/books/book5.png');
-           
-            this.load.image('itmBoot', 'assets/images/items/shoes/boot.png');
-            this.load.image('itmHeel', 'assets/images/items/shoes/heel.png');
-            this.load.image('itmTennis', 'assets/images/items/shoes/tennis.png');
-            this.load.image('itmBlackShoe', 'assets/images/items/shoes/blackShoe.png');
-            this.load.image('itmSandal', 'assets/images/items/shoes/sandal.png');
-
+            this.load.spritesheet('itmApple', 'assets/images/items/apple.png', 298, 272, 2);
+            this.load.spritesheet('itmBananas', 'assets/images/items/bananas.png', 298, 272, 2);
+            this.load.spritesheet('itmStrawberry', 'assets/images/items/strawberry.png', 298, 272, 2);
+            this.load.spritesheet('itmPear', 'assets/images/items/pear.png', 298, 272, 2);
+            this.load.spritesheet('itmTomato', 'assets/images/items/tomato.png', 298, 272, 2);
+            this.load.spritesheet('itmBook', 'assets/images/items/book.png', 298, 272, 2);
+            this.load.spritesheet('itmErase', 'assets/images/items/erase.png', 298, 272, 2);
+            this.load.spritesheet('itmPencil', 'assets/images/items/pencil.png', 298, 272, 2);
+            this.load.spritesheet('itmPencilColors', 'assets/images/items/pencilColors.png', 298, 272, 2);
+            this.load.spritesheet('itmPencilCase', 'assets/images/items/pencilCase.png', 298, 272, 2);
+            this.load.spritesheet('itmClothCap', 'assets/images/items/clothCap.png', 297, 272, 2);
+            this.load.spritesheet('itmDress', 'assets/images/items/dress.png', 297, 272, 2);
+            this.load.spritesheet('itmJacket', 'assets/images/items/jacket.png', 297, 272, 2);
+            this.load.spritesheet('itmShirt', 'assets/images/items/shirt.png', 297, 272, 2);
+            this.load.spritesheet('itmSocks', 'assets/images/items/socks.png', 297, 272, 2);
+            
             this.load.spritesheet('sprBird', 'assets/images/sprites/alien.png', 413, 413);
             this.load.spritesheet('itmFruitBasket', 'assets/images/sprites/fruitBasket.png', 244, 222);
             this.load.spritesheet('itmClothesbasket', 'assets/images/sprites/clothesBasket.png', 244, 222);
@@ -95,36 +83,32 @@
 
         //Esta función es de Phaser y se llama al terminar toda la descarga de los archivos necesarios
         loadComplete = () => {
-            this.game.load.onLoadStart.removeAll();
-            this.game.load.onFileComplete.removeAll();
-            this.game.load.onLoadComplete.removeAll();
-            this.game.state.start("Topic1_1", true);
-            //if (productsStore.length == 0) {
-            //    $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
-            //        .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
+            if (productsStore.length == 0) {
+                $.getJSON("https://www.mrbook.com.co/api/php/crud.php", { 'option': 'GetAll', 'tabla': 'mb_product' })
+                    .done((data: any, textStatus: string, jqXHR: JQueryXHR) => {
 
-            //            this.loadText.setText("Mirando cuáles son tus productos...");
-            //            for (var i = 0; i < Object.keys(data).length; i++) {
-            //                Object.keys(data).forEach(function (key) {
-            //                    productsStore[key] = data[key];
-            //                })
-            //            }
-            //            this.game.load.onLoadStart.removeAll();
-            //            this.game.load.onFileComplete.removeAll();
-            //            this.game.load.onLoadComplete.removeAll();
+                        this.loadText.setText("Mirando cuáles son tus productos...");
+                        for (var i = 0; i < Object.keys(data).length; i++) {
+                            Object.keys(data).forEach(function (key) {
+                                productsStore[key] = data[key];
+                            })
+                        }
+                        this.game.load.onLoadStart.removeAll();
+                        this.game.load.onFileComplete.removeAll();
+                        this.game.load.onLoadComplete.removeAll();
 
-            //            this.game.state.start("Topic1_1", true);
-            //        })
-            //        .fail((jqxhr, textStatus, error) => {
-            //            alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
-            //        });
-            //} else {
-            //    this.game.load.onLoadStart.removeAll();
-            //    this.game.load.onFileComplete.removeAll();
-            //    this.game.load.onLoadComplete.removeAll();
+                        this.game.state.start("Topic1_1", true);
+                    })
+                    .fail((jqxhr, textStatus, error) => {
+                        alert("Lo sentimos. No nos hemos podido conectar con el servidor. Revisa tu conexión de internet o pregunta a tu tutor.");
+                    });
+            } else {
+                this.game.load.onLoadStart.removeAll();
+                this.game.load.onFileComplete.removeAll();
+                this.game.load.onLoadComplete.removeAll();
 
-            //    this.game.state.start("Topic1_1", true);
-            //}
+                this.game.state.start("Topic1_1", true);
+            }
         }
     }
 }

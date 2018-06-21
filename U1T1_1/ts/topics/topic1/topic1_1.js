@@ -40,9 +40,9 @@ var MrBook;
                                 idItem = _this.clothes[_this.rnd.integerInRange(0, 4)];
                                 break;
                         }
-                        _this.item = _this.add.sprite(x, y + 10, idItem);
-                        _this.item.width = 40;
-                        _this.item.height = 40;
+                        _this.item = _this.add.sprite(x, y + 15, idItem, 0);
+                        _this.item.width = 50;
+                        _this.item.height = 50;
                         _this.item.physicsEnabled = true;
                         _this.item.physicsType = Phaser.Physics.ARCADE;
                         _this.physics.arcade.enable(_this.item);
@@ -79,7 +79,6 @@ var MrBook;
                 _this.timer.startTimer(3000, function () { item1.kill(); });
             };
             _this.disapearItem = function (item) {
-                alert("Desaparecer");
                 item.kill();
             };
             _this.onDragStart = function (item, pointer) {
@@ -89,10 +88,14 @@ var MrBook;
                 _this.clickedItem = item;
                 if (MrBook.avatar == undefined || +MrBook.avatar.age < MrBook.MINIMUM_AGE) {
                     item.body.velocity.x = 0;
+                    item.frame = 1;
                     _this.subState = MrBook.PAUSE;
                     _this.putInPause(_this.birds);
                     _this.putInPauseArray(_this.items);
                     _this.bgrPause = _this.add.image(0, 0, "bgrPause");
+                    _this.boxes.getAt(0).frame = 1;
+                    _this.boxes.getAt(1).frame = 1;
+                    _this.boxes.getAt(2).frame = 1;
                     _this.world.bringToTop(_this.boxes);
                     _this.world.bringToTop(item);
                     _this.timer.pause();
@@ -109,6 +112,9 @@ var MrBook;
                 _this.removePause(_this.birds);
                 _this.removePauseArray(_this.items);
                 _this.putInChest(_this.clickedItem, item);
+                _this.boxes.getAt(0).frame = 0;
+                _this.boxes.getAt(1).frame = 0;
+                _this.boxes.getAt(2).frame = 0;
                 _this.timer.resume();
                 _this.clickedItem.kill();
             };

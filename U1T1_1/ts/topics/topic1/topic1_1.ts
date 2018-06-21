@@ -104,9 +104,9 @@
                             idItem = this.clothes[this.rnd.integerInRange(0, 4)];
                             break;
                     }
-                    this.item = this.add.sprite(x, y+10, idItem);
-                    this.item.width = 40;
-                    this.item.height = 40;
+                    this.item = this.add.sprite(x, y+15, idItem, 0);
+                    this.item.width = 50;
+                    this.item.height = 50;
                     this.item.physicsEnabled = true;
                     this.item.physicsType = Phaser.Physics.ARCADE;
                     this.physics.arcade.enable(this.item);
@@ -148,7 +148,6 @@
             this.timer.startTimer(3000, () => { item1.kill() });
         }
         disapearItem = (item) => {
-            alert("Desaparecer")
             item.kill();
         }
 
@@ -160,11 +159,15 @@
             this.clickedItem = item;
             if (avatar == undefined || +avatar.age < MINIMUM_AGE) {
                 item.body.velocity.x = 0;
+                item.frame = 1;
                 this.subState = PAUSE;
 
                 this.putInPause(this.birds);
                 this.putInPauseArray(this.items);
                 this.bgrPause = this.add.image(0, 0, "bgrPause");
+                (this.boxes.getAt(0) as Phaser.Sprite).frame = 1;
+                (this.boxes.getAt(1) as Phaser.Sprite).frame = 1;
+                (this.boxes.getAt(2) as Phaser.Sprite).frame = 1;
                 this.world.bringToTop(this.boxes);
                 this.world.bringToTop(item);
 
@@ -183,6 +186,9 @@
             this.removePause(this.birds);
             this.removePauseArray(this.items);
             this.putInChest(this.clickedItem, item);
+            (this.boxes.getAt(0) as Phaser.Sprite).frame = 0;
+            (this.boxes.getAt(1) as Phaser.Sprite).frame = 0;
+            (this.boxes.getAt(2) as Phaser.Sprite).frame = 0;
             this.timer.resume();
             this.clickedItem.kill();
         }
