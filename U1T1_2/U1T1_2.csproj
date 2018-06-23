@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +70,90 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\backgrounds\arcade.png" />
+    <Content Include="assets\images\backgrounds\car.jpg" />
+    <Content Include="assets\images\backgrounds\jungle.jpg" />
+    <Content Include="assets\images\backgrounds\loading.jpg" />
+    <Content Include="assets\images\backgrounds\page.jpg" />
+    <Content Include="assets\images\backgrounds\pause.png" />
+    <Content Include="assets\images\backgrounds\playing.jpg" />
+    <Content Include="assets\images\backgrounds\playingBoy.jpg" />
+    <Content Include="assets\images\backgrounds\playingGirl.jpg" />
+    <Content Include="assets\images\backgrounds\puzzle.jpg" />
+    <Content Include="assets\images\backgrounds\select.png" />
+    <Content Include="assets\images\backgrounds\store.jpg" />
+    <Content Include="assets\images\ballon.png" />
+    <Content Include="assets\images\boy.png" />
+    <Content Include="assets\images\buttons\back.png" />
+    <Content Include="assets\images\buttons\buy.png" />
+    <Content Include="assets\images\buttons\menuFeet.png" />
+    <Content Include="assets\images\buttons\menuHead.png" />
+    <Content Include="assets\images\buttons\menuLegs.png" />
+    <Content Include="assets\images\buttons\menuSkin.png" />
+    <Content Include="assets\images\buttons\menuTorso.png" />
+    <Content Include="assets\images\buttons\next.png" />
+    <Content Include="assets\images\buttons\see.png" />
+    <Content Include="assets\images\buttons\start.png" />
+    <Content Include="assets\images\buttons\start1.png" />
+    <Content Include="assets\images\buttons\start2.png" />
+    <Content Include="assets\images\buttons\start3.png" />
+    <Content Include="assets\images\buttons\store.png" />
+    <Content Include="assets\images\check.png" />
+    <Content Include="assets\images\circle.png" />
+    <Content Include="assets\images\clothes\feet\converse.png" />
+    <Content Include="assets\images\clothes\feet\elegantShoes.png" />
+    <Content Include="assets\images\clothes\feet\heels.png" />
+    <Content Include="assets\images\clothes\feet\tennis.png" />
+    <Content Include="assets\images\clothes\head\boina.png" />
+    <Content Include="assets\images\clothes\head\cachucha.png" />
+    <Content Include="assets\images\clothes\head\cowboyHat.png" />
+    <Content Include="assets\images\clothes\head\gorroLana.png" />
+    <Content Include="assets\images\clothes\head\noHat.png" />
+    <Content Include="assets\images\clothes\head\policeHat.png" />
+    <Content Include="assets\images\clothes\legs\elegantPants.png" />
+    <Content Include="assets\images\clothes\legs\jean.png" />
+    <Content Include="assets\images\clothes\legs\pantaloneta.png" />
+    <Content Include="assets\images\clothes\legs\skirt.png" />
+    <Content Include="assets\images\clothes\products.png" />
+    <Content Include="assets\images\clothes\skins\bBlack.png" />
+    <Content Include="assets\images\clothes\skins\bBrown.png" />
+    <Content Include="assets\images\clothes\skins\bCorn.png" />
+    <Content Include="assets\images\clothes\skins\bSkin.png" />
+    <Content Include="assets\images\clothes\skins\bWhite.png" />
+    <Content Include="assets\images\clothes\skins\bYellow.png" />
+    <Content Include="assets\images\clothes\skins\gBlack.png" />
+    <Content Include="assets\images\clothes\skins\gBrown.png" />
+    <Content Include="assets\images\clothes\skins\gCorn.png" />
+    <Content Include="assets\images\clothes\skins\gSkin.png" />
+    <Content Include="assets\images\clothes\skins\gWhite.png" />
+    <Content Include="assets\images\clothes\skins\gYellow.png" />
+    <Content Include="assets\images\clothes\torso\blazer.png" />
+    <Content Include="assets\images\clothes\torso\camisa.png" />
+    <Content Include="assets\images\clothes\torso\camiseta.png" />
+    <Content Include="assets\images\clothes\torso\dress.png" />
+    <Content Include="assets\images\clothes\torso\sacoLana.png" />
+    <Content Include="assets\images\girl.png" />
+    <Content Include="assets\images\pikachu.png" />
+    <Content Include="assets\images\platform.png" />
+    <Content Include="assets\images\rack.png" />
+    <Content Include="assets\images\square.png" />
+    <Content Include="assets\images\titles\1.png" />
+    <Content Include="assets\images\titles\2.png" />
+    <Content Include="assets\images\titles\3.png" />
+    <Content Include="assets\images\titles\congrats.png" />
+    <Content Include="assets\images\titles\gender.png" />
+    <Content Include="assets\images\titles\nameUnit.png" />
+    <Content Include="assets\images\titles\now.png" />
+    <Content Include="assets\images\triangle.png" />
+    <Content Include="assets\sounds\error.wav" />
+    <Content Include="assets\sounds\now.mp3" />
+    <Content Include="assets\sounds\one.mp3" />
+    <Content Include="assets\sounds\point.wav" />
+    <Content Include="assets\sounds\three.mp3" />
+    <Content Include="assets\sounds\two.mp3" />
+    <Content Include="index.html" />
+    <Content Include="js\jQuery.js" />
+    <Content Include="js\phaser_2.6.2.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,11 +168,35 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="ts\kidMaths.ts" />
+    <TypeScriptCompile Include="ts\libraries\p2.d.ts" />
+    <TypeScriptCompile Include="ts\libraries\phaser.d.ts" />
+    <TypeScriptCompile Include="ts\libraries\pixi.d.ts" />
+    <TypeScriptCompile Include="ts\loads\loadGame.ts" />
+    <TypeScriptCompile Include="ts\loads\loads.ts" />
+    <TypeScriptCompile Include="ts\loads\loadStore.ts" />
+    <TypeScriptCompile Include="ts\loads\loadTopic1_2.ts" />
+    <TypeScriptCompile Include="ts\models\avatar.ts" />
+    <TypeScriptCompile Include="ts\models\product.ts" />
+    <TypeScriptCompile Include="ts\principalMenu.ts" />
+    <TypeScriptCompile Include="ts\store.ts" />
+    <TypeScriptCompile Include="ts\topics\topic.ts" />
+    <TypeScriptCompile Include="ts\topics\topic1\topic1_2.ts" />
+    <TypeScriptCompile Include="ts\utils\constants.ts" />
+    <TypeScriptCompile Include="ts\utils\timer.ts" />
+    <TypeScriptCompile Include="ts\utils\variables.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
