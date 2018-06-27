@@ -77,6 +77,7 @@ var MrBook;
         LoadTopic1_1.prototype.preload = function () {
             this.superPreload();
             this.load.image('bgrArcade', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ufoGame/background.png').crossOrigin = true;
+            this.load.image('imgFloor', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ufoGame/floor.png').crossOrigin = true;
             this.load.spritesheet('itmApple', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ufoGame/apple.png', 298, 272, 2).crossOrigin = true;
             this.load.spritesheet('itmBananas', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ufoGame/bananas.png', 298, 272, 2).crossOrigin = true;
             this.load.spritesheet('itmStrawberry', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ufoGame/strawberry.png', 298, 272, 2).crossOrigin = true;

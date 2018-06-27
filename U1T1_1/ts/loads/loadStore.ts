@@ -48,7 +48,7 @@
 
             var image = this.game.add.image(0, this.game.world.centerY, "bgrPause");
 
-            this.loadBar = this.game.add.graphics(100, this.game.world.centerY + 100).crossOrigin = true;
+            this.loadBar = this.game.add.graphics(100, this.game.world.centerY + 100);
             this.loadBar.lineStyle(35, 0xffffff, 1);
             this.loadBar.tint = YELLOW;
             this.loadBar.moveTo(0, 0);
