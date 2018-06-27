@@ -17,20 +17,20 @@
         preload() {
             this.superPreload();
 
-            this.game.load.image('bgrStore', 'assets/images/backgrounds/store.jpg');
+            this.game.load.image('bgrStore', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/store.jpg').crossOrigin = true;
 
-            this.game.load.image('imgRack', 'assets/images/rack.png');
-            this.game.load.image('imgBallon', 'assets/images/ballon.png');
-            this.game.load.image('imgCheck', 'assets/images/check.png');
+            this.game.load.image('imgRack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/rack.png').crossOrigin = true;
+            this.game.load.image('imgBallon', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/ballon.png').crossOrigin = true;
+            this.game.load.image('imgCheck', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/check.png').crossOrigin = true;
 
-            this.game.load.spritesheet('btnMenuSkin', 'assets/images/buttons/menuSkin.png', 200, 200);
-            this.game.load.spritesheet('btnMenuHead', 'assets/images/buttons/menuHead.png', 200, 200);
-            this.game.load.spritesheet('btnMenuTorso', 'assets/images/buttons/menuTorso.png', 200, 200);
-            this.game.load.spritesheet('btnMenuLegs', 'assets/images/buttons/menuLegs.png', 200, 200);
-            this.game.load.spritesheet('btnMenuFeet', 'assets/images/buttons/menuFeet.png', 200, 200);
-            this.game.load.spritesheet('btnBack', 'assets/images/buttons/back.png', 200, 200);
-            this.game.load.spritesheet('btnSee', 'assets/images/buttons/see.png', 200, 200);
-            this.game.load.spritesheet('btnBuy', 'assets/images/buttons/buy.png', 200, 200);
+            this.game.load.spritesheet('btnMenuSkin', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuSkin.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuHead', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuHead.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuTorso', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuTorso.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuLegs', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuLegs.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuFeet', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuFeet.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnBack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/back.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnSee', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/see.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnBuy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/buy.png', 200, 200).crossOrigin = true;
 
 
             this.game.load.onLoadStart.add(this.loadStart, this);
@@ -48,7 +48,7 @@
 
             var image = this.game.add.image(0, this.game.world.centerY, "bgrPause");
 
-            this.loadBar = this.game.add.graphics(100, this.game.world.centerY + 100);
+            this.loadBar = this.game.add.graphics(100, this.game.world.centerY + 100).crossOrigin = true;
             this.loadBar.lineStyle(35, 0xffffff, 1);
             this.loadBar.tint = YELLOW;
             this.loadBar.moveTo(0, 0);

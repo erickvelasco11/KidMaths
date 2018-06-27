@@ -1,1 +1,0 @@
-alien_01.png.png 8 11, alien_02.png.png 199 11, alien_03.png.png 385 11, alien_04.png.png 571 11, alien_05.png.png 742 11.
