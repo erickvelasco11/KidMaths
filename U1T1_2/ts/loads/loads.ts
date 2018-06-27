@@ -6,48 +6,47 @@
         }
 
         superPreload() {
-            this.load.image('imgBoy', 'assets/images/boy.png');
-            this.load.image('imgGirl', 'assets/images/girl.png');
+            this.load.image('imgBoy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/boy.png').crossOrigin = true;
+            this.load.image('imgGirl', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/girl.png').crossOrigin = true;
 
-            if (avatar.gender == MALE) {
-                this.game.load.image('strItmSkin', 'assets/images/clothes/skins/bSkin.png');
-                this.game.load.image('strItmWhite', 'assets/images/clothes/skins/bWhite.png');
-                this.game.load.image('strItmYellow', 'assets/images/clothes/skins/bYellow.png');
-                this.game.load.image('strItmCorn', 'assets/images/clothes/skins/bCorn.png');
-                this.game.load.image('strItmBrown', 'assets/images/clothes/skins/bBrown.png');
-                this.game.load.image('strItmBlack', 'assets/images/clothes/skins/bBlack.png');
+            if (avatar == undefined || avatar.gender == MALE) {
+                this.game.load.image('strItmSkin', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bSkin.png').crossOrigin = true;
+                this.game.load.image('strItmWhite', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bWhite.png').crossOrigin = true;
+                this.game.load.image('strItmYellow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bYellow.png').crossOrigin = true;
+                this.game.load.image('strItmCorn', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bCorn.png').crossOrigin = true;
+                this.game.load.image('strItmBrown', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bBrown.png').crossOrigin = true;
+                this.game.load.image('strItmBlack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/bBlack.png').crossOrigin = true;
             } else {
-                this.game.load.image('strItmSkin', 'assets/images/clothes/skins/gSkin.png');
-                this.game.load.image('strItmWhite', 'assets/images/clothes/skins/gWhite.png');
-                this.game.load.image('strItmYellow', 'assets/images/clothes/skins/gYellow.png');
-                this.game.load.image('strItmCorn', 'assets/images/clothes/skins/gCorn.png');
-                this.game.load.image('strItmBrown', 'assets/images/clothes/skins/gBrown.png');
-                this.game.load.image('strItmBlack', 'assets/images/clothes/skins/gBlack.png');
+                this.game.load.image('strItmSkin', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gSkin.png').crossOrigin = true;
+                this.game.load.image('strItmWhite', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gWhite.png').crossOrigin = true;
+                this.game.load.image('strItmYellow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gYellow.png').crossOrigin = true;
+                this.game.load.image('strItmCorn', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gCorn.png').crossOrigin = true;
+                this.game.load.image('strItmBrown', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gBrown.png').crossOrigin = true;
+                this.game.load.image('strItmBlack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/skins/gBlack.png').crossOrigin = true;
             }
 
-            this.game.load.image('strItmNoHat', 'assets/images/clothes/head/noHat.png');
-            this.game.load.image('strItmBoina', 'assets/images/clothes/head/boina.png');
-            this.game.load.image('strItmCachucha', 'assets/images/clothes/head/cachucha.png');
-            this.game.load.image('strItmGorroLana', 'assets/images/clothes/head/gorroLana.png');
-            this.game.load.image('strItmPoliceHat', 'assets/images/clothes/head/policeHat.png');
-            this.game.load.image('strItmCowboyHat', 'assets/images/clothes/head/cowboyHat.png');
+            this.game.load.image('strItmNoHat', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/noHat.png').crossOrigin = true;
+            this.game.load.image('strItmBoina', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/boina.png').crossOrigin = true;
+            this.game.load.image('strItmCachucha', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/cachucha.png').crossOrigin = true;
+            this.game.load.image('strItmGorroLana', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/gorroLana.png').crossOrigin = true;
+            this.game.load.image('strItmPoliceHat', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/policeHat.png').crossOrigin = true;
+            this.game.load.image('strItmCowboyHat', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/head/cowboyHat.png').crossOrigin = true;
 
-            this.game.load.image('strItmBlazer', 'assets/images/clothes/torso/blazer.png');
-            this.game.load.image('strItmCamisa', 'assets/images/clothes/torso/camisa.png');
-            this.game.load.image('strItmCamiseta', 'assets/images/clothes/torso/camiseta.png');
-            this.game.load.image('strItmDress', 'assets/images/clothes/torso/dress.png');
-            this.game.load.image('strItmSacoLana', 'assets/images/clothes/torso/sacoLana.png');
+            this.game.load.image('strItmBlazer', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/torso/blazer.png').crossOrigin = true;
+            this.game.load.image('strItmCamisa', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/torso/camisa.png').crossOrigin = true;
+            this.game.load.image('strItmCamiseta', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/torso/camiseta.png').crossOrigin = true;
+            this.game.load.image('strItmDress', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/torso/dress.png').crossOrigin = true;
+            this.game.load.image('strItmSacoLana', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/torso/sacoLana.png').crossOrigin = true;
 
-            this.game.load.image('strItmElegantPants', 'assets/images/clothes/legs/elegantPants.png');
-            this.game.load.image('strItmJean', 'assets/images/clothes/legs/jean.png');
-            this.game.load.image('strItmPantaloneta', 'assets/images/clothes/legs/pantaloneta.png');
-            this.game.load.image('strItmSkirt', 'assets/images/clothes/legs/skirt.png');
+            this.game.load.image('strItmElegantPants', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/legs/elegantPants.png').crossOrigin = true;
+            this.game.load.image('strItmJean', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/legs/jean.png').crossOrigin = true;
+            this.game.load.image('strItmPantaloneta', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/legs/pantaloneta.png').crossOrigin = true;
+            this.game.load.image('strItmSkirt', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/legs/skirt.png').crossOrigin = true;
 
-            this.game.load.image('strItmConverse', 'assets/images/clothes/feet/converse.png');
-            this.game.load.image('strItmElegantShoes', 'assets/images/clothes/feet/elegantShoes.png');
-            this.game.load.image('strItmHeels', 'assets/images/clothes/feet/heels.png');
-            this.game.load.image('strItmTennis', 'assets/images/clothes/feet/tennis.png');
+            this.game.load.image('strItmConverse', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/feet/converse.png').crossOrigin = true;
+            this.game.load.image('strItmElegantShoes', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/feet/elegantShoes.png').crossOrigin = true;
+            this.game.load.image('strItmHeels', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/feet/heels.png').crossOrigin = true;
+            this.game.load.image('strItmTennis', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/clothes/feet/tennis.png').crossOrigin = true;
         }
-
     }
 }

@@ -76,6 +76,10 @@ var MrBook;
         //Función para listar los componentes que se van a cargar para el juego
         LoadTopic1_2.prototype.preload = function () {
             this.superPreload();
+            this.load.image('bgrPuzzle', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/figuresGame/background.png').crossOrigin = true;
+            this.load.image('imgTriangle', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/figuresGame/triangle.png').crossOrigin = true;
+            this.load.image('imgCircle', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/figuresGame/circle.png').crossOrigin = true;
+            this.load.image('imgSquare', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/figuresGame/square.png').crossOrigin = true;
             this.load.onLoadStart.add(this.loadStart, this);
             this.load.onFileComplete.add(this.fileComplete, this);
             this.load.onLoadComplete.add(this.loadComplete, this);
