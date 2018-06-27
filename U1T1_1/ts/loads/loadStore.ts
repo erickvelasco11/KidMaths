@@ -17,20 +17,20 @@
         preload() {
             this.superPreload();
 
-            this.game.load.image('bgrStore', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/store.jpg').crossOrigin = true;
+            this.game.load.image('bgrStore', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/backgrounds/store.jpg').crossOrigin = true;
 
-            this.game.load.image('imgRack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/rack.png').crossOrigin = true;
-            this.game.load.image('imgBallon', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/ballon.png').crossOrigin = true;
-            this.game.load.image('imgCheck', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/check.png').crossOrigin = true;
+            this.game.load.image('imgRack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/rack.png').crossOrigin = true;
+            this.game.load.image('imgBallon', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/ballon.png').crossOrigin = true;
+            this.game.load.image('imgCheck', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/check.png').crossOrigin = true;
 
-            this.game.load.spritesheet('btnMenuSkin', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuSkin.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnMenuHead', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuHead.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnMenuTorso', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuTorso.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnMenuLegs', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuLegs.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnMenuFeet', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/menuFeet.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnBack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/back.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnSee', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/see.png', 200, 200).crossOrigin = true;
-            this.game.load.spritesheet('btnBuy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/buy.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuSkin', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/menuSkin.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuHead', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/menuHead.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuTorso', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/menuTorso.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuLegs', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/menuLegs.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnMenuFeet', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/menuFeet.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnBack', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/back.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnSee', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/see.png', 200, 200).crossOrigin = true;
+            this.game.load.spritesheet('btnBuy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/buy.png', 200, 200).crossOrigin = true;
 
 
             this.game.load.onLoadStart.add(this.loadStart, this);

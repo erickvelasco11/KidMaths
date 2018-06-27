@@ -15,32 +15,32 @@
 
         //Función para listar los componentes que se van a cargar para el juego
         preload() {
-            this.load.spritesheet('pikachu', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/pikachu.png', 48, 48).crossOrigin = true;
-            this.load.image('bgrLoading', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/loading.jpg').crossOrigin = true;
-            this.load.image('titNameUnit', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/nameUnit.png').crossOrigin = true;
+            this.load.spritesheet('pikachu', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/pikachu.png', 48, 48).crossOrigin = true;
+            this.load.image('bgrLoading', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/backgrounds/loading.jpg').crossOrigin = true;
+            this.load.image('titNameUnit', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/nameUnit.png').crossOrigin = true;
 
-            this.load.image('bgrPause', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/pause.png').crossOrigin = true;
-            this.load.image('bgrPlayingBoy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/playingBoy.jpg').crossOrigin = true;
-            this.load.image('bgrPlayingGirl', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/backgrounds/playingGirl.jpg').crossOrigin = true;
+            this.load.image('bgrPause', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/backgrounds/pause.png').crossOrigin = true;
+            this.load.image('bgrPlayingBoy', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/backgrounds/playingBoy.jpg').crossOrigin = true;
+            this.load.image('bgrPlayingGirl', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/backgrounds/playingGirl.jpg').crossOrigin = true;
 
-            this.load.image('tit1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/1.png').crossOrigin = true;
-            this.load.image('tit2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/2.png').crossOrigin = true;
-            this.load.image('tit3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/3.png').crossOrigin = true;
-            this.load.image('titNow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/now.png').crossOrigin = true;
-            this.load.image('titCongrats', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/titles/congrats.png').crossOrigin = true;
+            this.load.image('tit1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/1.png').crossOrigin = true;
+            this.load.image('tit2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/2.png').crossOrigin = true;
+            this.load.image('tit3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/3.png').crossOrigin = true;
+            this.load.image('titNow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/now.png').crossOrigin = true;
+            this.load.image('titCongrats', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/titles/congrats.png').crossOrigin = true;
 
-            this.load.spritesheet('btnStart1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/start1.png', 200, 97).crossOrigin = true;
-            this.load.spritesheet('btnStart2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/start2.png', 200, 97).crossOrigin = true;
-            this.load.spritesheet('btnStart3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/start3.png', 200, 97).crossOrigin = true;
-            this.load.spritesheet('btnNext', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/next.png', 200, 80).crossOrigin = true;
-            this.load.spritesheet('btnStore', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/images/buttons/store.png', 300, 100).crossOrigin = true;
+            this.load.spritesheet('btnStart1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/start1.png', 200, 97).crossOrigin = true;
+            this.load.spritesheet('btnStart2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/start2.png', 200, 97).crossOrigin = true;
+            this.load.spritesheet('btnStart3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/start3.png', 200, 97).crossOrigin = true;
+            this.load.spritesheet('btnNext', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/next.png', 200, 80).crossOrigin = true;
+            this.load.spritesheet('btnStore', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/images/buttons/store.png', 300, 100).crossOrigin = true;
 
-            this.load.audio('sndError', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/error.wav').crossOrigin = true;
-            this.load.audio('sndPoint', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/point.wav').crossOrigin = true;
-            this.load.audio('snd3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/three.mp3').crossOrigin = true;
-            this.load.audio('snd2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/two.mp3').crossOrigin = true;
-            this.load.audio('snd1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/one.mp3').crossOrigin = true;
-            this.load.audio('sndNow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Unit1/assets/sounds/now.mp3').crossOrigin = true;
+            this.load.audio('sndError', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/error.wav').crossOrigin = true;
+            this.load.audio('sndPoint', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/point.wav').crossOrigin = true;
+            this.load.audio('snd3', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/three.mp3').crossOrigin = true;
+            this.load.audio('snd2', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/two.mp3').crossOrigin = true;
+            this.load.audio('snd1', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/one.mp3').crossOrigin = true;
+            this.load.audio('sndNow', 'https://rawgit.com/erickvelasco11/KidMaths/master/Assets/sounds/now.mp3').crossOrigin = true;
 
             this.load.onLoadStart.add(this.loadStart, this);
             this.load.onFileComplete.add(this.fileComplete, this);
